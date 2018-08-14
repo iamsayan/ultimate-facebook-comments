@@ -1,0 +1,21 @@
+= 1.0.3 =
+Release Date: June 3, 2018
+
+* Fix: 'Facebook Comment Area CSS Class' is not working when Default mode is active in 'FB Comment Box Loading Method'.
+* Fix: Ajax does not work properly.
+* Fix: Reset button does not work properly.
+
+= 1.0.2 =
+Release Date: June 2, 2018
+
+* Added: GDPR Compatibility.
+* Added: Default Facebook SDK Loading Method.
+* Added: Option to show both fb comments and wp native comments on same page.
+* Added: Option to set comment box background color.
+* Improved: Admin UI.
+* Bug Fix.
+
+= 1.0.0 =
+Release Date: May 30, 2018
+
+* Initial release.
