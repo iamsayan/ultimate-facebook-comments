@@ -1,6 +1,8 @@
-# Ultimate Facebook Comment
+# Ultimate Facebook Comments
 
 Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
+
+[![WP compatibility](https://plugintests.com/plugins/ultimate-facebook-comments/wp-badge.svg)](https://plugintests.com/plugins/ultimate-facebook-comments/latest) [![PHP compatibility](https://plugintests.com/plugins/ultimate-facebook-comments/php-badge.svg)](https://plugintests.com/plugins/ultimate-facebook-comments/latest)
 
 ## Description
 
@@ -9,6 +11,8 @@ Ultimate Facebook Comments plugin will help you to display Facebook Comments box
 If you’re running a blog of any kind, you’re probably looking to build an online community. You're targeting like-minded people who share the interests highlighted by the content on your site. It’s a mutually beneficial relationship: Your visitors get information that they consider valuable by visiting your site, and you build an audience.
 
 However, it’s also a great idea to allow your visitors to interact with one another. One of the best ways to do that is with a comments section that allows them to not only leave you feedback on your content but also to interact with each other. Here are some of the benefits you can expect from a comments section.
+
+Like Ultimate Facebook Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
 
 #### What does this plugin do?
 
@@ -46,14 +50,22 @@ This plugin is fully compatible with WordPress Version 3.0 and beyond and also c
 * Active development of this plugin is handled [on GitHub](https://github.com/iamsayan/ultimate-facebook-comments).
 * Feel free to [fork the project on GitHub](https://github.com/iamsayan/ultimate-facebook-comments) and submit your contributions via pull request.
 
-## Installation
+## Installation ##
 
+### From within WordPress ###
 1. Visit 'Plugins > Add New'.
-1. Search for 'Ultimate Facebook Comments' and install it.
-1. Or you can upload the `ultimate-facebook-comments` folder to the `/wp-content/plugins/` directory manually.
+1. Search for 'Ultimate Facebook Comments'.
 1. Activate Ultimate Facebook Comments from your Plugins page.
+1. Go to "after activation" below.
+
+### Manually ###
+1. Upload the `ultimate-facebook-comments` folder to the `/wp-content/plugins/` directory.
+1. Activate WP Last Modified Info plugin through the 'Plugins' menu in WordPress.
+1. Go to "after activation" below.
+
+### After activation ###
 1. After activation go to 'Settings > Facebook Comments'.
-1. Enable options and save changes.
+1. Enable/disable options and save changes.
 
 ### Frequently Asked Questions
 
