@@ -69,7 +69,7 @@ Go to 'Settings > Facebook Comments', enable/disable options as per your need an
 
 After enabling options in 'Settings > Facebook Comments', open any page or post and you can see the facebook comment box.
 
-#### How this plugin works? =
+#### How this plugin works?
 
 This plugin hooks into the WordPress content area or replace WordPress native comment and displays Facebook Comment on posts and pages.
 
