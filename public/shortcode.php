@@ -3,7 +3,6 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @category   HTML
  * @package    Ultimate WordPress Comments
  * @subpackage Public
  * @author     Sayan Datta
@@ -15,7 +14,7 @@ function ufc_load_fb_elements_in_header() {
     $options = get_option( 'ufc_plugin_global_options' );
 
     if ($options['ufc_fb_comment_loading_method'] == 'On Click') {
-        $get_btn = '<button id="ufc-button" class="' . $options['ufc_loading_button_class'] . '" onclick="showUFC();">' . $options['ufc_loading_button_text'] . '</button><br><br>';
+        $get_btn = '<button id="ufc-button" class="' . $options['ufc_loading_button_class'] . '" onclick="showUFC(); return false;">' . $options['ufc_loading_button_text'] . '</button><br><br>';
     } else {
         $get_btn = '';
     }
@@ -36,10 +35,10 @@ function ufc_load_fb_elements_in_header() {
         $cookie_consent = '';
     }
 
-    if ($options['ufc_fb_comment_loading_method'] == 'Default') {
-        $shortcode_content = $cookie_consent . '<div id="' . $options['ufc_comment_area_id'] . '" class="' . $options['ufc_comment_area_class'] . '" style="' . $get_bgcolor . '">' . ufc_comments_area_content() . '</div>';
+    if ($options['ufc_fb_comment_loading_method'] == 'On Click') {
+        $shortcode_content = $cookie_consent . '<div id="' . $options['ufc_comment_area_id'] . '" class="ufc-comments ' . $options['ufc_comment_area_class'] . '" style="text-align:center;' . $get_bgcolor . '">' . $get_btn . '</div>';
     } else {
-        $shortcode_content = $cookie_consent . '<div id="' . $options['ufc_comment_area_id'] . '" class="' . $options['ufc_comment_area_class'] . '" style="text-align:center;' . $get_bgcolor . '">' . $get_btn . '</div>';
+        $shortcode_content = $cookie_consent . '<div id="' . $options['ufc_comment_area_id'] . '" class="ufc-comments ' . $options['ufc_comment_area_class'] . '" style="' . $get_bgcolor . '">' . ufc_comments_area_content() . '</div>';
     }
 
     return $shortcode_content;

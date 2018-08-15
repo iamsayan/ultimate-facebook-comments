@@ -13,7 +13,7 @@
 $options = get_option('ufc_plugin_global_options');
 
 if ($options['ufc_fb_comment_loading_method'] == 'On Click') {
-    $get_button = '<button id="ufc-button" class="' . $options['ufc_loading_button_class'] . '" onclick="showUFC();">' . $options['ufc_loading_button_text'] . '</button>';
+    $get_button = '<button id="ufc-button" class="' . $options['ufc_loading_button_class'] . '" onclick="showUFC(); return false;">' . $options['ufc_loading_button_text'] . '</button>';
 } else {
     $get_button = '';
 }
@@ -32,10 +32,11 @@ if( !empty($options['ufc_facebook_comments_app_id']) && !empty($options['ufc_fb_
         <p><span id="ufc-accept">Accpet</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="ufc-decline">Decline</span></p>
         </div>';
     }
-    if ($options['ufc_fb_comment_loading_method'] == 'Default') {
-        echo '<div id="' . $options['ufc_comment_area_id'] . '" class="ufc-comments ' . $options['ufc_comment_area_class'] . '" style="' . $get_bgcolor . '">' . ufc_comments_area_content() . '</div>';
-    } else {
+
+    if ($options['ufc_fb_comment_loading_method'] == 'On Click') {
         echo '<div id="' . $options['ufc_comment_area_id'] . '" class="ufc-comments ' . $options['ufc_comment_area_class'] . '" style="text-align:center;' . $get_bgcolor . '">' . $get_button . '</div>';
+    } else {
+        echo '<div id="' . $options['ufc_comment_area_id'] . '" class="ufc-comments ' . $options['ufc_comment_area_class'] . '" style="' . $get_bgcolor . '">' . ufc_comments_area_content() . '</div>';
     }
 }
 

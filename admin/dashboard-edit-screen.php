@@ -1,10 +1,12 @@
 <?php
 
 /**
- * @package   Ultimate Facebook Comments
- * @author    Sayan Datta
- * @since     v1.1.0
- * @license   http://www.gnu.org/licenses/gpl.html
+ * The admin-facing functionality of the plugin.
+ *
+ * @package    Ultimate WordPress Comments
+ * @subpackage Admin
+ * @author     Sayan Datta
+ * @license    http://www.gnu.org/licenses/ GNU General Public License
  *
  * Add meta box
  *
@@ -50,7 +52,7 @@ function ufc_meta_box_callback( $post ) {
     <p id="ufc-status" class="meta-options">
         <label for="ufc_status" class="selectit">
 		    <input id="ufc_status" type="checkbox" name="disablefbcomment" value="yes" <?php if ( isset ( $checkboxMeta['_ufc_disable'] ) ) checked( $checkboxMeta['_ufc_disable'][0], 'yes' ); ?> /> 
-			<?php _e( 'Don\'t auto insert Facebook Comments', 'ultimate-facebook-comments' ); ?>
+			<?php _e( 'Disable Facebook Comments', 'ultimate-facebook-comments' ); ?>
 			<input type="hidden" id="ufc-disable-hidden" name="disablefbchidden" value="0">
 		</label>
 		<script type="text/javascript">
@@ -88,11 +90,14 @@ function ufc_add_item_to_quick_edit( $column_name, $post_type ) {
 
 	wp_nonce_field( 'ufc_edit_build_nonce', 'ufc_edit_nonce' ); ?>
 
-	<label id="inline-edit-col-disable" for="ufc_status" class="alignleft" style="margin-left:5px;">
-	    <input type="checkbox" id="ufc_status" name="disablefbcomment" value="yes" <?php if( $hide_fbc == 'yes' ) { echo 'checked'; } ?> >
-		<span class="checkbox-title"><?php _e( 'Don\'t auto insert Facebook Comments', 'ultimate-facebook-comments' ); ?></span>
-		<input type="hidden" id="ufc-disable-hidden" name="disablefbchidden" value="0">
-    </label>
+    <div id="inline-edit-col-disable">
+	    <em class="alignleft inline-edit-or"></em>
+	    <label for="ufc_status" class="alignleft">
+	        <input type="checkbox" id="ufc_status" name="disablefbcomment" value="yes" <?php if( $hide_fbc == 'yes' ) { echo 'checked'; } ?> >
+		    <span class="checkbox-title"><?php _e( 'Disable Facebook Comments', 'ultimate-facebook-comments' ); ?></span>
+		    <input type="hidden" id="ufc-disable-hidden" name="disablefbchidden" value="0">
+        </label>
+	</div>
 
 	<script type="text/javascript">
         jQuery(document).ready(function($){

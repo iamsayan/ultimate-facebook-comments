@@ -3,7 +3,6 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @category   HTML
  * @package    Ultimate WordPress Comments
  * @subpackage Admin
  * @author     Sayan Datta
@@ -87,7 +86,7 @@
                             <span class="dashicons dashicons-star-filled"></span> <label><strong><a href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?filter=5#postform" target="_blank" title="Rate now">Rate this on WordPress</a></strong>
                         </div>
                         <div class="misc-pub-section">
-                             <label><span class="dashicons dashicons-heart"></span> <strong><a href="https://www.paypal.me/iamsayan" target="_blank" title="Donate now">Make a small donation</a></strong>
+                             <label><span class="dashicons dashicons-heart"></span> <strong><a href="http://bit.ly/2I0Gj60" target="_blank" title="Donate now">Make a small donation</a></strong>
                         </div>
                         <div class="misc-pub-section">
                             <label><span class="dashicons dashicons-twitter"></span> <strong><a href="https://twitter.com/home?status=I%20am%20using%20Ultimate%20Facebook%20Comments%20WordPress%20Plugin%20by%20%40im_sayaan%20for%20commenting%20on%20my%20%40WordPress%20Website%20-%20It%20is%20awesome%21%20>%20https%3A%2F%2Fwordpress.org%2Fplugins%2Fultimate-facebook-comments%2F" target="_blank" title="Tweet now">Tweet about the Plugin</a></strong>

@@ -3,7 +3,6 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @category   HTML
  * @package    Ultimate WordPress Comments
  * @subpackage Admin
  * @author     Sayan Datta

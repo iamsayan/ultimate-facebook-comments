@@ -3,7 +3,6 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @category   HTML
  * @package    Ultimate WordPress Comments
  * @subpackage Public
  * @author     Sayan Datta
@@ -186,7 +185,9 @@ function ufc_load_comments_template() {
     $options = get_option('ufc_plugin_global_options');
     $p_meta = get_post_meta( get_the_ID(), '_ufc_disable', true );
 
-    if ( isset( $options['ufc_enable_on_post_types'] ) && !in_array( get_post_type( get_the_ID() ), $options['ufc_enable_on_post_types'] ) ) return;
+    if ( isset( $options['ufc_enable_on_post_types'] ) && !in_array( get_post_type( get_the_ID() ), $options['ufc_enable_on_post_types'] ) ) {
+        return;
+    }
         
     if ( $p_meta == 'yes' ) {
         return plugin_dir_path( __FILE__ ) . 'templates/comments-template-empty.php';
@@ -198,8 +199,9 @@ function ufc_load_blank_comments_template() {
 
     $options = get_option('ufc_plugin_global_options');
 
-    if ( isset( $options['ufc_enable_on_post_types'] ) && !in_array( get_post_type( get_the_ID() ), $options['ufc_enable_on_post_types'] ) ) return;
-    
+    if ( isset( $options['ufc_enable_on_post_types'] ) && !in_array( get_post_type( get_the_ID() ), $options['ufc_enable_on_post_types'] ) ) {
+        return;
+    }
     return plugin_dir_path( __FILE__ ) . 'templates/comments-template-empty.php';
 }
 
@@ -209,7 +211,7 @@ function ufc_fb_comments_after( $content ) {
     $p_meta = get_post_meta( get_the_ID(), '_ufc_disable', true );
 
     if ($options['ufc_fb_comment_loading_method'] == 'On Click') {
-        $get_button = '<button id="ufc-button" class="' . $options['ufc_loading_button_class'] . '" onclick="showUFC();">' . $options['ufc_loading_button_text'] . '</button><br><br>';
+        $get_button = '<button id="ufc-button" class="' . $options['ufc_loading_button_class'] . '" onclick="showUFC(); return false;">' . $options['ufc_loading_button_text'] . '</button><br><br>';
     } else {
         $get_button = '';
     }
@@ -230,10 +232,10 @@ function ufc_fb_comments_after( $content ) {
         $cookie_consent = '';
     }
 
-    if ($options['ufc_fb_comment_loading_method'] == 'Default') {
-        $comment_content = '<div id="' . $options['ufc_comment_area_id'] . '" class="ufc-comments ' . $options['ufc_comment_area_class'] . '" style="' . $get_bgcolor . '">' . ufc_comments_area_content() . '</div>';
-    } else {
+    if ($options['ufc_fb_comment_loading_method'] == 'On Click') {
         $comment_content = '<div id="' . $options['ufc_comment_area_id'] . '" class="ufc-comments ' . $options['ufc_comment_area_class'] . '" style="text-align:center;' . $get_bgcolor . '">' . $get_button . '</div>';
+    } else {
+        $comment_content = '<div id="' . $options['ufc_comment_area_id'] . '" class="ufc-comments ' . $options['ufc_comment_area_class'] . '" style="' . $get_bgcolor . '">' . ufc_comments_area_content() . '</div>';
     }
 
     if( isset( $comment_content ) ) {
@@ -274,20 +276,6 @@ function ufc_add_fb_comments_default_sdk_to_body() {
 
     <?php
     }
-}
-
-function add_fb_sdk() { ?>
-    <script>
-        (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = '//connect.facebook.net/<?php echo $options['ufc_fb_comment_language']; ?>/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.0&appId=<?php echo $options['ufc_facebook_comments_app_id']; ?>';
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-<?php
 }
 
 ?>

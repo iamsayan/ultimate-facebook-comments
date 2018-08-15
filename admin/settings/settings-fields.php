@@ -3,7 +3,6 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @category   HTML
  * @package    Ultimate WordPress Comments
  * @subpackage Admin
  * @author     Sayan Datta
@@ -140,13 +139,16 @@ function ufc_fb_comment_loading_method_display() {
 
     ?><span id="fbc-on-click" style="display:none;">&nbsp;&nbsp;&nbsp;<label for="fbc-button-text"><strong><?php _e( 'Button Text:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;&nbsp;
     
-    <?php
-    if( empty($options['ufc_loading_button_text']) ) {
+    <?php if( empty($options['ufc_loading_button_text']) ) {
         $options['ufc_loading_button_text'] = 'Leave a Comment';
     } ?>
     
     <input id="fbc-button-text" name="ufc_plugin_global_options[ufc_loading_button_text]" type="text" size="26" style="width:26%" placeholder="Leave a Comment" required value="<?php if (isset($options['ufc_loading_button_text'])) { echo $options['ufc_loading_button_text']; } ?>" />
     
+    <?php if( empty($options['ufc_loading_button_class']) ) {
+        $options['ufc_loading_button_class'] = 'btn button';
+    } ?>
+
     &nbsp;&nbsp;<label for="fbc-button-class"><strong><?php _e( 'Class:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;&nbsp;
     <input id="fbc-button-class" name="ufc_plugin_global_options[ufc_loading_button_class]" type="text" size="20" style="width:20%" placeholder="btn button" value="<?php if (isset($options['ufc_loading_button_class'])) { echo $options['ufc_loading_button_class']; } ?>" />
     
@@ -272,7 +274,7 @@ function ufc_show_comment_count_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>   <label class="switch">
          <input type="checkbox" id="fbc-count" name="ufc_plugin_global_options[ufc_show_comment_count_cb]" value="1" <?php checked(isset($options['ufc_show_comment_count_cb']), 1); ?> /> 
-         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to show comment counts on individual posts in edit.php page. This function may decrease edit.php page loading time as it fetchs comment count directly from facebook api on overy page load."><span title="" class="dashicons dashicons-editor-help"></span></span>
+         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to show comment counts on individual posts in edit.php page. This function may decrease edit.php page loading speed as it fetchs comment count directly from Facebook API on every page load. Also this feature needs to enable cURL on your website."><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 

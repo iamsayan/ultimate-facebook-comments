@@ -3,7 +3,7 @@ Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
 Requires at least: 3.0
 Tested up to: 4.9
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 Requires PHP: 5.3
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
@@ -21,7 +21,7 @@ However, it’s also a great idea to allow your visitors to interact with one an
 
 #### What does this plugin do?
 
-This plugin hooks info WordPress native comment area or after content area and shows the facebook comments box using lazyload.
+This plugin hooks into WordPress native comment area or after content area and shows the facebook comments box using lazyload.
 
 * 100% GDPR Compliant.
 * Allows you to display facebook comment box in your posts and pages individually.
@@ -38,6 +38,7 @@ This plugin hooks info WordPress native comment area or after content area and s
 * Astra/Pro
 * OceanWP
 * Genesis Framework
+* GeneratePress
 * Zephyr
 * Impreza
 * Twentyseventeen
@@ -110,8 +111,15 @@ Displays/echos the last modified info:
 
 1. Settings
 2. Facebook comment box
+3. Page loading speed with lazyload
 
 == Changelog ==
+
+= 1.1.3 =
+Release Date: August 15, 2018
+
+* Improved: Admin column comment count feature.
+* Bug fixed.
 
 = 1.1.2 =
 Release Date: August 13, 2018
@@ -141,6 +149,9 @@ Release Date: August 9, 2018
 * View the <a href="https://plugins.svn.wordpress.org/ultimate-facebook-comments/trunk/changelog.txt" target="_blank">Changelog</a> file.
 
 == Upgrade Notice ==
+
+= 1.1.3 =
+In this release, most of the bugs have been fixed. Update the plugin on your website now to get fixes and enhancements.
 
 = 1.1.2 =
 In this release, most of the bugs have been fixed. Also, new features have been introduced. Please, update the plugin on your website now to get fixes and enhancements.

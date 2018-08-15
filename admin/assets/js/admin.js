@@ -9,6 +9,8 @@ jQuery(document).ready(function ($) {
         placeholder: 'Select post types',
         //allowClear: true
     });
+    
+    $('.ufc-color-picker').wpColorPicker();
 
     $('#fbc-notice').change(function () {
         if ($('#fbc-notice').is(':checked')) {

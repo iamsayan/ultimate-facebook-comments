@@ -1,33 +1,34 @@
 <?php
-/*
-Plugin Name: Ultimate Facebook Comments
-Plugin URI: https://wordpress.org/plugins/ultimate-facebook-comments
-Description: Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
-Version: 1.1.2
-Author: Sayan Datta
-Author URI: https://profiles.wordpress.org/infosatech/
-License: GPLv3
-Text Domain: ultimate-facebook-comments
-*/
-
-/*  This plugin helps to add anything as WordPress Page Extention.
-
-    Copyright 2018 Sayan Datta
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-	
-*/
+/**
+ * Plugin Name: Ultimate Facebook Comments
+ * Plugin URI: https://iamsayan.github.io/ultimate-facebook-comments/
+ * Description: Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
+ * Version: 1.1.3
+ * Author: Sayan Datta
+ * Author URI: https://profiles.wordpress.org/infosatech/
+ * License: GPLv3
+ * Text Domain: ultimate-facebook-comments
+ * Domain Path: /languages
+ * 
+ * Ultimate Facebook Comments is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * Ultimate Facebook Comments is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Ultimate Facebook Comments. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @category Public
+ * @package  Ultimate Facebook Comments
+ * @author   Sayan Datta
+ * @license  http://www.gnu.org/licenses/ GNU General Public License
+ * @link     https://iamsayan.github.io/ultimate-facebook-comments/
+ */
 
 //Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
@@ -61,15 +62,15 @@ function ufc_custom_admin_styles_scripts( $hook ) {
         wp_enqueue_style( 'ufc-cb-style', plugins_url( 'admin/assets/css/style.min.css', __FILE__ ), array(), ufc_load_plugin_version() );
         wp_enqueue_style( 'ufc-select2', plugins_url( 'admin/assets/css/select2.min.css', __FILE__ ), array(), ufc_load_plugin_version() );       
         
-        wp_enqueue_script( 'ufc-script', plugins_url( 'admin/assets/js/admin.min.js', __FILE__ ), array(), ufc_load_plugin_version() );
+        wp_enqueue_script( 'ufc-script', plugins_url( 'admin/assets/js/admin.min.js', __FILE__ ), array( 'jquery', 'wp-color-picker' ), ufc_load_plugin_version(), true );
         wp_enqueue_script( 'ufc-select2-js', plugins_url( 'admin/assets/js/select2.min.js', __FILE__ ), array(), ufc_load_plugin_version() );
-        wp_enqueue_script( 'ufc-color-picker', plugins_url( 'admin/assets/js/color.picker.min.js', __FILE__ ), array( 'jquery', 'wp-color-picker' ), ufc_load_plugin_version(), true  );
         
         wp_enqueue_style( 'wp-color-picker' );
         wp_enqueue_script('wp-color-picker');
     }
 
     if ( $hook == 'edit.php' ) {
+        wp_enqueue_style( 'ufc-edit', plugins_url( 'admin/assets/css/edit.min.css', __FILE__ ), array(), ufc_load_plugin_version() );
         wp_enqueue_script( 'ufc-post-edit', plugins_url( 'admin/assets/js/edit.min.js', __FILE__ ), array( 'jquery' ), ufc_load_plugin_version(), true );
     }
 }
@@ -98,7 +99,6 @@ if( isset($options['ufc_fb_comment_consent_notice_cb']) && ($options['ufc_fb_com
         wp_enqueue_style( 'ufc-consent', plugins_url( 'public/css/consent.min.css', __FILE__ ), array(), '1.1.2' );   
         wp_enqueue_script( 'ufc-consent-js', plugin_dir_url( __FILE__ ) . 'public/js/consent.min.js', array ('jquery'), '1.1.2', true );
     }
-
     add_action( 'wp_enqueue_scripts', 'ufc_first_time_cookie_notice' );
 }
 
