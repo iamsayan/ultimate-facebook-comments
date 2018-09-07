@@ -1,6 +1,37 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.1.7
+Release Date: August 28, 2018
+
+* Added: a new item 'Custom' in 'Comments Box Display Position'. It will globally disable auto insert if you want to use shortcode side-wide.
+* Fixed: Admin Bar Moderation Tool on/off does not work. Now it has been fixed.
+* Fixed: Unnecessary output of HTML components in quick edit mode.
+* Fixed: jQuey cookie path issue related to consent notice.
+* Updated: jQuery cookie library.
+
+## 1.1.6
+Release Date: August 28, 2018
+
+* Improved: Comment count fetching method from Facebook API.
+* Improved: Admin UI.
+* Fixed: Some untranslated strings.
+* Some minor bug fixed.
+
+## 1.1.5
+Release Date: August 19, 2018
+
+* Tweak: replace native comments now depends on WordPress default comment enable/disable system as FB comment box does not show previously on frontend if Disable WP Native Comment is enabled.
+* Fixed: Some untranslated strings.
+* Bug fixed.
+
+## 1.1.4
+Release Date: August 18, 2018
+
+* Added: Facebook SDK language codes.
+* Fixed: Some untranslated strings.
+* Bug fixed.
+
 ## 1.1.3
 Release Date: August 15, 2018
 
