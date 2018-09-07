@@ -19,7 +19,7 @@ function ufc_enable_fb_comment_cb_display() {
 
 function ufc_facebook_comments_app_id_display() {
     $options = get_option( 'ufc_plugin_global_options' );
-    ?>  <input id="appid" name="ufc_plugin_global_options[ufc_facebook_comments_app_id]" type="text" size="35" style="width:35%;" required placeholder="Enter facebook app id" value="<?php if (isset($options['ufc_facebook_comments_app_id'])) { echo $options['ufc_facebook_comments_app_id']; } ?>" />
+    ?>  <input id="appid" name="ufc_plugin_global_options[ufc_facebook_comments_app_id]" type="number" size="35" style="width:35%;" required placeholder="Enter facebook app id" value="<?php if (isset($options['ufc_facebook_comments_app_id'])) { echo $options['ufc_facebook_comments_app_id']; } ?>" />
         &nbsp;&nbsp;<span class="tooltip" title="Enter facebook app id."><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
@@ -42,8 +42,8 @@ function ufc_fb_comment_sorting_display() {
     $items = array("Social Ranking", "Time", "Reverse Time");
     echo '<select id="fb-comments-sort" name="ufc_plugin_global_options[ufc_fb_comment_sorting]" style="width:25%;">';
     foreach($items as $item) {
-        $selected = ($options['ufc_fb_comment_sorting'] == $item) ? 'selected="selected"' : '';
-        echo '<option value="' . $item . '" ' . $selected . '>' . $item . '</option>';
+        $selected = ($options['ufc_fb_comment_sorting'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
 ?>&nbsp;&nbsp;<span class="tooltip" title="Select the facebook comment sorting method from here."><span title="" class="dashicons dashicons-editor-help"></span></span>
@@ -52,13 +52,19 @@ function ufc_fb_comment_sorting_display() {
 
 function ufc_fb_comment_language_display() {
     $options = get_option( 'ufc_plugin_global_options' );
-    if( empty($options['ufc_fb_comment_language']) ) {
+    if( !isset($options['ufc_fb_comment_language']) ) {
         $options['ufc_fb_comment_language'] = 'en_US';
-    } ?>
-    <input id="fb-comments-lang" name="ufc_plugin_global_options[ufc_fb_comment_language]" type="text" size="15" style="width:15%" required placeholder="en_US" value="<?php if (isset($options['ufc_fb_comment_language'])) { echo $options['ufc_fb_comment_language']; } ?>" />
-    &nbsp;&nbsp;<span class="tooltip" title="Select in which language you want to load facebook sdk. e.g. en_US, de_DE, es_ES"><span title="" class="dashicons dashicons-editor-help"></span></span>
-    <?php
-}    
+    }
+    $items = array("en_US", "ca_ES", "cs_CZ", "cx_PH", "cy_GB", "da_DK", "de_DE", "eu_ES", "en_UD", "es_LA", "es_ES", "gn_PY", "fi_FI", "fr_FR", "gl_ES", "hu_HU", "it_IT", "ja_JP", "ko_KR", "nb_NO", "nn_NO", "nl_NL", "fy_NL", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sk_SK", "sl_SI", "sv_SE", "th_TH", "tr_TR", "ku_TR", "zh_CN", "zh_HK", "zh_TW", "af_ZA", "sq_AL", "hy_AM", "az_AZ", "be_BY", "bn_IN", "bs_BA", "bg_BG", "hr_HR", "nl_BE", "en_GB", "et_EE", "fo_FO", "fr_CA", "ka_GE", "el_GR", "gu_IN", "hi_IN", "is_IS", "id_ID", "ga_IE", "jv_ID", "kn_IN", "kk_KZ", "lv_LV", "lt_LT", "mk_MK", "mg_MG", "ms_MY", "mt_MT", "mr_IN", "mn_MN", "ne_NP", "pa_IN", "sr_RS", "so_SO", "sw_KE", "tl_PH", "ta_IN", "te_IN", "ml_IN", "uk_UA", "uz_UZ", "vi_VN", "km_KH", "tg_TJ", "ar_AR", "he_IL", "ur_PK", "fa_IR", "ps_AF", "my_MM", "qz_MM", "or_IN", "si_LK", "rw_RW", "cb_IQ", "ha_NG", "ja_KS", "br_FR", "tz_MA", "co_FR", "as_IN", "ff_NG", "sc_IT", "sz_PL");
+    echo '<select id="fb-comments-lang" name="ufc_plugin_global_options[ufc_fb_comment_language]" style="width:22%;">';
+        foreach($items as $item) {
+        $selected = ($options['ufc_fb_comment_language'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
+    }
+    echo '</select>';
+?>&nbsp;&nbsp;<span class="tooltip" title="Select in which language you want to load facebook sdk. e.g. en_US, de_DE, es_ES."><span title="" class="dashicons dashicons-editor-help"></span></span>
+<?php
+}
 
 function ufc_fb_comments_theme_display() {
     $options = get_option( 'ufc_plugin_global_options' );
@@ -68,8 +74,8 @@ function ufc_fb_comments_theme_display() {
     $items = array("Light", "Dark");
     echo '<select id="fb-comments-theme" name="ufc_plugin_global_options[ufc_fb_comments_theme]" style="width:18%;">';
         foreach($items as $item) {
-        $selected = ($options['ufc_fb_comments_theme'] == $item) ? 'selected="selected"' : '';
-        echo '<option value="' . $item . '" ' . $selected . '>' . $item . '</option>';
+        $selected = ($options['ufc_fb_comments_theme'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
 ?>&nbsp;&nbsp;<span class="tooltip" title="Select the theme of facebook comments box from here."><span title="" class="dashicons dashicons-editor-help"></span></span>
@@ -91,11 +97,11 @@ function ufc_fb_comment_auto_display_display() {
     if( !isset($options['ufc_fb_comment_auto_display']) ) {
         $options['ufc_fb_comment_auto_display'] = 'Replace Native Comment';
     }
-    $items = array( "Replace Native Comment", "After Content" );
+    $items = array( "Replace Native Comment", "After Content", "Custom" );
     echo '<select id="fb-comments-display" name="ufc_plugin_global_options[ufc_fb_comment_auto_display]" style="width:35%;">';
         foreach($items as $item) {
-        $selected = ($options['ufc_fb_comment_auto_display'] == $item) ? 'selected="selected"' : '';
-        echo '<option value="' . $item . '" ' . $selected . '>' . $item . '</option>';
+        $selected = ($options['ufc_fb_comment_auto_display'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
 
@@ -108,8 +114,8 @@ function ufc_fb_comment_auto_display_display() {
     $items = array("Show Facebook Comments", "Show both Comments");
     echo '<select id="fb-comments-override" name="ufc_plugin_global_options[ufc_fb_comment_box_override]" style="width:38%;">';
         foreach($items as $item) {
-        $selected = ($options['ufc_fb_comment_box_override'] == $item) ? 'selected="selected"' : '';
-        echo '<option value="' . $item . '" ' . $selected . '>' . $item . '</option>';
+        $selected = ($options['ufc_fb_comment_box_override'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
     
@@ -132,8 +138,8 @@ function ufc_fb_comment_loading_method_display() {
     $items = array("Default", "On Scroll", "On Click");
     echo '<select id="fb-comments-load" name="ufc_plugin_global_options[ufc_fb_comment_loading_method]" style="width:16%;">';
         foreach($items as $item) {
-        $selected = ($options['ufc_fb_comment_loading_method'] == $item) ? 'selected="selected"' : '';
-        echo '<option value="' . $item . '" ' . $selected . '>' . $item . '</option>';
+        $selected = ($options['ufc_fb_comment_loading_method'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
 
@@ -181,8 +187,8 @@ function ufc_load_fb_comment_url_display() {
     $items = array("Default", "Homepage", "Custom URL");
     echo '<select id="fbc-url" name="ufc_plugin_global_options[ufc_load_fb_comment_url]" style="width:22%;">';
         foreach($items as $item) {
-        $selected = ($options['ufc_load_fb_comment_url'] == $item) ? 'selected="selected"' : '';
-        echo '<option value="' . $item . '" ' . $selected . '>' . $item . '</option>';
+        $selected = ($options['ufc_load_fb_comment_url'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
 ?>
@@ -203,8 +209,8 @@ function ufc_fb_comment_msg_display() {
     $items = array("Left", "Center", "Right");
     echo '<select id="fb-comments-msg-align" name="ufc_plugin_global_options[ufc_fb_comment_msg_align]" style="width:20%;">';
         foreach($items as $item) {
-        $selected = ($options['ufc_fb_comment_msg_align'] == $item) ? 'selected="selected"' : '';
-        echo '<option value="' . $item . '" ' . $selected . '>' . $item . '</option>';
+        $selected = ($options['ufc_fb_comment_msg_align'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
     ?>    
@@ -215,7 +221,7 @@ function ufc_fb_comment_msg_display() {
 function ufc_custom_css_comment_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>
-    <textarea id="fbc-css" name="ufc_plugin_global_options[ufc_custom_css_comment]" rows="4" cols="95" placeholder="e.g. color:red; font-size:14px;" style="width:95%"><?php if (isset($options['ufc_custom_css_comment'])) { echo $options['ufc_custom_css_comment']; } ?></textarea>
+    <textarea id="fbc-css" name="ufc_plugin_global_options[ufc_custom_css_comment]" rows="2" cols="95" placeholder="e.g. color:red; font-size:14px;" style="width:95%"><?php if (isset($options['ufc_custom_css_comment'])) { echo $options['ufc_custom_css_comment']; } ?></textarea>
     <br><small>Just write any css property to set custom style for comment box title.</small>
     <?php
 }
@@ -233,8 +239,8 @@ function ufc_enable_on_post_types_display() {
 
     echo '<select id="post-types" name="ufc_plugin_global_options[ufc_enable_on_post_types][]" multiple="multiple" required style="width:85%;">';
     foreach($post_types as $item) {
-        $selected = in_array( $item, $options['ufc_enable_on_post_types'] ) ? 'selected="selected"' : '';
-        echo '<option value="' . $item . '" ' . $selected . '>' . $item . '</option>';
+        $selected = in_array( $item, $options['ufc_enable_on_post_types'] ) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
     ?>
@@ -265,7 +271,7 @@ function ufc_fb_comment_consent_notice_msg_display() {
     if( empty($options['ufc_fb_comment_consent_notice_msg']) ) {
         $options['ufc_fb_comment_consent_notice_msg'] = 'We embed Facebook Comments plugin to allow you to leave comment at our website using your Facebook account. It may collects your IP address, your web browser User Agent, store and retrieve cookies on your browser, embed additional tracking, and monitor your interaction with the commenting interface, including correlating your Facebook account with whatever action you take within the interface (such as “liking” someone’s comment, replying to other comments), if you are logged into Facebook. For more information about how this data may be used, please see Facebook’s data privacy policy: https://www.facebook.com/about/privacy/update.';
     } ?>
-    <textarea id="fbc-notice-msg" name="ufc_plugin_global_options[ufc_fb_comment_consent_notice_msg]" rows="8" cols="95" placeholder="" style="width:95%"><?php if (isset($options['ufc_fb_comment_consent_notice_msg'])) { echo $options['ufc_fb_comment_consent_notice_msg']; } ?></textarea>
+    <textarea id="fbc-notice-msg" name="ufc_plugin_global_options[ufc_fb_comment_consent_notice_msg]" rows="6" cols="95" placeholder="" style="width:95%"><?php if (isset($options['ufc_fb_comment_consent_notice_msg'])) { echo $options['ufc_fb_comment_consent_notice_msg']; } ?></textarea>
     <br><small>Write here the notice/message which you want to show as consent to your first time commenter.</small>
     <?php
 }
@@ -274,7 +280,7 @@ function ufc_show_comment_count_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>   <label class="switch">
          <input type="checkbox" id="fbc-count" name="ufc_plugin_global_options[ufc_show_comment_count_cb]" value="1" <?php checked(isset($options['ufc_show_comment_count_cb']), 1); ?> /> 
-         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to show comment counts on individual posts in edit.php page. This function may decrease edit.php page loading speed as it fetchs comment count directly from Facebook API on every page load. Also this feature needs to enable cURL on your website."><span title="" class="dashicons dashicons-editor-help"></span></span>
+         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to show comment counts beside every individual posts in edit.php page. This function may decrease edit.php page loading speed as it fetchs comment count directly from Facebook API on every page load."><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 

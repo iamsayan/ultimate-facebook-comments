@@ -27,8 +27,17 @@
                             <?php if ( function_exists('wp_nonce_field') ) { wp_nonce_field('ultimate-facebook-comments'); } ?>
                             <?php settings_fields('ufc_show_plugin_section'); ?>
                             <?php do_settings_sections('ufc_plugin_global_section'); ?>
-                            <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary' ); ?>
+                            <p><?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', '', false ); ?>&nbsp;&nbsp;<span class="spinner is-active" style="float: none;margin: -2px 5px 0; display:none;"></span></p>
                         </form>
+                        <script>
+                            jQuery(document).ready(function ($) {
+                                $('.save-settings').click(function () {
+                                    $(".save-settings").addClass("button-large disabled");
+                                    $(".spinner").show();
+                                    $(".save-settings").val("<?php _e( 'Saving...', 'ultimate-facebook-comments' ); ?>");
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -48,34 +57,43 @@
                     </div>
                 </div>
                 <div class="postbox">
-                    <h3 class="hndle"><span class="dashicons dashicons-info"></span> <?php _e( 'User Manual', 'ultimate-facebook-comments' ); ?></h3>
+                    <h3 class="hndle"><span class="dashicons dashicons-edit"></span> <?php _e( 'User Manual', 'ultimate-facebook-comments' ); ?></h3>
                     <div class="inside">
                         <div class="misc-pub-section">
                             <span><?php _e( 'Here\'s the short user manual for you.', 'ultimate-facebook-comments' ); ?></span>
-                            <br><br><span><strong>App ID</strong> - you can create your App Id on this <a href="https://developers.facebook.com/apps" target="_blank">page</a> and turn on app <a href="https://developers.facebook.com/apps/<?php echo $options['ufc_facebook_comments_app_id']; ?>/review-status/" target="_blank">review</a>.</span>
-                            <br><br><span>You can show or hide fb comments from post edit screen - <strong>Ultimate Facebook Comments > Disable facebook comments</strong>.</span>
+                            <br><br><span><strong>App ID</strong> - Create your App Id <a href="https://developers.facebook.com/apps" target="_blank">here</a>, fill up all required details in <strong>Settings > Basic Settings</strong> and turn on app <a href="https://developers.facebook.com/apps/<?php echo $options['ufc_facebook_comments_app_id']; ?>/review-status/" target="_blank">review</a>.</span>
+                            <br><br><span>Now configure plugin settings according to your need with valid information.</span>
                         </div>
                     </div>
                 </div>
                 <div class="postbox">
-                    <h3 class="hndle"><span class="dashicons dashicons-info"></span> <?php _e( 'Comments Moderation', 'ultimate-facebook-comments' ); ?></h3>
+                    <h3 class="hndle"><span class="dashicons dashicons-admin-users"></span> <?php _e( 'Comments Moderation', 'ultimate-facebook-comments' ); ?></h3>
                     <div class="inside">
                         <div class="misc-pub-section">
-                            <?php if( !empty($options['ufc_facebook_comments_app_id']) ) { ?>
-                            <span><strong><a href="https://developers.facebook.com/tools/comments/<?php echo $options['ufc_facebook_comments_app_id']; ?>/" target="_blank">Open Comment Moderation Tool</a></strong>.</span>
-                            <br><br> <?php } ?>
-                            <span>You must be logged into your Facebook account to access Facebook Comments Moderation Tool. By default, all admins to the App ID can moderate comments. To add any person as moderators, open comment moderation tool and go to <strong>Setting > Moderators</strong> and add any person as moderator.</span>
+                            <span><strong>Note:</strong> You must be logged into your Facebook account to access Facebook Comments Moderation Tool.</span>
+                            <br><br><span>By default, all admins to the App ID can moderate comments. To add any person as moderators, open <strong>Moderation Tool</strong> and go to <strong>Settings > Moderators</strong> and add any person as moderator.</span>
                         </div>
                     </div>
                 </div>
                 <div class="postbox">
-                    <h3 class="hndle"><span class="dashicons dashicons-info"></span> <?php _e( 'How to use Shortcode?', 'ultimate-facebook-comments' ); ?></h3>
+                    <h3 class="hndle"><span class="dashicons dashicons-editor-code"></span> <?php _e( 'How to use Shortcode?', 'ultimate-facebook-comments' ); ?></h3>
                     <div class="inside">
                         <div class="misc-pub-section">
                             <span><strong>Shortcode : </strong><code>[ufc-fb-comments]</code></span>
                         </div>
                         <div class="misc-pub-section">
-                             <span><strong>Instructions :</strong> You can insert the Facebook Comments box manually in any post using plugin shortcode. If you have enabled After Content/Replace Native Comment, in that case you can turn off auto comment insertation on individual posts from your post edit screen - <strong>Ultimate Facebook Comments > Disable facebook comments</strong>.</span>
+                             <span><strong>Instructions :</strong> You can insert the Facebook Comments box manually to any post or page using shortcode.</span>
+                             <br><br><span>You can disable Facebook comments for individual posts / pages from meta box of post edit screen or from quick edit.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="postbox">
+                    <h3 class="hndle"><span class="dashicons dashicons-tag"></span> <?php _e( 'Template Tags', 'ultimate-facebook-comments' ); ?></h3>
+                    <div class="inside">
+                        <div class="misc-pub-section">
+                            <span>You can display Facebook Comments count theme's template files by using the template tags:</span>
+                            <br><br><span><a href="https://wordpress.org/plugins/ultimate-facebook-comments/#how%20to%20show%20fb%20comment%20count%20on%20frontend%20posts%20meta%3F" target="_blank">Read the FAQ</a></span>
+                            <br><br><span><strong>Note:</strong> Use Facebook Comment Count feature on live/production site only.</span>
                         </div>
                     </div>
                 </div>
@@ -94,10 +112,10 @@
                     </div>
                 </div>
                 <div class="postbox">
-                    <h3 class="hndle"><span class="dashicons dashicons-editor-help"></span> <?php _e( 'My Other Plugins!', 'ultimate-facebook-comments' ); ?></h3>
+                    <h3 class="hndle"><span class="dashicons dashicons-admin-plugins"></span> <?php _e( 'My Other Plugins!', 'ultimate-facebook-comments' ); ?></h3>
                     <div class="inside">
                         <div class="misc-pub-section">
-                            <span class="dashicons dashicons-clock"></span> <label><strong><a href="https://wordpress.org/plugins/wp-last-modified-info/" target="_blank">WP Last Modified Info</a>: </strong>Show or hide last update date and time on pages and posts very easily.
+                            <span class="dashicons dashicons-clock"></span> <label><strong><a href="https://wordpress.org/plugins/wp-last-modified-info/" target="_blank">WP Last Modified Info</a>: </strong>Display last update date and time on pages and posts very easily.
                         </div><hr>
                         <div class="misc-pub-section">
                             <span class="dashicons dashicons-admin-links"></span> <label><strong><a href="https://wordpress.org/plugins/change-wp-page-permalinks/" target="_blank">WP Page Permalink Extension</a>: </strong>Assign any extension to wordpress pages easily.

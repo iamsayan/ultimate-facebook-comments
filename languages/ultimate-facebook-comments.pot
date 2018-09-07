@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Ultimate Facebook Comments\n"
-"POT-Creation-Date: 2018-08-15 10:05+0530\n"
-"PO-Revision-Date: 2018-08-15 10:05+0530\n"
+"POT-Creation-Date: 2018-08-28 22:47+0530\n"
+"PO-Revision-Date: 2018-08-28 22:47+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgid "Moderation Tool"
 msgstr ""
 
 #: admin/admin-bar.php:28
-msgid "Open Facebook Comment Moderation Tool"
+msgid "Facebook Comment Moderation Tool"
 msgstr ""
 
 #: admin/admin-bar.php:37 admin/admin-bar.php:40
@@ -45,35 +45,31 @@ msgstr ""
 msgid "Spam Comments"
 msgstr ""
 
-#: admin/dashboard-column.php:46
+#: admin/dashboard-column.php:56
 msgid " comment"
 msgstr ""
 
-#: admin/dashboard-column.php:49
+#: admin/dashboard-column.php:59
 msgid "No comments"
 msgstr ""
 
-#: admin/dashboard-column.php:52
+#: admin/dashboard-column.php:62
 msgid " comments"
 msgstr ""
 
-#: admin/dashboard-column.php:63
-msgid "Facebook Comment is enabled"
+#: admin/dashboard-column.php:75 admin/dashboard-column.php:78
+msgid "Enabled"
 msgstr ""
 
-#: admin/dashboard-column.php:66
-msgid "Facebook Comment is inserted using Shortcode"
+#: admin/dashboard-column.php:81
+msgid "Disabled"
 msgstr ""
 
-#: admin/dashboard-column.php:69
-msgid "Facebook Comment is disabled"
-msgstr ""
-
-#: admin/dashboard-column.php:80 admin/loader.php:30
+#: admin/dashboard-column.php:92 admin/loader.php:30
 msgid "Facebook Comments"
 msgstr ""
 
-#: admin/dashboard-column.php:83
+#: admin/dashboard-column.php:95
 msgid "Facebook Comments Status"
 msgstr ""
 
@@ -83,31 +79,31 @@ msgstr ""
 msgid "Ultimate Facebook Comments"
 msgstr ""
 
-#: admin/dashboard-edit-screen.php:55 admin/dashboard-edit-screen.php:97
+#: admin/dashboard-edit-screen.php:57 admin/dashboard-edit-screen.php:106
 msgid "Disable Facebook Comments"
 msgstr ""
 
-#: admin/settings/settings-fields.php:102
+#: admin/settings/settings-fields.php:108
 msgid "Select:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:140
+#: admin/settings/settings-fields.php:146
 msgid "Button Text:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:152
+#: admin/settings/settings-fields.php:158
 msgid "Class:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:169
+#: admin/settings/settings-fields.php:175
 msgid "ID:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:189
+#: admin/settings/settings-fields.php:195
 msgid "Custom URL:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:197
+#: admin/settings/settings-fields.php:203
 msgid "Align:"
 msgstr ""
 
@@ -132,23 +128,23 @@ msgid "Facebook Comments Language:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:21
-msgid "Comments Box Theme:"
+msgid "Comments Box Color Scheme:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:22
-msgid "Comment Box Width (px):"
+msgid "Comments Box Width (px):"
 msgstr ""
 
 #: admin/settings/settings-loader.php:23
-msgid "Comment Box Display Position:"
+msgid "Comments Box Display Position:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:24
-msgid "Comment Box Background Color:"
+msgid "Comments Box Background Color:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:25
-msgid "Comment Box Loading Method:"
+msgid "Comments Box Loading Method:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:26
@@ -160,7 +156,7 @@ msgid "Select Post Types for FB Comments:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:28
-msgid "Facebook Comment Box Title:"
+msgid "Facebook Comments Box Title:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:29
@@ -168,7 +164,7 @@ msgid "Custom CSS Properties for Title:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:30
-msgid "Comment Area CSS Class:"
+msgid "Comments Div CSS Class:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:31
@@ -176,11 +172,11 @@ msgid "Show a Notice to New Visitors?"
 msgstr ""
 
 #: admin/settings/settings-loader.php:32
-msgid "Notice Title:"
+msgid "Visitor Notice Title:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:33
-msgid "Notice Body:"
+msgid "Visitor Notice Body Message:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:34
@@ -220,54 +216,62 @@ msgid "Save Settings"
 msgstr ""
 
 #: admin/settings/settings-page.php:37
+msgid "Saving..."
+msgstr ""
+
+#: admin/settings/settings-page.php:46
 msgid "Plugin Information"
 msgstr ""
 
-#: admin/settings/settings-page.php:51
+#: admin/settings/settings-page.php:60
 msgid "User Manual"
 msgstr ""
 
-#: admin/settings/settings-page.php:54
+#: admin/settings/settings-page.php:63
 msgid "Here's the short user manual for you."
 msgstr ""
 
-#: admin/settings/settings-page.php:61
+#: admin/settings/settings-page.php:70
 msgid "Comments Moderation"
 msgstr ""
 
-#: admin/settings/settings-page.php:72
+#: admin/settings/settings-page.php:79
 msgid "How to use Shortcode?"
 msgstr ""
 
-#: admin/settings/settings-page.php:83
+#: admin/settings/settings-page.php:91
+msgid "Template Tags"
+msgstr ""
+
+#: admin/settings/settings-page.php:101
 msgid "Like the plugin?"
 msgstr ""
 
-#: admin/settings/settings-page.php:97
+#: admin/settings/settings-page.php:115
 msgid "My Other Plugins!"
 msgstr ""
 
-#: public/template-tags.php:38
+#: public/template-tags.php:48
 msgid " Comment"
 msgstr ""
 
-#: public/template-tags.php:41
+#: public/template-tags.php:51
 msgid "Leave a Comment"
 msgstr ""
 
-#: public/template-tags.php:44
+#: public/template-tags.php:54
 msgid " Comments"
 msgstr ""
 
-#: ultimate-facebook-comments.php:110
+#: ultimate-facebook-comments.php:113
 msgid "Settings"
 msgstr ""
 
-#: ultimate-facebook-comments.php:120
+#: ultimate-facebook-comments.php:127
 msgid "Support"
 msgstr ""
 
-#: ultimate-facebook-comments.php:121
+#: ultimate-facebook-comments.php:128
 msgid "Donate"
 msgstr ""
 

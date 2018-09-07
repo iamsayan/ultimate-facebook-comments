@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
         $("#poweredby").show();
         $("#fbc-comments-text").show();
         $("#fbc-comments-div").show();
-        $.cookie('UFC_CA', 'true', {expires: 365 });
+        $.cookie('UFC_CA', 'true', { expires: 365, path: '/' });
         //alert('The paragraph was clicked.');
         //console.log( "ready!" );
     });

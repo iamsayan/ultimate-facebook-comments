@@ -22,17 +22,19 @@ function ufc_add_meta_boxes( $post ) {
     // get plugin options
     $options = get_option('ufc_plugin_global_settings');
     // If user can't publish posts, then get out
-    if ( ! current_user_can( 'publish_posts' ) ) return;
+	if ( ! current_user_can( 'publish_posts' ) ) return;
 
     add_meta_box( 'ufc_meta_box', __( 'Ultimate Facebook Comments', 'ultimate-facebook-comments' ), 'ufc_meta_box_callback', '', 'side', 'default' );
 }
 
 if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) {
-    if( isset($options['ufc_enable_on_post_types']) ) {
-        $post_types = $options['ufc_enable_on_post_types'];
-        foreach($post_types as $item) {
-            add_action( "add_meta_boxes_{$item}", "ufc_add_meta_boxes" );
-        }
+	if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'After Content') ) {
+		if( isset($options['ufc_enable_on_post_types']) ) {
+            $post_types = $options['ufc_enable_on_post_types'];
+            foreach($post_types as $item) {
+                add_action( "add_meta_boxes_{$item}", "ufc_add_meta_boxes" );
+			}
+		}
     }
 }
 
@@ -72,16 +74,23 @@ function ufc_meta_box_callback( $post ) {
 	<?php
 }
 
-add_action( 'quick_edit_custom_box', 'ufc_add_item_to_quick_edit', 10, 2 );
+if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'After Content') ) {
+	add_action( 'quick_edit_custom_box', 'ufc_add_item_to_quick_edit', 10, 2 );
+}
 
 function ufc_add_item_to_quick_edit( $column_name, $post_type ) {
 
+	$options = get_option('ufc_plugin_global_settings');
 	global $post;
 
 	if( $post->post_status == 'auto-draft' ) {
 		return;
-    }
+	}
 
+	if ( 'fb-comments-status' !== $column_name ) {
+		return;
+	}
+	
 	$hide_fbc = get_post_meta( get_the_ID(), '_ufc_disable', true );
 
 	if ( did_action( 'quick_edit_custom_box' ) > 1 ) {

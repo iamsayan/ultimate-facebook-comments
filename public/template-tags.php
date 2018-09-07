@@ -15,16 +15,26 @@ function get_fb_comment_count() {
 
     global $post;
     $posturl = get_permalink($post->ID);
+
+    // Generate the URL
     $url = 'https://graph.facebook.com/' . $posturl;
 
-    $request = wp_remote_get( esc_url_raw( $url ), array( 'httpversion' => '1.1' ) );
+    // Make API request
+    $response = wp_remote_get( esc_url_raw( $url ), array( 'httpversion' => '1.1' ) );
 
-    if( is_wp_error( $request ) ) {
-	    return false; // Bail early
+    // Check the response code
+	$response_code = wp_remote_retrieve_response_code( $response ); // log this for API issues
+    
+    // Bail out early if there are any errors.
+    if( 200 != $response_code || is_wp_error( $response ) ) {
+        return false;
     }
+    
+    // set response body
+    $response_body = wp_remote_retrieve_body( $response );
 
-    $body = wp_remote_retrieve_body( $request );
-    $data = json_decode( $body );
+    // Return the json decoded content.
+    $data = json_decode( $response_body );
 
     if( ! empty( $data ) ) {
 

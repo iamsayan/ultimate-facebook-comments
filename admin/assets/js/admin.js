@@ -5,6 +5,10 @@ jQuery(document).ready(function ($) {
         minimumResultsForSearch: Infinity
     });
 
+    $('select#fb-comments-lang').select2({
+        placeholder: 'Select'
+    });
+
     $('select#post-types').select2({
         placeholder: 'Select post types',
         //allowClear: true

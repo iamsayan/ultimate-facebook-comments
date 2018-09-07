@@ -11,8 +11,46 @@
 
 if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_wp_comments_trace_cb'] == 1) ) {
   
-    add_filter('comments_open', 'ufc_disable_comments_status', 20, 2);
-    add_action('admin_init', 'ufc_disable_comments_post_types_support');
+    if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'Replace Native Comment') ) {
+        
+        function ufc_hide_pingback_using_css() { ?>
+            <style>
+                label[for="ping_status"] {
+                    display: none !important;
+                }
+            </style>
+        <?php
+        }
+
+        function ufc_hide_comments_admin_columns( $columns ) {
+            unset( $columns['comments'] );
+            return $columns;
+        }
+
+        // Disable support for comments and trackbacks in post types
+        function ufc_disable_comments_pings_support() {
+            $post_types = get_post_types();
+            foreach ( $post_types as $post_type ) {
+                if( post_type_supports($post_type, 'trackbacks') ) {
+                    remove_post_type_support( $post_type, 'trackbacks' );
+                }
+            }
+        }
+
+        add_filter('manage_edit-post_columns', 'ufc_hide_comments_admin_columns');
+        add_filter('manage_edit-page_columns', 'ufc_hide_comments_admin_columns');
+        add_action('admin_menu', 'ufc_remove_meta_boxes');
+        add_action('admin_print_styles-post.php', 'ufc_hide_pingback_using_css', 10);
+        add_action('admin_print_styles-post-new.php', 'ufc_hide_pingback_using_css', 10);
+        add_action('admin_init', 'ufc_disable_comments_pings_support');
+
+    } else {
+
+        add_filter('comments_open', 'ufc_disable_comments_status', 20, 2);
+        add_action('admin_init', 'ufc_disable_comments_post_types_support');
+
+    }
+
     add_filter('pings_open', 'ufc_disable_comments_status', 20, 2);
     add_filter('comments_array', 'ufc_disable_comments_hide_existing_comments', 10, 2);
     add_action('admin_menu', 'ufc_disable_comments_admin_menu');
@@ -23,6 +61,7 @@ if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_
     add_action('admin_print_styles-index.php', 'ufc_comment_admin_css');
     add_action('admin_print_styles-profile.php', 'ufc_comment_admin_css');
     add_filter('pre_option_default_pingback_flag', '__return_zero');
+    add_action('admin_menu', 'ufc_remove_meta_boxes');
 
     // Disable support for comments and trackbacks in post types
     function ufc_disable_comments_post_types_support() {
@@ -73,6 +112,13 @@ if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_
    
     function ufc_disable_rc_widget() {
         unregister_widget( 'WP_Widget_Recent_Comments' );
+    }
+
+    function ufc_remove_meta_boxes() {
+        remove_meta_box( 'commentsdiv', 'post', 'normal' );
+        remove_meta_box( 'trackbacksdiv', 'post', 'normal' );
+        remove_meta_box( 'commentsdiv', 'page', 'normal' );
+        remove_meta_box( 'trackbacksdiv', 'page', 'normal' );
     }
     
     function ufc_comment_admin_css() {

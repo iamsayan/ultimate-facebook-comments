@@ -10,8 +10,8 @@
  * @license    http://www.gnu.org/licenses/ GNU General Public License
  */
 
-require plugin_dir_path( __FILE__ ) . 'settings/settings-loader.php';
-require plugin_dir_path( __FILE__ ) . 'settings/settings-fields.php';
+require_once plugin_dir_path( __FILE__ ) . 'settings/settings-loader.php';
+require_once plugin_dir_path( __FILE__ ) . 'settings/settings-fields.php';
 
 // add settings page
 add_action( 'admin_init', 'ufc_plugin_register_settings' );
@@ -22,7 +22,7 @@ function ufc_remove_footer_admin() {
 
 function ufc_show_page() { 
     $options = get_option('ufc_plugin_global_options');
-    require plugin_dir_path( __FILE__ ) . 'settings/settings-page.php';
+    require_once plugin_dir_path( __FILE__ ) . 'settings/settings-page.php';
     add_action( 'admin_footer_text', 'ufc_remove_footer_admin');
 }
 

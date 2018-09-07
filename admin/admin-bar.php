@@ -25,7 +25,7 @@ function ufc_custom_toolbar_link( $wp_admin_bar ) {
         'title' => __( 'Moderation Tool', 'ultimate-facebook-comments' ),
         'href' => 'https://developers.facebook.com/tools/comments/' . $options['ufc_facebook_comments_app_id'] . '/', 
         'meta' => array(
-            'title' => __( 'Open Facebook Comment Moderation Tool', 'ultimate-facebook-comments' ),
+            'title' => __( 'Facebook Comment Moderation Tool', 'ultimate-facebook-comments' ),
             'target' => '_blank'
         )
     );
@@ -78,11 +78,12 @@ function ufc_custom_toolbar_link( $wp_admin_bar ) {
             )
     );
     $wp_admin_bar->add_node($args);
-
-
+    
 }
 
-add_action('admin_bar_menu', 'ufc_custom_toolbar_link', 999);
+if( isset($options['ufc_add_fmt_admin_bar_cb']) && ($options['ufc_add_fmt_admin_bar_cb'] == 1) ) {
+    add_action('admin_bar_menu', 'ufc_custom_toolbar_link', 999);
+}
 
 function ufc_add_admin_bar_object() { ?>
     <style type="text/css">
