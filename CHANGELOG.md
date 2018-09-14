@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.1.8
+Release Date: September 14, 2018
+
+* Tweak: make compatible with other facebook plugins.
+* Fixed: Some untranslated strings.
+* Some minor bug fixed.
+
 ## 1.1.7
 Release Date: August 28, 2018
 
