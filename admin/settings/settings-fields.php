@@ -13,14 +13,14 @@ function ufc_enable_fb_comment_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>   <label class="switch">
          <input type="checkbox" id="fbc-enable" name="ufc_plugin_global_options[ufc_enable_fb_comment_cb]" value="1" <?php checked(isset($options['ufc_enable_fb_comment_cb']), 1); ?> /> 
-         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to enable facebook comments for posts and pages."><span title="" class="dashicons dashicons-editor-help"></span></span>
+         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enable this if you want to enable facebook comments for posts and pages.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
 function ufc_facebook_comments_app_id_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>  <input id="appid" name="ufc_plugin_global_options[ufc_facebook_comments_app_id]" type="number" size="35" style="width:35%;" required placeholder="Enter facebook app id" value="<?php if (isset($options['ufc_facebook_comments_app_id'])) { echo $options['ufc_facebook_comments_app_id']; } ?>" />
-        &nbsp;&nbsp;<span class="tooltip" title="Enter facebook app id."><span title="" class="dashicons dashicons-editor-help"></span></span>
+        &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enter facebook app id.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -30,7 +30,7 @@ function ufc_no_of_fb_comments_display() {
         $options['ufc_no_of_fb_comments'] = '10';
     }
     ?>  <input id="fbc-no" name="ufc_plugin_global_options[ufc_no_of_fb_comments]" type="number" min="1" size="10" style="width:10%;" required placeholder="2586647663138" value="<?php if (isset($options['ufc_no_of_fb_comments'])) { echo $options['ufc_no_of_fb_comments']; } ?>" />
-        &nbsp;&nbsp;<span class="tooltip" title="Enter the number of facebook comments to display in comment box."><span title="" class="dashicons dashicons-editor-help"></span></span>
+        &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enter the number of facebook comments to display in comment box.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -46,7 +46,7 @@ function ufc_fb_comment_sorting_display() {
         echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
-?>&nbsp;&nbsp;<span class="tooltip" title="Select the facebook comment sorting method from here."><span title="" class="dashicons dashicons-editor-help"></span></span>
+?>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Select the facebook comment sorting method from here.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
 <?php
 }
 
@@ -62,7 +62,7 @@ function ufc_fb_comment_language_display() {
         echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
-?>&nbsp;&nbsp;<span class="tooltip" title="Select in which language you want to load facebook sdk. e.g. en_US, de_DE, es_ES."><span title="" class="dashicons dashicons-editor-help"></span></span>
+?>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Select in which language you want to load facebook sdk. e.g. en_US, de_DE, es_ES.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
 <?php
 }
 
@@ -78,7 +78,7 @@ function ufc_fb_comments_theme_display() {
         echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
-?>&nbsp;&nbsp;<span class="tooltip" title="Select the theme of facebook comments box from here."><span title="" class="dashicons dashicons-editor-help"></span></span>
+?>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Select the theme of facebook comments box from here.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
 <?php
 }
 
@@ -88,7 +88,7 @@ function ufc_fb_comment_box_width_display() {
         $options['ufc_fb_comment_box_width'] = '100%';
     } ?>
     <input id="fb-comments-width" name="ufc_plugin_global_options[ufc_fb_comment_box_width]" type="text" size="12" style="width:12%" required placeholder="100%" value="<?php if (isset($options['ufc_fb_comment_box_width'])) { echo $options['ufc_fb_comment_box_width']; } ?>" />
-    &nbsp;&nbsp;<span class="tooltip" title="Set facebook comment box width(px)."><span title="" class="dashicons dashicons-editor-help"></span></span>
+    &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Set facebook comment box width(px).', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -120,7 +120,7 @@ function ufc_fb_comment_auto_display_display() {
     echo '</select>';
     
     ?></label></span></span>&nbsp;&nbsp;
-    <span class="tooltip" title="Select the position where you want to display facebook comment box."><span title="" class="dashicons dashicons-editor-help"></span></span>
+    <span class="tooltip" title="<?php _e( 'Select the position where you want to display facebook comment box.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -158,7 +158,7 @@ function ufc_fb_comment_loading_method_display() {
     &nbsp;&nbsp;<label for="fbc-button-class"><strong><?php _e( 'Class:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;&nbsp;
     <input id="fbc-button-class" name="ufc_plugin_global_options[ufc_loading_button_class]" type="text" size="20" style="width:20%" placeholder="btn button" value="<?php if (isset($options['ufc_loading_button_class'])) { echo $options['ufc_loading_button_class']; } ?>" />
     
-    </span>&nbsp;&nbsp;<span class="tooltip" title="Select how you want to load facebook comments box from here. On Scroll or On Click method improves your page speed."><span title="" class="dashicons dashicons-editor-help"></span></span>
+    </span>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Select how you want to load facebook comments box from here. On Scroll or On Click method improves your page speed.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -175,7 +175,23 @@ function ufc_comment_area_class_display() {
     &nbsp;&nbsp;<label for="fbc-box-id"><strong><?php _e( 'ID:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;&nbsp;
     <input id="fbc-box-id" name="ufc_plugin_global_options[ufc_comment_area_id]" type="text" size="35" style="width:35%" placeholder="ufc-comments" value="<?php if (isset($options['ufc_comment_area_id'])) { echo $options['ufc_comment_area_id']; } ?>" />
     
-    &nbsp;&nbsp;<span class="tooltip" title="Set comment area css class and ID to match facebook comment area with your theme."><span title="" class="dashicons dashicons-editor-help"></span></span>
+    &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Set comment area css class and ID to match facebook comment area with your theme.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
+    <?php
+}
+
+function ufc_fb_sdk_reinit_display() {
+    $options = get_option('ufc_plugin_global_options');
+
+    if(!isset($options['ufc_fb_sdk_reinit'])){
+        $options['ufc_fb_sdk_reinit'] = 'Not Loaded';
+    }
+
+    $items = array( "Not Loaded", "Already Loaded" );
+    foreach($items as $item) {
+        $checked = ($options['ufc_fb_sdk_reinit'] == $item) ? ' checked="checked" ' : '';
+        echo '<input type="radio" value="' . $item . '" name="ufc_plugin_global_options[ufc_fb_sdk_reinit]"' . $checked . '/> ' . $item . '&nbsp;&nbsp;&nbsp;';
+    }
+    ?><span class="tooltip" title="<?php _e( 'If you are using any other facebook plugins, there is a chance that the Facebook SDK is already loaded. Please select \'Already Loaded\' if your comments are not working.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -191,10 +207,10 @@ function ufc_load_fb_comment_url_display() {
         echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
     }
     echo '</select>';
-?>
-<span id="fbc-curl-show" style="display:none;">&nbsp;&nbsp;&nbsp;<label for="fbc-curl"><strong><?php _e( 'Custom URL:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;&nbsp;<input id="fbc-curl" name="ufc_plugin_global_options[ufc_load_fb_comment_custom_url]" type="url" size="50" style="width:50%" placeholder="<?php echo get_site_url(); ?>" value="<?php if (isset($options['ufc_load_fb_comment_custom_url'])) { echo $options['ufc_load_fb_comment_custom_url']; } ?>" />
-</span>&nbsp;&nbsp;<span class="tooltip" title="Select the url which you want to load in facebook comment."><span title="" class="dashicons dashicons-editor-help"></span></span>
-<?php
+    ?>
+    <span id="fbc-curl-show" style="display:none;">&nbsp;&nbsp;&nbsp;<label for="fbc-curl"><strong><?php _e( 'Custom URL:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;&nbsp;<input id="fbc-curl" name="ufc_plugin_global_options[ufc_load_fb_comment_custom_url]" type="url" size="50" style="width:50%" placeholder="<?php echo get_site_url(); ?>" value="<?php if (isset($options['ufc_load_fb_comment_custom_url'])) { echo $options['ufc_load_fb_comment_custom_url']; } ?>" />
+    </span>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Select the url which you want to load in facebook comment.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
+    <?php
 }
 
 function ufc_fb_comment_msg_display() {
@@ -214,7 +230,7 @@ function ufc_fb_comment_msg_display() {
     }
     echo '</select>';
     ?>    
-    </span>&nbsp;&nbsp;<span class="tooltip" title="Set a custom text which you want to display before facebook comment box."><span title="" class="dashicons dashicons-editor-help"></span></span>
+    </span>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Set a custom text which you want to display before facebook comment box.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -244,7 +260,7 @@ function ufc_enable_on_post_types_display() {
     }
     echo '</select>';
     ?>
-    &nbsp;&nbsp;<span class="tooltip" title="Select post types where you want to show facebook comment box."><span title="" class="dashicons dashicons-editor-help"></span></span>
+    &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Select post types where you want to show facebook comment box.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -252,7 +268,7 @@ function ufc_fb_comment_consent_notice_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>  <label class="switch">
         <input type="checkbox" id="fbc-notice" name="ufc_plugin_global_options[ufc_fb_comment_consent_notice_cb]" value="1" <?php checked(isset($options['ufc_fb_comment_consent_notice_cb']), 1); ?> /> 
-        <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to show a cookie consent related to facebook comments to your site's first time visitor. If they accept this notice, then only they can post comments."><span title="" class="dashicons dashicons-editor-help"></span></span>
+        <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to show a cookie consent related to facebook comments to your site's first time visitor. If they accept this notice, then only they can post comments.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -262,7 +278,7 @@ function ufc_fb_comment_consent_notice_title_display() {
         $options['ufc_fb_comment_consent_notice_title'] = 'Action Required!';
     }
     ?>  <input id="fbc-notice-title" name="ufc_plugin_global_options[ufc_fb_comment_consent_notice_title]" type="text" size="50" style="width:50%" placeholder="Action Required!" value="<?php if (isset($options['ufc_fb_comment_consent_notice_title'])) { echo $options['ufc_fb_comment_consent_notice_title']; } ?>" />
-        &nbsp;&nbsp;<span class="tooltip" title="Set title for notice/message/cookie consent of your website."><span title="" class="dashicons dashicons-editor-help"></span></span>
+        &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Set title for notice/message/cookie consent of your website.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -272,7 +288,7 @@ function ufc_fb_comment_consent_notice_msg_display() {
         $options['ufc_fb_comment_consent_notice_msg'] = 'We embed Facebook Comments plugin to allow you to leave comment at our website using your Facebook account. It may collects your IP address, your web browser User Agent, store and retrieve cookies on your browser, embed additional tracking, and monitor your interaction with the commenting interface, including correlating your Facebook account with whatever action you take within the interface (such as “liking” someone’s comment, replying to other comments), if you are logged into Facebook. For more information about how this data may be used, please see Facebook’s data privacy policy: https://www.facebook.com/about/privacy/update.';
     } ?>
     <textarea id="fbc-notice-msg" name="ufc_plugin_global_options[ufc_fb_comment_consent_notice_msg]" rows="6" cols="95" placeholder="" style="width:95%"><?php if (isset($options['ufc_fb_comment_consent_notice_msg'])) { echo $options['ufc_fb_comment_consent_notice_msg']; } ?></textarea>
-    <br><small>Write here the notice/message which you want to show as consent to your first time commenter.</small>
+    <br><small><?php _e( 'Write here the notice/message which you want to show as consent to your first time commenter.', 'ultimate-facebook-comments' ); ?></small>
     <?php
 }
 
@@ -280,7 +296,7 @@ function ufc_show_comment_count_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>   <label class="switch">
          <input type="checkbox" id="fbc-count" name="ufc_plugin_global_options[ufc_show_comment_count_cb]" value="1" <?php checked(isset($options['ufc_show_comment_count_cb']), 1); ?> /> 
-         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to show comment counts beside every individual posts in edit.php page. This function may decrease edit.php page loading speed as it fetchs comment count directly from Facebook API on every page load."><span title="" class="dashicons dashicons-editor-help"></span></span>
+         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enable this if you want to show comment counts beside every individual posts in edit.php page. This function may decrease edit.php page loading speed as it fetchs comment count directly from Facebook API on every page load.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -288,7 +304,7 @@ function ufc_add_fmt_admin_bar_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>   <label class="switch">
          <input type="checkbox" id="fbc-mt" name="ufc_plugin_global_options[ufc_add_fmt_admin_bar_cb]" value="1" <?php checked(isset($options['ufc_add_fmt_admin_bar_cb']), 1); ?> /> 
-         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to add a link on wordpress admin bar to view facebbook comment moderation tool directly from admin area."><span title="" class="dashicons dashicons-editor-help"></span></span>
+         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enable this if you want to add a link on wordpress admin bar to view facebbook comment moderation tool directly from admin area.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -296,7 +312,7 @@ function ufc_remove_wp_comments_trace_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>   <label class="switch">
          <input type="checkbox" id="fbc-trace" name="ufc_plugin_global_options[ufc_remove_wp_comments_trace_cb]" value="1" <?php checked(isset($options['ufc_remove_wp_comments_trace_cb']), 1); ?> /> 
-         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to disable wordpress native comment completely from both frontend and backend."><span title="" class="dashicons dashicons-editor-help"></span></span>
+         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enable this if you want to disable wordpress native comment completely from both frontend and backend.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -304,7 +320,7 @@ function ufc_enable_promo_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>   <label class="switch">
          <input type="checkbox" id="fbc-promo" name="ufc_plugin_global_options[ufc_enable_promo_cb]" value="1" <?php checked(isset($options['ufc_enable_promo_cb']), 1); ?> /> 
-         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Please enable this option to help Ultimate Facebook Comments get more popularity as your thank to the hard work I do for you totally free. This option adds a text under the comment section which will allow your site visitors recognize the name of comment solution you use. Thank you!"><span title="" class="dashicons dashicons-editor-help"></span></span>
+         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Please enable this option to help Ultimate Facebook Comments get more popularity as your thank to the hard work I do for you totally free. This option adds a text under the comment section which will allow your site visitors recognize the name of comment solution you use. Thank you!', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -312,7 +328,7 @@ function ufc_del_plugin_settings_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>   <label class="switch">
          <input type="checkbox" id="ufc-delete" name="ufc_plugin_global_options[ufc_del_plugin_settings_cb]" value="1" <?php checked(isset($options['ufc_del_plugin_settings_cb']), 1); ?> /> 
-         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this option if you want to delete all plugin settings from your database at the time of plugin uninstallation"><span title="" class="dashicons dashicons-editor-help"></span></span>
+         <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enable this option if you want to delete all plugin settings from your database at the time of plugin uninstallation.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 

@@ -3,7 +3,7 @@ Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
 Requires at least: 3.0
 Tested up to: 4.9
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 Requires PHP: 5.3
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
@@ -15,38 +15,26 @@ Ultimate Facebook Comments plugin will help you to display Facebook Comments box
 
 ### Ultimate Facebook Comments: the Ultimate Facebook Comments plugin for WordPress.
 
-If you’re running a blog of any kind, you’re probably looking to build an online community. You're targeting like-minded people who share the interests highlighted by the content on your site. It’s a mutually beneficial relationship: Your visitors get information that they consider valuable by visiting your site, and you build an audience.
+If you’re running a blog of any kind, you’re probably looking to build an online community. You're targeting like-minded people who share the interests highlighted by the content on your site. In that case Facebook Comments may help you a lot.
 
-However, it’s also a great idea to allow your visitors to interact with one another. One of the best ways to do that is with a comments section that allows them to not only leave you feedback on your content but also to interact with each other. Here are some of the benefits you can expect from a comments section.
-
-Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
-
-#### What does this plugin do?
-
-This plugin hooks into the WordPress native comment area or after content area and shows the facebook comments box using lazyload.
-
-* 100% GDPR Compliant.
-* Allows you to display facebook comment box in your posts and pages individually.
-* Allows you to customize the facebook comment box title text.
-* Allows you to disable WordPress native comments completely from WordPress dashboard.
-* Allows you to set custom styles for comment box title.
-* Allows you to set custom styles for comment area also.
-* Allows you to set the comment area background colour.
-* Allows you to open facebook comments moderation tool directly from plugin settings page.
-* And you can customize all and everything.
-
-### Themes Tested with this plugin and works perfect ###
-
-* Astra/Pro
-* OceanWP
-* Genesis Framework
-* GeneratePress
-* Zephyr
-* Impreza
-* Newspaper by tagdiv
-* Divi theme
-* Twentyseventeen
-* and many more.
+> #### Ultimate Facebook Comments - Features
+>
+> - Add most popular Facebook commenting system in your website.<br />
+> - **Lazy Load Facebook scripts and comments only after clicking a button or scrolling down.**<br />
+> - **Translation ready!**<br />
+> - **Live Facebook Comment Count**.<br />
+> - Adjust number of comments, color scheme, language, width, sorting order, bg color, comments url, comments box title etc..<br />
+> - Facebook comments increases your audience.<br />
+> - 3 different facebook comments loading methods.<br />
+> - Customize button label.<br />
+> - **Super Light weight.**<br />
+> - Completely free to use with lifetime updates.<br />
+> - **Developer friendly.**<br />
+> - 100% GDPR complaint.<br />
+> - Direct access to facebook comment moderation tool.<br />
+> - Ability to disable WordPress native comment system.<br />
+> - Compatible with other facebook sharing plugin.<br />
+> - Follows best WordPress coding standards.<br />
 
 #### Compatibility
 
@@ -57,6 +45,8 @@ This plugin is fully compatible with WordPress Version 3.0 and beyond and also c
 * Active development of this plugin is handled [on GitHub](https://github.com/iamsayan/ultimate-facebook-comments).
 * Pull requests for documenting bugs are highly appreciated.
 * If you think you’ve found a bug (e.g. You’re experiencing unexpected behaviour), please post on the [support forums](https://wordpress.org/support/plugin/ultimate-facebook-comments) first.
+
+Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
 
 == Installation ==
 
@@ -118,6 +108,13 @@ Displays/echos the last modified info:
 3. Page loading speed with lazyload
 
 == Changelog ==
+
+= 1.1.8 =
+Release Date: September 14, 2018
+
+* Tweak: make compatible with other facebook plugins.
+* Fixed: Some untranslated strings.
+* Some minor bug fixed.
 
 = 1.1.7 =
 Release Date: August 28, 2018
@@ -183,6 +180,9 @@ Release Date: August 9, 2018
 * View the <a href="https://plugins.svn.wordpress.org/ultimate-facebook-comments/trunk/changelog.txt" target="_blank">Changelog</a> file.
 
 == Upgrade Notice ==
+
+= 1.1.8 =
+In this release, we make this plugin compatible with other facebook related plugins.
 
 = 1.1.7 =
 In this release, most of the bugs have been fixed.

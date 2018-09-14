@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Ultimate Facebook Comments\n"
-"POT-Creation-Date: 2018-08-28 22:47+0530\n"
-"PO-Revision-Date: 2018-08-28 22:47+0530\n"
+"POT-Creation-Date: 2018-09-14 22:54+0530\n"
+"PO-Revision-Date: 2018-09-14 22:54+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -83,8 +83,43 @@ msgstr ""
 msgid "Disable Facebook Comments"
 msgstr ""
 
+#: admin/settings/settings-fields.php:16
+msgid ""
+"Enable this if you want to enable facebook comments for posts and pages."
+msgstr ""
+
+#: admin/settings/settings-fields.php:23
+msgid "Enter facebook app id."
+msgstr ""
+
+#: admin/settings/settings-fields.php:33
+msgid "Enter the number of facebook comments to display in comment box."
+msgstr ""
+
+#: admin/settings/settings-fields.php:49
+msgid "Select the facebook comment sorting method from here."
+msgstr ""
+
+#: admin/settings/settings-fields.php:65
+msgid ""
+"Select in which language you want to load facebook sdk. e.g. en_US, de_DE, "
+"es_ES."
+msgstr ""
+
+#: admin/settings/settings-fields.php:81
+msgid "Select the theme of facebook comments box from here."
+msgstr ""
+
+#: admin/settings/settings-fields.php:91
+msgid "Set facebook comment box width(px)."
+msgstr ""
+
 #: admin/settings/settings-fields.php:108
 msgid "Select:"
+msgstr ""
+
+#: admin/settings/settings-fields.php:123
+msgid "Select the position where you want to display facebook comment box."
 msgstr ""
 
 #: admin/settings/settings-fields.php:146
@@ -95,16 +130,91 @@ msgstr ""
 msgid "Class:"
 msgstr ""
 
+#: admin/settings/settings-fields.php:161
+msgid ""
+"Select how you want to load facebook comments box from here. On Scroll or On "
+"Click method improves your page speed."
+msgstr ""
+
 #: admin/settings/settings-fields.php:175
 msgid "ID:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:195
+#: admin/settings/settings-fields.php:178
+msgid ""
+"Set comment area css class and ID to match facebook comment area with your "
+"theme."
+msgstr ""
+
+#: admin/settings/settings-fields.php:194
+msgid ""
+"If you are using any other facebook plugins, there is a chance that the "
+"Facebook SDK is already loaded. Please select 'Already Loaded' if your "
+"comments are not working."
+msgstr ""
+
+#: admin/settings/settings-fields.php:211
 msgid "Custom URL:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:203
+#: admin/settings/settings-fields.php:212
+msgid "Select the url which you want to load in facebook comment."
+msgstr ""
+
+#: admin/settings/settings-fields.php:219
 msgid "Align:"
+msgstr ""
+
+#: admin/settings/settings-fields.php:233
+msgid ""
+"Set a custom text which you want to display before facebook comment box."
+msgstr ""
+
+#: admin/settings/settings-fields.php:263
+msgid "Select post types where you want to show facebook comment box."
+msgstr ""
+
+#: admin/settings/settings-fields.php:281
+msgid "Set title for notice/message/cookie consent of your website."
+msgstr ""
+
+#: admin/settings/settings-fields.php:291
+msgid ""
+"Write here the notice/message which you want to show as consent to your "
+"first time commenter."
+msgstr ""
+
+#: admin/settings/settings-fields.php:299
+msgid ""
+"Enable this if you want to show comment counts beside every individual posts "
+"in edit.php page. This function may decrease edit.php page loading speed as "
+"it fetchs comment count directly from Facebook API on every page load."
+msgstr ""
+
+#: admin/settings/settings-fields.php:307
+msgid ""
+"Enable this if you want to add a link on wordpress admin bar to view "
+"facebbook comment moderation tool directly from admin area."
+msgstr ""
+
+#: admin/settings/settings-fields.php:315
+msgid ""
+"Enable this if you want to disable wordpress native comment completely from "
+"both frontend and backend."
+msgstr ""
+
+#: admin/settings/settings-fields.php:323
+msgid ""
+"Please enable this option to help Ultimate Facebook Comments get more "
+"popularity as your thank to the hard work I do for you totally free. This "
+"option adds a text under the comment section which will allow your site "
+"visitors recognize the name of comment solution you use. Thank you!"
+msgstr ""
+
+#: admin/settings/settings-fields.php:331
+msgid ""
+"Enable this option if you want to delete all plugin settings from your "
+"database at the time of plugin uninstallation."
 msgstr ""
 
 #: admin/settings/settings-loader.php:16
@@ -168,34 +278,38 @@ msgid "Comments Div CSS Class:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:31
-msgid "Show a Notice to New Visitors?"
+msgid "Facebook SDK:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:32
-msgid "Visitor Notice Title:"
+msgid "Show a Notice to New Visitors?"
 msgstr ""
 
 #: admin/settings/settings-loader.php:33
-msgid "Visitor Notice Body Message:"
+msgid "Visitor Notice Title:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:34
-msgid "Show Comment Count on Edit Page?"
+msgid "Visitor Notice Body Message:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:35
-msgid "Show Admin Bar Moderation Tool?"
+msgid "Show Comment Count on Edit Page?"
 msgstr ""
 
 #: admin/settings/settings-loader.php:36
-msgid "Disable Native WP Comment?"
+msgid "Show Admin Bar Moderation Tool?"
 msgstr ""
 
 #: admin/settings/settings-loader.php:37
-msgid "Support / Promote this Plugin?"
+msgid "Disable Native WP Comment?"
 msgstr ""
 
 #: admin/settings/settings-loader.php:38
+msgid "Support / Promote this Plugin?"
+msgstr ""
+
+#: admin/settings/settings-loader.php:39
 msgid "Delete Settings upon Uninstallation?"
 msgstr ""
 

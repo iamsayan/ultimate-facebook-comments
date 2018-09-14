@@ -16,10 +16,10 @@ if( !empty( $options['ufc_facebook_comments_app_id'] ) ) {
     add_action('wp_head', 'ufc_add_fb_comments_meta', 10);
     // load fb comments sdk
     if ( isset( $options['ufc_fb_comment_loading_method'] ) && $options['ufc_fb_comment_loading_method'] == 'Default' ) {
-        add_action('wp_footer', 'ufc_add_fb_comments_default_sdk_to_body', 10);
+        add_action('wp_footer', 'ufc_add_fb_comments_default_sdk_to_body', 100);
     }
     else {
-        add_action('wp_footer', 'ufc_init_fb_comments_sdk', 10);
+        add_action('wp_footer', 'ufc_init_fb_comments_sdk', 100);
     }
     
     if( isset( $options['ufc_fb_comment_auto_display'] ) && $options['ufc_fb_comment_auto_display'] == 'After Content' ) {
@@ -77,7 +77,11 @@ function ufc_init_fb_comments_sdk() {
         $script .= '<div id="fb-root"></div>';
         $script .= '<script type="text/javascript">';
         $script .= 'function showUFC() {';
-        $script .= ufc_add_fb_comments_sdk_to_body();
+        if ( $options['ufc_fb_sdk_reinit'] == 'Already Loaded' ) {
+			$script .= ufc_facebook_sdk_reinit();
+		} else {
+			$script .= ufc_add_fb_comments_sdk_to_body();
+		}
         $script .= '}';
         $script .= ufc_get_load_script();
         $script .= '</script>';
@@ -108,6 +112,22 @@ function ufc_add_fb_comments_sdk_to_body() {
         }(document, 'script', 'facebook-jssdk'));
         ";
      return $script;
+}
+
+function ufc_facebook_sdk_reinit() {
+
+    $options = get_option('ufc_plugin_global_options');
+
+    $script = '';
+    $script .= "FB.init({
+                    appId : '" . $options['ufc_facebook_comments_app_id'] . "',
+                    status : true,
+                    xfbml : true,
+                    version : 'v3.0'
+                });
+                ";
+
+    return $script;
 }
 
 function ufc_get_load_script() {

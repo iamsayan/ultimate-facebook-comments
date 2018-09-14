@@ -32,7 +32,7 @@
                         <script>
                             jQuery(document).ready(function ($) {
                                 $('.save-settings').click(function () {
-                                    $(".save-settings").addClass("button-large disabled");
+                                    $(".save-settings").addClass("disabled");
                                     $(".spinner").show();
                                     $(".save-settings").val("<?php _e( 'Saving...', 'ultimate-facebook-comments' ); ?>");
                                 });
