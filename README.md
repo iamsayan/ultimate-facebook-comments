@@ -14,19 +14,24 @@ However, it’s also a great idea to allow your visitors to interact with one an
 
 Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
 
-#### What does this plugin do?
-
-This plugin hooks into the WordPress native comment area or after content area and shows the facebook comments box using lazyload.
-
-* 100% GDPR Compliant.
-* Allows you to display facebook comment box in your posts and pages individually.
-* Allows you to customize the facebook comment box title text.
-* Allows you to disable WordPress native comments completely from WordPress dashboard.
-* Allows you to set custom styles for comment box title.
-* Allows you to set custom styles for comment area also.
-* Allows you to set the comment area background colour.
-* Allows you to open facebook comments moderation tool directly from plugin settings page.
-* And you can customize all and everything.
+> #### Ultimate Facebook Comments - Features
+>
+> - Add most popular Facebook commenting system in your website.<br />
+> - **Lazy Load Facebook scripts and comments only after clicking a button or scrolling down.**<br />
+> - **Translation ready!**<br />
+> - **Live Facebook Comment Count**.<br />
+> - Adjust number of comments, color scheme, language, width, sorting order, bg color, comments url, comments box title etc..<br />
+> - Facebook comments increases your audience.<br />
+> - 3 different facebook comments loading methods.<br />
+> - Customize button label.<br />
+> - **Super Light weight.**<br />
+> - Completely free to use with lifetime updates.<br />
+> - **Developer friendly.**<br />
+> - 100% GDPR complaint.<br />
+> - Direct access to facebook comment moderation tool.<br />
+> - Ability to disable WordPress native comment system.<br />
+> - Compatible with other facebook sharing plugin.<br />
+> - Follows best WordPress coding standards.<br />
 
 ### Themes Tested with this plugin and works perfect
 
