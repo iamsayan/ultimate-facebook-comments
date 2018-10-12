@@ -1,6 +1,37 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.2.2
+Release Date: October 12, 2018
+
+* Fixed: Some times Facebook Comments box shows in a small comments area. Now it has been fixed.
+* Fixed: An `Undefined index: ufc_fb_sdk_reinit` notice shows in WP Footer if Facebook SDK option is not selected.
+
+## 1.2.1
+Release Date: October 2, 2018
+
+* Added: Option to set custom Accept/Decline text.
+* Fixed: Most of the possible bugs are now fixed.
+
+## 1.2.0
+Release Date: September 24, 2018
+
+* Added: Shortcode attributes.
+* Fixed: a bug where "Facebook SDK - Already Loaded" option works only if lazy is enabled.
+
+## 1.1.10
+Release Date: September 23, 2018
+
+* Fixed: Admin notice display mechanism.
+
+## 1.1.9
+Release Date: September 22, 2018
+
+* Added: an option to set priority if "After Content" is selected.
+* Fixed: a bug where facebook comments components load twice if "On Scroll" is selected.
+* Improved Guide.
+* Some minor bug fixed.
+
 ## 1.1.8
 Release Date: September 14, 2018
 
