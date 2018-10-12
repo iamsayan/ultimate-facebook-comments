@@ -20,20 +20,32 @@ jQuery(document).ready(function ($) {
         if ($('#fbc-notice').is(':checked')) {
             $('.fbc-notice-title').show();
             $('.fbc-notice-msg').show();
+            $('.fbc-notice-btn').show();
         }
         if (!$('#fbc-notice').is(':checked')) {
             $('.fbc-notice-title').hide();
             $('.fbc-notice-msg').hide();
+            $('.fbc-notice-btn').hide();
         }
     });
     $('#fbc-notice').trigger('change');
  
     $('#fb-comments-display').change(function() {
         if ($('#fb-comments-display').val() == 'After Content') {
-            $('#fb-comments-override-span').show();
+            $('#fb-comments-priority-span').show();
+            $('#fb-comments-priority').attr('required', 'required');
         }
         if ($('#fb-comments-display').val() != 'After Content') {
-            $('#fb-comments-override-span').hide();
+            $('#fb-comments-priority-span').hide();
+            $('#fb-comments-priority').removeAttr('required');
+        }
+        if ($('#fb-comments-display').val() == 'Disable') {
+            $('.fbc-loading').hide();
+            $('.fbc-post-types').hide();
+        }
+        if ($('#fb-comments-display').val() != 'Disable') {
+            $('.fbc-loading').show();
+            $('.fbc-post-types').show();
         }
     });
     $('#fb-comments-display').trigger('change');
@@ -59,15 +71,5 @@ jQuery(document).ready(function ($) {
         }
     });
     $('#fb-comments-load').trigger('change');
-
-    $('#fbc-trace').change(function () {
-        if ($('#fbc-trace').is(':checked')) {
-            $('#fbc-override-span').hide();
-        }
-        if (!$('#fbc-trace').is(':checked')) {
-            $('#fbc-override-span').show();
-        }
-    });
-    $('#fbc-trace').trigger('change');
 
 });

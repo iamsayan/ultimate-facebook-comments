@@ -29,14 +29,16 @@ if( !empty($options['ufc_facebook_comments_app_id']) && !empty($options['ufc_fb_
         echo '<div id="consent-notice" class="ufc-consent" style="display:none;">
         <p style="text-align:center;line-height:0.2;color:red;font-size:15px;"><strong>' . esc_html($options['ufc_fb_comment_consent_notice_title']) . '</strong></p>
         <p style="font-size:12px;color:#5e5e5e;">' . esc_html($options['ufc_fb_comment_consent_notice_msg']) . '</p>
-        <p><span id="ufc-accept">Accpet</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="ufc-decline">Decline</span></p>
+        <p><span id="ufc-accept">' . esc_html($options['ufc_fb_comment_user_agreement_btn']) . '</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="ufc-decline">' . esc_html($options['ufc_fb_comment_user_agreement_decline_btn']) . '</span></p>
         </div>';
     }
 
     if ($options['ufc_fb_comment_loading_method'] == 'On Click') {
-        echo '<div id="' . esc_html($options['ufc_comment_area_id']) . '" class="ufc-comments ' . esc_html($options['ufc_comment_area_class']) . '" style="text-align:center;' . $get_bgcolor . '">' . $get_button . '</div>';
+        echo '<div id="' . esc_html($options['ufc_comment_area_id']) . '" class="ufc-comments ' . esc_html($options['ufc_comment_area_class']) . '" style="text-align:center;width:100%;' . $get_bgcolor . '">' . $get_button . '</div>';
+    } elseif ($options['ufc_fb_comment_loading_method'] == 'On Scroll') {
+        echo '<div id="' . esc_html($options['ufc_comment_area_id']) . '" class="ufc-comments ' . esc_html($options['ufc_comment_area_class']) . '" style="width:100%;' . $get_bgcolor . '"></div>';
     } else {
-        echo '<div id="' . esc_html($options['ufc_comment_area_id']) . '" class="ufc-comments ' . esc_html($options['ufc_comment_area_class']) . '" style="' . $get_bgcolor . '">' . ufc_comments_area_content() . '</div>';
+        echo '<div id="' . esc_html($options['ufc_comment_area_id']) . '" class="ufc-comments ' . esc_html($options['ufc_comment_area_class']) . '" style="width:100%;' . $get_bgcolor . '">' . ufc_comments_area_content() . '</div>';
     }
 }
 

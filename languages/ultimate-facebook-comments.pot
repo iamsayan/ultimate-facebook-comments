@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Ultimate Facebook Comments\n"
-"POT-Creation-Date: 2018-09-14 22:54+0530\n"
-"PO-Revision-Date: 2018-09-14 22:54+0530\n"
+"POT-Creation-Date: 2018-10-02 08:09+0530\n"
+"PO-Revision-Date: 2018-10-02 08:09+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-#: admin/dashboard-column.php:92 admin/loader.php:30
+#: admin/dashboard-column.php:92
 msgid "Facebook Comments"
 msgstr ""
 
@@ -81,6 +81,30 @@ msgstr ""
 
 #: admin/dashboard-edit-screen.php:57 admin/dashboard-edit-screen.php:106
 msgid "Disable Facebook Comments"
+msgstr ""
+
+#: admin/loader.php:30
+msgid "FB Comments"
+msgstr ""
+
+#: admin/notice.php:28
+msgid ""
+"Hey, I noticed you've been using Ultimate Facebook Comments for more than 1 "
+"week – that’s awesome! Could you please do me a BIG favor and give it a "
+"<strong>5-star</strong> rating on WordPress? Just to help us spread the word "
+"and boost my motivation."
+msgstr ""
+
+#: admin/notice.php:29
+msgid "Ok, you deserve it"
+msgstr ""
+
+#: admin/notice.php:30
+msgid "I already did"
+msgstr ""
+
+#: admin/notice.php:31
+msgid "Nope&#44; maybe later"
 msgstr ""
 
 #: admin/settings/settings-fields.php:16
@@ -110,100 +134,150 @@ msgstr ""
 msgid "Select the theme of facebook comments box from here."
 msgstr ""
 
-#: admin/settings/settings-fields.php:91
-msgid "Set facebook comment box width(px)."
+#: admin/settings/settings-fields.php:88
+msgid ""
+"Set facebook comment box width. Keep at this to ensure the comment box is "
+"responsive. Minimun is 320. Leave blank for default 100%."
 msgstr ""
 
-#: admin/settings/settings-fields.php:108
-msgid "Select:"
+#: admin/settings/settings-fields.php:105
+msgid "Priority:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:123
-msgid "Select the position where you want to display facebook comment box."
+#: admin/settings/settings-fields.php:113
+msgid ""
+"Select the position where you want to display facebook comment box. If you "
+"want to manually insert facebook comments to your all posts/pages select "
+"'Disable' option and use shortcode with attributes according to your need."
 msgstr ""
 
-#: admin/settings/settings-fields.php:146
+#: admin/settings/settings-fields.php:120
+msgid ""
+"Enter priority for Facebook Comments to appear at front-end. Higher number "
+"causes Facebook Comments to appear below the other elements at the webpage."
+msgstr ""
+
+#: admin/settings/settings-fields.php:143
 msgid "Button Text:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:158
+#: admin/settings/settings-fields.php:149 public/template-tags.php:51
+msgid "Leave a Comment"
+msgstr ""
+
+#: admin/settings/settings-fields.php:155
 msgid "Class:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:161
+#: admin/settings/settings-fields.php:158
 msgid ""
 "Select how you want to load facebook comments box from here. On Scroll or On "
 "Click method improves your page speed."
 msgstr ""
 
-#: admin/settings/settings-fields.php:175
+#: admin/settings/settings-fields.php:172
 msgid "ID:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:178
+#: admin/settings/settings-fields.php:175
 msgid ""
 "Set comment area css class and ID to match facebook comment area with your "
 "theme."
 msgstr ""
 
-#: admin/settings/settings-fields.php:194
+#: admin/settings/settings-fields.php:191
 msgid ""
 "If you are using any other facebook plugins, there is a chance that the "
 "Facebook SDK is already loaded. Please select 'Already Loaded' if your "
 "comments are not working."
 msgstr ""
 
-#: admin/settings/settings-fields.php:211
+#: admin/settings/settings-fields.php:208
 msgid "Custom URL:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:212
+#: admin/settings/settings-fields.php:209
 msgid "Select the url which you want to load in facebook comment."
 msgstr ""
 
-#: admin/settings/settings-fields.php:219
+#: admin/settings/settings-fields.php:215
+msgid "Leave a Reply"
+msgstr ""
+
+#: admin/settings/settings-fields.php:216
 msgid "Align:"
 msgstr ""
 
-#: admin/settings/settings-fields.php:233
+#: admin/settings/settings-fields.php:230
 msgid ""
 "Set a custom text which you want to display before facebook comment box."
 msgstr ""
 
-#: admin/settings/settings-fields.php:263
+#: admin/settings/settings-fields.php:238
+msgid "Just write any css property to set custom style for comment box title."
+msgstr ""
+
+#: admin/settings/settings-fields.php:260
 msgid "Select post types where you want to show facebook comment box."
 msgstr ""
 
-#: admin/settings/settings-fields.php:281
+#: admin/settings/settings-fields.php:268
+msgid ""
+"If this option is enabled, facebook comments box become hidden until user "
+"accept user agreement based on his/her facebook account shared information. "
+"This user agreenement will be displayed when a user first time visit your "
+"website until they do not accept the user agreement. This extra step is "
+"added to comply with the GDPR. You also need to update your website's "
+"privacy policy."
+msgstr ""
+
+#: admin/settings/settings-fields.php:277
+msgid "Action Required!"
+msgstr ""
+
+#: admin/settings/settings-fields.php:278
+#: admin/settings/settings-fields.php:304
 msgid "Set title for notice/message/cookie consent of your website."
 msgstr ""
 
-#: admin/settings/settings-fields.php:291
+#: admin/settings/settings-fields.php:288
 msgid ""
 "Write here the notice/message which you want to show as consent to your "
 "first time commenter."
 msgstr ""
 
-#: admin/settings/settings-fields.php:299
+#: admin/settings/settings-fields.php:300
+msgid "Accept"
+msgstr ""
+
+#: admin/settings/settings-fields.php:302
+msgid "Decline:"
+msgstr ""
+
+#: admin/settings/settings-fields.php:303
+msgid "Decline"
+msgstr ""
+
+#: admin/settings/settings-fields.php:312
 msgid ""
 "Enable this if you want to show comment counts beside every individual posts "
 "in edit.php page. This function may decrease edit.php page loading speed as "
 "it fetchs comment count directly from Facebook API on every page load."
 msgstr ""
 
-#: admin/settings/settings-fields.php:307
+#: admin/settings/settings-fields.php:320
 msgid ""
 "Enable this if you want to add a link on wordpress admin bar to view "
 "facebbook comment moderation tool directly from admin area."
 msgstr ""
 
-#: admin/settings/settings-fields.php:315
+#: admin/settings/settings-fields.php:328
 msgid ""
 "Enable this if you want to disable wordpress native comment completely from "
 "both frontend and backend."
 msgstr ""
 
-#: admin/settings/settings-fields.php:323
+#: admin/settings/settings-fields.php:336
 msgid ""
 "Please enable this option to help Ultimate Facebook Comments get more "
 "popularity as your thank to the hard work I do for you totally free. This "
@@ -211,7 +285,7 @@ msgid ""
 "visitors recognize the name of comment solution you use. Thank you!"
 msgstr ""
 
-#: admin/settings/settings-fields.php:331
+#: admin/settings/settings-fields.php:344
 msgid ""
 "Enable this option if you want to delete all plugin settings from your "
 "database at the time of plugin uninstallation."
@@ -242,15 +316,15 @@ msgid "Comments Box Color Scheme:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:22
-msgid "Comments Box Width (px):"
+msgid "Comments Box Width:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:23
-msgid "Comments Box Display Position:"
+msgid "Comments Auto Insert Method:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:24
-msgid "Comments Box Background Color:"
+msgid "Background Color:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:25
@@ -278,38 +352,42 @@ msgid "Comments Div CSS Class:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:31
-msgid "Facebook SDK:"
+msgid "Facebook SDK Status:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:32
-msgid "Show a Notice to New Visitors?"
+msgid "User Agreement Prior to Comment?"
 msgstr ""
 
 #: admin/settings/settings-loader.php:33
-msgid "Visitor Notice Title:"
+msgid "User Agreement Title:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:34
-msgid "Visitor Notice Body Message:"
+msgid "User Agreement Description:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:35
-msgid "Show Comment Count on Edit Page?"
+msgid "User Agreement Button - Accept:"
 msgstr ""
 
 #: admin/settings/settings-loader.php:36
-msgid "Show Admin Bar Moderation Tool?"
+msgid "Show Comment Count on Edit Page?"
 msgstr ""
 
 #: admin/settings/settings-loader.php:37
-msgid "Disable Native WP Comment?"
+msgid "Show Admin Bar Moderation Tool?"
 msgstr ""
 
 #: admin/settings/settings-loader.php:38
-msgid "Support / Promote this Plugin?"
+msgid "Disable Native WP Comment?"
 msgstr ""
 
 #: admin/settings/settings-loader.php:39
+msgid "Support / Promote this Plugin?"
+msgstr ""
+
+#: admin/settings/settings-loader.php:40
 msgid "Delete Settings upon Uninstallation?"
 msgstr ""
 
@@ -330,62 +408,68 @@ msgid "Save Settings"
 msgstr ""
 
 #: admin/settings/settings-page.php:37
-msgid "Saving..."
-msgstr ""
-
-#: admin/settings/settings-page.php:46
 msgid "Plugin Information"
 msgstr ""
 
-#: admin/settings/settings-page.php:60
+#: admin/settings/settings-page.php:51
 msgid "User Manual"
 msgstr ""
 
-#: admin/settings/settings-page.php:63
+#: admin/settings/settings-page.php:54
 msgid "Here's the short user manual for you."
 msgstr ""
 
-#: admin/settings/settings-page.php:70
+#: admin/settings/settings-page.php:61
 msgid "Comments Moderation"
 msgstr ""
 
-#: admin/settings/settings-page.php:79
-msgid "How to use Shortcode?"
-msgstr ""
-
-#: admin/settings/settings-page.php:91
+#: admin/settings/settings-page.php:70
 msgid "Template Tags"
 msgstr ""
 
-#: admin/settings/settings-page.php:101
+#: admin/settings/settings-page.php:79
 msgid "Like the plugin?"
 msgstr ""
 
-#: admin/settings/settings-page.php:115
+#: admin/settings/settings-page.php:93
 msgid "My Other Plugins!"
+msgstr ""
+
+#: admin/settings/settings-page.php:113
+msgid "How to use Shortcode?"
 msgstr ""
 
 #: public/template-tags.php:48
 msgid " Comment"
 msgstr ""
 
-#: public/template-tags.php:51
-msgid "Leave a Comment"
-msgstr ""
-
 #: public/template-tags.php:54
 msgid " Comments"
 msgstr ""
 
-#: ultimate-facebook-comments.php:113
+#: ultimate-facebook-comments.php:124
+msgid ""
+"Please create and enter your Facebook App ID for Ultimate Facebook Comments "
+"Plugin to work properly."
+msgstr ""
+
+#: ultimate-facebook-comments.php:124
+msgid "Enter App ID"
+msgstr ""
+
+#: ultimate-facebook-comments.php:124
+msgid "Create App"
+msgstr ""
+
+#: ultimate-facebook-comments.php:146
 msgid "Settings"
 msgstr ""
 
-#: ultimate-facebook-comments.php:127
+#: ultimate-facebook-comments.php:160
 msgid "Support"
 msgstr ""
 
-#: ultimate-facebook-comments.php:128
+#: ultimate-facebook-comments.php:161
 msgid "Donate"
 msgstr ""
 

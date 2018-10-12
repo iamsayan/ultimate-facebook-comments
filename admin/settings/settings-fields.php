@@ -29,7 +29,7 @@ function ufc_no_of_fb_comments_display() {
     if( empty($options['ufc_no_of_fb_comments']) ) {
         $options['ufc_no_of_fb_comments'] = '10';
     }
-    ?>  <input id="fbc-no" name="ufc_plugin_global_options[ufc_no_of_fb_comments]" type="number" min="1" size="10" style="width:10%;" required placeholder="2586647663138" value="<?php if (isset($options['ufc_no_of_fb_comments'])) { echo $options['ufc_no_of_fb_comments']; } ?>" />
+    ?>  <input id="fbc-no" name="ufc_plugin_global_options[ufc_no_of_fb_comments]" type="number" min="1" size="10" style="width:10%;" required placeholder="10" value="<?php if (isset($options['ufc_no_of_fb_comments'])) { echo $options['ufc_no_of_fb_comments']; } ?>" />
         &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enter the number of facebook comments to display in comment box.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
@@ -83,12 +83,9 @@ function ufc_fb_comments_theme_display() {
 }
 
 function ufc_fb_comment_box_width_display() {
-    $options = get_option( 'ufc_plugin_global_options' );
-    if( empty($options['ufc_fb_comment_box_width']) ) {
-        $options['ufc_fb_comment_box_width'] = '100%';
-    } ?>
-    <input id="fb-comments-width" name="ufc_plugin_global_options[ufc_fb_comment_box_width]" type="text" size="12" style="width:12%" required placeholder="100%" value="<?php if (isset($options['ufc_fb_comment_box_width'])) { echo $options['ufc_fb_comment_box_width']; } ?>" />
-    &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Set facebook comment box width(px).', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
+    $options = get_option( 'ufc_plugin_global_options' ); ?>
+    <input id="fb-comments-width" name="ufc_plugin_global_options[ufc_fb_comment_box_width]" type="text" size="12" style="width:12%" placeholder="500" value="<?php if (isset($options['ufc_fb_comment_box_width'])) { echo $options['ufc_fb_comment_box_width']; } ?>" /> px
+    &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Set facebook comment box width. Keep at this to ensure the comment box is responsive. Minimun is 320. Leave blank for default 100%.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -97,7 +94,7 @@ function ufc_fb_comment_auto_display_display() {
     if( !isset($options['ufc_fb_comment_auto_display']) ) {
         $options['ufc_fb_comment_auto_display'] = 'Replace Native Comment';
     }
-    $items = array( "Replace Native Comment", "After Content", "Custom" );
+    $items = array( "Replace Native Comment", "After Content", "Disable" );
     echo '<select id="fb-comments-display" name="ufc_plugin_global_options[ufc_fb_comment_auto_display]" style="width:35%;">';
         foreach($items as $item) {
         $selected = ($options['ufc_fb_comment_auto_display'] == $item) ? ' selected="selected"' : '';
@@ -105,22 +102,22 @@ function ufc_fb_comment_auto_display_display() {
     }
     echo '</select>';
 
-    ?><span id="fbc-override-span"><span id="fb-comments-override-span" style="display:none;">&nbsp;&nbsp;&nbsp;<label for="fb-comments-override"><strong><?php _e( 'Select:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;&nbsp;
+    ?><span id="fb-comments-priority-span" style="display:none;">&nbsp;&nbsp;&nbsp;<label for="fb-comments-priority"><strong><?php _e( 'Priority:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;&nbsp;
     <?php
 
-    if( !isset($options['ufc_fb_comment_box_override']) ) {
-        $options['ufc_fb_comment_box_override'] = 'Show Facebook Comments';
-    }
-    $items = array("Show Facebook Comments", "Show both Comments");
-    echo '<select id="fb-comments-override" name="ufc_plugin_global_options[ufc_fb_comment_box_override]" style="width:38%;">';
-        foreach($items as $item) {
-        $selected = ($options['ufc_fb_comment_box_override'] == $item) ? ' selected="selected"' : '';
-        echo '<option value="' . $item . '"' . $selected . '>' . $item . '</option>';
-    }
-    echo '</select>';
-    
-    ?></label></span></span>&nbsp;&nbsp;
-    <span class="tooltip" title="<?php _e( 'Select the position where you want to display facebook comment box.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
+    if( empty($options['ufc_fb_comment_priority']) ) {
+        $options['ufc_fb_comment_priority'] = '99';
+    } 
+    ?>  <input id="fb-comments-priority" name="ufc_plugin_global_options[ufc_fb_comment_priority]" type="number" size="12" style="width:12%;" placeholder="10" value="<?php if (isset($options['ufc_fb_comment_priority'])) { echo $options['ufc_fb_comment_priority']; } ?>" />
+    </span>
+    &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Select the position where you want to display facebook comment box. If you want to manually insert facebook comments to your all posts/pages select \'Disable\' option and use shortcode with attributes according to your need.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
+    <?php
+}
+
+function ufc_fb_comment_priority_display() {
+    $options = get_option( 'ufc_plugin_global_options' ); ?>
+        <input id="fb-comments-priority" name="ufc_plugin_global_options[ufc_fb_comment_priority]" type="number" size="20" style="width:20%;" placeholder="99" value="<?php if (isset($options['ufc_fb_comment_priority'])) { echo $options['ufc_fb_comment_priority']; } ?>" />
+        &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enter priority for Facebook Comments to appear at front-end. Higher number causes Facebook Comments to appear below the other elements at the webpage.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -149,7 +146,7 @@ function ufc_fb_comment_loading_method_display() {
         $options['ufc_loading_button_text'] = 'Leave a Comment';
     } ?>
     
-    <input id="fbc-button-text" name="ufc_plugin_global_options[ufc_loading_button_text]" type="text" size="26" style="width:26%" placeholder="Leave a Comment" required value="<?php if (isset($options['ufc_loading_button_text'])) { echo $options['ufc_loading_button_text']; } ?>" />
+    <input id="fbc-button-text" name="ufc_plugin_global_options[ufc_loading_button_text]" type="text" size="26" style="width:26%" placeholder="<?php _e( 'Leave a Comment', 'ultimate-facebook-comments' ); ?>" required value="<?php if (isset($options['ufc_loading_button_text'])) { echo $options['ufc_loading_button_text']; } ?>" />
     
     <?php if( empty($options['ufc_loading_button_class']) ) {
         $options['ufc_loading_button_class'] = 'btn button';
@@ -215,7 +212,7 @@ function ufc_load_fb_comment_url_display() {
 
 function ufc_fb_comment_msg_display() {
     $options = get_option( 'ufc_plugin_global_options' );
-    ?><input id="fb-comments-msg" name="ufc_plugin_global_options[ufc_fb_comment_msg]" type="text" size="40" style="width:40%" placeholder="Leave a Reply" value="<?php if (isset($options['ufc_fb_comment_msg'])) { echo $options['ufc_fb_comment_msg']; } ?>" />
+    ?><input id="fb-comments-msg" name="ufc_plugin_global_options[ufc_fb_comment_msg]" type="text" size="40" style="width:40%" placeholder="<?php _e( 'Leave a Reply', 'ultimate-facebook-comments' ); ?>" value="<?php if (isset($options['ufc_fb_comment_msg'])) { echo $options['ufc_fb_comment_msg']; } ?>" />
     <span id="fb-comments-msg-align-show">&nbsp;&nbsp;&nbsp;<label for="fb-comments-msg-align"><strong><?php _e( 'Align:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;
     
     <?php 
@@ -238,7 +235,7 @@ function ufc_custom_css_comment_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>
     <textarea id="fbc-css" name="ufc_plugin_global_options[ufc_custom_css_comment]" rows="2" cols="95" placeholder="e.g. color:red; font-size:14px;" style="width:95%"><?php if (isset($options['ufc_custom_css_comment'])) { echo $options['ufc_custom_css_comment']; } ?></textarea>
-    <br><small>Just write any css property to set custom style for comment box title.</small>
+    <br><small><?php _e( 'Just write any css property to set custom style for comment box title.', 'ultimate-facebook-comments' ); ?></small>
     <?php
 }
 
@@ -268,7 +265,7 @@ function ufc_fb_comment_consent_notice_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     ?>  <label class="switch">
         <input type="checkbox" id="fbc-notice" name="ufc_plugin_global_options[ufc_fb_comment_consent_notice_cb]" value="1" <?php checked(isset($options['ufc_fb_comment_consent_notice_cb']), 1); ?> /> 
-        <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="Enable this if you want to show a cookie consent related to facebook comments to your site's first time visitor. If they accept this notice, then only they can post comments.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
+        <div class="slider round"></div></label>&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'If this option is enabled, facebook comments box become hidden until user accept user agreement based on his/her facebook account shared information. This user agreenement will be displayed when a user first time visit your website until they do not accept the user agreement. This extra step is added to comply with the GDPR. You also need to update your website\'s privacy policy.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 
@@ -277,7 +274,7 @@ function ufc_fb_comment_consent_notice_title_display() {
     if( empty($options['ufc_fb_comment_consent_notice_title']) ) {
         $options['ufc_fb_comment_consent_notice_title'] = 'Action Required!';
     }
-    ?>  <input id="fbc-notice-title" name="ufc_plugin_global_options[ufc_fb_comment_consent_notice_title]" type="text" size="50" style="width:50%" placeholder="Action Required!" value="<?php if (isset($options['ufc_fb_comment_consent_notice_title'])) { echo $options['ufc_fb_comment_consent_notice_title']; } ?>" />
+    ?>  <input id="fbc-notice-title" name="ufc_plugin_global_options[ufc_fb_comment_consent_notice_title]" type="text" size="50" style="width:50%" placeholder="<?php _e( 'Action Required!', 'ultimate-facebook-comments' ); ?>" value="<?php if (isset($options['ufc_fb_comment_consent_notice_title'])) { echo $options['ufc_fb_comment_consent_notice_title']; } ?>" />
         &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Set title for notice/message/cookie consent of your website.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
@@ -289,6 +286,22 @@ function ufc_fb_comment_consent_notice_msg_display() {
     } ?>
     <textarea id="fbc-notice-msg" name="ufc_plugin_global_options[ufc_fb_comment_consent_notice_msg]" rows="6" cols="95" placeholder="" style="width:95%"><?php if (isset($options['ufc_fb_comment_consent_notice_msg'])) { echo $options['ufc_fb_comment_consent_notice_msg']; } ?></textarea>
     <br><small><?php _e( 'Write here the notice/message which you want to show as consent to your first time commenter.', 'ultimate-facebook-comments' ); ?></small>
+    <?php
+}
+
+function ufc_fb_comment_user_agreement_btn_display() {
+    $options = get_option( 'ufc_plugin_global_options' );
+    if( empty($options['ufc_fb_comment_user_agreement_btn']) ) {
+        $options['ufc_fb_comment_user_agreement_btn'] = 'Accept';
+    }
+    if( empty($options['ufc_fb_comment_user_agreement_decline_btn']) ) {
+        $options['ufc_fb_comment_user_agreement_decline_btn'] = 'Decline';
+    }
+    ?>  <input id="fbc-notice-btn-agree" name="ufc_plugin_global_options[ufc_fb_comment_user_agreement_btn]" type="text" size="25" style="width:25%" placeholder="<?php _e( 'Accept', 'ultimate-facebook-comments' ); ?>" value="<?php if (isset($options['ufc_fb_comment_user_agreement_btn'])) { echo $options['ufc_fb_comment_user_agreement_btn']; } ?>" />
+        &nbsp;&nbsp;
+        <label for="fbc-notice-btn-decline"><strong><?php _e( 'Decline:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;&nbsp;
+        <input id="fbc-notice-btn-decline" name="ufc_plugin_global_options[ufc_fb_comment_user_agreement_decline_btn]" type="text" size="25" style="width:25%" placeholder="<?php _e( 'Decline', 'ultimate-facebook-comments' ); ?>" value="<?php if (isset($options['ufc_fb_comment_user_agreement_decline_btn'])) { echo $options['ufc_fb_comment_user_agreement_decline_btn']; } ?>" />
+        &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Set title for notice/message/cookie consent of your website.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
 

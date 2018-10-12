@@ -3,8 +3,8 @@ Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
 Requires at least: 3.0
 Tested up to: 4.9
-Stable tag: 1.1.8
-Requires PHP: 5.3
+Stable tag: 1.2.2
+Requires PHP: 5.4
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -31,7 +31,10 @@ If you’re running a blog of any kind, you’re probably looking to build an on
 > - Completely free to use with lifetime updates.<br />
 > - **Developer friendly.**<br />
 > - 100% GDPR complaint.<br />
+> - Mobile Ready.<br />
 > - Direct access to facebook comment moderation tool.<br />
+> - Easily configurable with shortcodes.<br />
+> - Shortcode ready widget.<br />
 > - Ability to disable WordPress native comment system.<br />
 > - Compatible with other facebook sharing plugin.<br />
 > - Follows best WordPress coding standards.<br />
@@ -83,6 +86,10 @@ Not at all. You can show the facebook comments by just installing this plugin. U
 
 Yes, this plugin is compatible with any theme.
 
+= I want to migrate from other facebook comments plugin. What are the steps? =
+
+Just copy Facebook App ID and paste it on plugin settings page and this plugin will do the rest. Also don't forget to configure plugin setting according to your need.
+
 = How to show FB comment count on frontend posts meta? =
 
 In this case, you have to edit your theme's template files i.e. single.php, page.php etc. And add/replace default published date function with this:
@@ -108,6 +115,37 @@ Displays/echos the last modified info:
 3. Page loading speed with lazyload
 
 == Changelog ==
+
+= 1.2.2 =
+Release Date: October 12, 2018
+
+* Fixed: Some times Facebook Comments box shows in a small comments area. Now it has been fixed.
+* Fixed: An `Undefined index: ufc_fb_sdk_reinit` notice shows in WP Footer if Facebook SDK option is not selected.
+
+= 1.2.1 =
+Release Date: October 2, 2018
+
+* Added: Option to set custom Accept/Decline text.
+* Fixed: Most of the possible bugs are now fixed.
+
+= 1.2.0 =
+Release Date: September 24, 2018
+
+* Added: Shortcode attributes.
+* Fixed: a bug where "Facebook SDK - Already Loaded" option works only if lazy is enabled.
+
+= 1.1.10 =
+Release Date: September 23, 2018
+
+* Fixed: Admin notice display mechanism.
+
+= 1.1.9 =
+Release Date: September 22, 2018
+
+* Added: an option to set priority if "After Content" is selected.
+* Fixed: a bug where facebook comments components load twice if "On Scroll" is selected.
+* Improved Guide.
+* Some minor bug fixed.
 
 = 1.1.8 =
 Release Date: September 14, 2018
