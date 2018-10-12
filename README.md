@@ -28,7 +28,10 @@ Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](h
 > - Completely free to use with lifetime updates.<br />
 > - **Developer friendly.**<br />
 > - 100% GDPR complaint.<br />
+> - Mobile Ready.<br />
 > - Direct access to facebook comment moderation tool.<br />
+> - Easily configurable with shortcodes.<br />
+> - Shortcode ready widget.<br />
 > - Ability to disable WordPress native comment system.<br />
 > - Compatible with other facebook sharing plugin.<br />
 > - Follows best WordPress coding standards.<br />
@@ -98,6 +101,10 @@ Not at all. You can show the facebook comments by just installing this plugin. U
 #### Is this plugin compatible with any themes?
 
 Yes, this plugin is compatible with any theme.
+
+#### I want to migrate from other facebook comments plugin. What are the steps?
+
+Just copy Facebook App ID and paste it on plugin settings page and this plugin will do the rest. Also don't forget to configure plugin setting according to your need.
 
 #### How to show FB comment count on posts meta?
 
