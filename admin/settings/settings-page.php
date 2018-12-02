@@ -11,7 +11,7 @@
 ?>
 
 <div class="wrap">
-    <h1><?php _e( 'Ultimate Facebook Comments', 'ultimate-facebook-comments' ); ?> <span style="font-size:12px;"><?php _e( 'Ver', 'ultimate-facebook-comments' ); ?> <?php echo ufc_load_plugin_version(); ?></span></h1>
+    <h1><?php _e( 'Ultimate Facebook Comments', 'ultimate-facebook-comments' ); ?> <span style="font-size:12px;"><?php _e( 'Ver', 'ultimate-facebook-comments' ); ?> <?php echo UFC_PLUGIN_VERSION; ?></span></h1>
     <div><?php _e( 'The Ultimate Facebook Comments Plugin for WordPress.', 'ultimate-facebook-comments' ); ?></div><hr>
     <div id="poststuff">
         <div id="post-body" class="metabox-holder columns-2">
@@ -40,7 +40,7 @@
                             <span>Name : <strong>Ultimate Facebook Comments</strong></span>
                         </div>
                         <div class="misc-pub-section">
-                            <span>Version : <?php echo ufc_load_plugin_version(); ?></span>
+                            <span>Version : <?php echo UFC_PLUGIN_VERSION; ?></span>
                         </div>
                         <div class="misc-pub-section">
                             <span>Author : <a href="https://profiles.wordpress.org/infosatech/" target="_blank">Sayan Datta</a></span>

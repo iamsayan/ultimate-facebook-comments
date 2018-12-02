@@ -14,40 +14,16 @@ function ufc_load_fb_comments_shortcode( $atts ) {
     global $post;
     
     $options = get_option( 'ufc_plugin_global_options' );
-
-    if( $options['ufc_fb_comment_sorting'] == 'Social Ranking' ) {
-        $sorting = 'social';
-    } elseif( $options['ufc_fb_comment_sorting'] == 'Time' ) {
-        $sorting = 'time';
-    } elseif( $options['ufc_fb_comment_sorting'] == 'Reverse Time' ) {
-        $sorting = 'reverse_time';
-    }
-
-    if( $options['ufc_fb_comments_theme'] == 'Light' ) {
-        $theme = 'light';
-    } elseif( $options['ufc_fb_comments_theme'] == 'Dark'  ) {
-        $theme = 'dark';
-    }
-
-    if( $options['ufc_load_fb_comment_url'] == 'Default' ) {
+    if( $options['ufc_load_fb_comment_url'] == 'default' ) {
         $url = get_permalink( $post->ID );
         if ( $url == '' ) {
             $url = html_entity_decode( esc_url( ufc_get_site_http_protocol() . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ) );
         }
-    } elseif( $options['ufc_load_fb_comment_url'] == 'Homepage' ) {
+    } elseif( $options['ufc_load_fb_comment_url'] == 'homepage' ) {
         $url = get_home_url();
-    } elseif( $options['ufc_load_fb_comment_url'] == 'Custom URL' ) {
+    } elseif( $options['ufc_load_fb_comment_url'] == 'custom_url' ) {
         $url = !empty($options['ufc_load_fb_comment_custom_url']) ? $options['ufc_load_fb_comment_custom_url'] : get_permalink( $post->ID );
     }
-
-    if( $options['ufc_fb_comment_msg_align'] == 'Left' ) {
-        $align = 'left';
-    } elseif( $options['ufc_fb_comment_msg_align'] == 'Center' ) {
-        $align = 'center';
-    } elseif( $options['ufc_fb_comment_msg_align'] == 'Right' ) {
-        $align = 'right';
-    }
-
     $no = !empty($options['ufc_no_of_fb_comments']) ? $options['ufc_no_of_fb_comments'] : '10';
     $width = !empty($options['ufc_fb_comment_box_width']) ? $options['ufc_fb_comment_box_width'] : '100%';
     $url = apply_filters( 'ufc_facebook_comments_load_target_url', $url, $post );
@@ -64,12 +40,12 @@ function ufc_load_fb_comments_shortcode( $atts ) {
 
     $atts = shortcode_atts(
 		array(
-			'order_by' => $sorting,
-            'color_scheme' => $theme,
+			'order_by' => $options['ufc_fb_comment_sorting'],
+            'color_scheme' => $options['ufc_fb_comments_theme'],
             'url' => $url,
             'title' => $options['ufc_fb_comment_msg'],
             'title_class' => 'fb-comments-text',
-            'title_align' => $align,
+            'title_align' => $options['ufc_fb_comment_msg_align'],
             'num_comments' => $no,
             'width' => $width,
             'color' => sanitize_text_field( $options['ufc_fbc_area_bgcolor'] ),
@@ -91,7 +67,7 @@ function ufc_load_fb_comments_shortcode( $atts ) {
     
     $get_bgcolor = '';
     if ( !empty( $atts['color'] ) ) {
-        $get_bgcolor = 'background-color: ' . $atts['color'];
+        $get_bgcolor = 'background-color:' . $atts['color'];
     }
 
     $cookie_consent = '';

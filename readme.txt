@@ -2,8 +2,8 @@
 Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
 Requires at least: 3.0
-Tested up to: 4.9
-Stable tag: 1.2.2
+Tested up to: 5.0
+Stable tag: 1.3.1
 Requires PHP: 5.4
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
@@ -15,7 +15,7 @@ Ultimate Facebook Comments plugin will help you to display Facebook Comments box
 
 ### Ultimate Facebook Comments: the Ultimate Facebook Comments plugin for WordPress.
 
-If you’re running a blog of any kind, you’re probably looking to build an online community. You're targeting like-minded people who share the interests highlighted by the content on your site. In that case Facebook Comments may help you a lot.
+If you’re running a blog of any kind, you’re probably looking to build an online community. You're targeting like-minded people who share the interests highlighted by the content on your site. In that case, Facebook Comments may help you a lot.
 
 > #### Ultimate Facebook Comments - Features
 >
@@ -23,6 +23,7 @@ If you’re running a blog of any kind, you’re probably looking to build an on
 > - **Lazy Load Facebook scripts and comments only after clicking a button or scrolling down.**<br />
 > - **Translation ready!**<br />
 > - **Live Facebook Comment Count**.<br />
+> - **Email Notification**.<br />
 > - Adjust number of comments, color scheme, language, width, sorting order, bg color, comments url, comments box title etc..<br />
 > - Facebook comments increases your audience.<br />
 > - 3 different facebook comments loading methods.<br />
@@ -88,7 +89,11 @@ Yes, this plugin is compatible with any theme.
 
 = I want to migrate from other facebook comments plugin. What are the steps? =
 
-Just copy Facebook App ID and paste it on plugin settings page and this plugin will do the rest. Also don't forget to configure plugin setting according to your need.
+Just copy Facebook App ID and paste it on plugin settings page and this plugin will do the rest. Also, don't forget to configure plugin setting according to your need.
+
+= As I am using other facebook plugins, the Facebook SDK is already loaded by that plugin and Comments are not showing. What is the solution? =
+
+Add this snippets in your functions.php file: `add_filter( 'ufc_facebook_sdk_reinit_method', '__return_true' );` and this will definitely work.
 
 = How to show FB comment count on frontend posts meta? =
 
@@ -116,102 +121,22 @@ Displays/echos the last modified info:
 
 == Changelog ==
 
-= 1.2.2 =
-Release Date: October 12, 2018
+= 1.3.1 =
+Release Date: December 2, 2018
 
-* Fixed: Some times Facebook Comments box shows in a small comments area. Now it has been fixed.
-* Fixed: An `Undefined index: ufc_fb_sdk_reinit` notice shows in WP Footer if Facebook SDK option is not selected.
-
-= 1.2.1 =
-Release Date: October 2, 2018
-
-* Added: Option to set custom Accept/Decline text.
-* Fixed: Most of the possible bugs are now fixed.
-
-= 1.2.0 =
-Release Date: September 24, 2018
-
-* Added: Shortcode attributes.
-* Fixed: a bug where "Facebook SDK - Already Loaded" option works only if lazy is enabled.
-
-= 1.1.10 =
-Release Date: September 23, 2018
-
-* Fixed: Admin notice display mechanism.
-
-= 1.1.9 =
-Release Date: September 22, 2018
-
-* Added: an option to set priority if "After Content" is selected.
-* Fixed: a bug where facebook comments components load twice if "On Scroll" is selected.
-* Improved Guide.
-* Some minor bug fixed.
-
-= 1.1.8 =
-Release Date: September 14, 2018
-
-* Tweak: make compatible with other facebook plugins.
-* Fixed: Some untranslated strings.
-* Some minor bug fixed.
-
-= 1.1.7 =
-Release Date: August 28, 2018
-
-* Added: a new item 'Custom' in 'Comments Box Display Position'. It will globally disable auto insert if you want to use shortcode side-wide.
-* Fixed: Admin Bar Moderation Tool on/off does not work. Now it has been fixed.
-* Fixed: Unnecessary output of HTML components in quick edit mode.
-* Fixed: jQuey cookie path issue related to consent notice.
-* Updated: jQuery cookie library.
-
-= 1.1.6 =
-Release Date: August 28, 2018
-
-* Improved: Comment count fetching method from Facebook API.
+* Added: Notification Email Template.
+* Added: WordPress Editor to Notification settings.
+* Improved: Template Tag mechanism.
 * Improved: Admin UI.
-* Fixed: Some untranslated strings.
-* Some minor bug fixed.
+* Fixed: Some minor bugs.
+* Fixed: Some incorrectly translated strings.
+* Tested upto WordPress Version 5.0.
 
-= 1.1.5 =
-Release Date: August 19, 2018
+= 1.3.0 =
+Release Date: November 28, 2018
 
-* Tweak: replace native comments now depends on WordPress default comment enable/disable system as FB comment box does not show previously on frontend if Disable WP Native Comment is enabled.
-* Fixed: Some untranslated strings.
-* Bug fixed.
-
-= 1.1.4 =
-Release Date: August 18, 2018
-
-* Added: Facebook SDK language codes.
-* Fixed: Some untranslated strings.
-* Bug fixed.
-
-= 1.1.3 =
-Release Date: August 15, 2018
-
-* Improved: Admin column comment count feature.
-* Fixed: Some untranslated strings.
-* Bug fixed.
-
-= 1.1.2 =
-Release Date: August 13, 2018
-
-* Added: Template Tags support to show facebook comment count on pages/posts in the frontend.
-* Added: a feature that shows facebook comment count beside posts/pages on the edit.php page.
-* Improved: It is possible to disable facebook comments from the quick edit.
-* Improved: Now facebook comment box ID is customizable to match with your theme.
-* Improved: Comment notification system by adding data-notify="true" in facebook comment.
-* Improved: Admin UI.
-* Fixed: A bug where facebook SDK loads too early.
-* Fixed: A bug where Facebook comments show on attachments but this post type is not selected in plugin Settings.
-
-= 1.1.0 =
-Release Date: August 9, 2018
-
-* Added: I18n support.
-* Added: An admin column item indicating on which posts facebook comment is active.
-* Improved: Made uninstall cleanup optional through a plugin setting and improved uninstall mechanism.
-* Improved: Plugin settings now depends on own meta box.
-* Improved: Admin UI.
+* NEW: Added Email Notifications.
+* Improved: Comment Count Mechanism.
 
 = Other Versions =
 
@@ -219,26 +144,5 @@ Release Date: August 9, 2018
 
 == Upgrade Notice ==
 
-= 1.1.8 =
-In this release, we make this plugin compatible with other facebook related plugins.
-
-= 1.1.7 =
-In this release, most of the bugs have been fixed.
-
-= 1.1.6 =
-In this release, most of the bugs have been fixed. Update the plugin on your website now to get fixes and enhancements.
-
-= 1.1.5 =
-In this release, most of the bugs have been fixed. Update the plugin on your website now to get fixes and enhancements.
-
-= 1.1.4 =
-In this release, most of the bugs have been fixed. Update the plugin on your website now to get fixes and enhancements.
-
-= 1.1.3 =
-In this release, most of the bugs have been fixed. Update the plugin on your website now to get fixes and enhancements.
-
-= 1.1.2 =
-In this release, most of the bugs have been fixed. Also, new features have been introduced. Please, update the plugin on your website now to get fixes and enhancements.
-
-= 1.1.0 =
-In this release, most of the bugs have been fixed. Also, new features have been introduced. Please, update the plugin on your website now to get fixes and enhancements.
+= 1.3.0 =
+In this release, we add facebook comment Notification to this plugin.

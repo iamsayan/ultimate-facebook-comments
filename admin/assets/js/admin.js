@@ -31,19 +31,19 @@ jQuery(document).ready(function ($) {
     $('#fbc-notice').trigger('change');
  
     $('#fb-comments-display').change(function() {
-        if ($('#fb-comments-display').val() == 'After Content') {
+        if ($('#fb-comments-display').val() == 'after_content') {
             $('#fb-comments-priority-span').show();
             $('#fb-comments-priority').attr('required', 'required');
         }
-        if ($('#fb-comments-display').val() != 'After Content') {
+        if ($('#fb-comments-display').val() != 'after_content') {
             $('#fb-comments-priority-span').hide();
             $('#fb-comments-priority').removeAttr('required');
         }
-        if ($('#fb-comments-display').val() == 'Disable') {
+        if ($('#fb-comments-display').val() == 'disable') {
             $('.fbc-loading').hide();
             $('.fbc-post-types').hide();
         }
-        if ($('#fb-comments-display').val() != 'Disable') {
+        if ($('#fb-comments-display').val() != 'disable') {
             $('.fbc-loading').show();
             $('.fbc-post-types').show();
         }
@@ -51,11 +51,11 @@ jQuery(document).ready(function ($) {
     $('#fb-comments-display').trigger('change');
 
     $('#fbc-url').change(function() {
-        if ($('#fbc-url').val() == 'Custom URL') {
+        if ($('#fbc-url').val() == 'custom_url') {
             $('#fbc-curl-show').show();
             $('#fbc-curl').attr('required', 'required');
         }
-        if ($('#fbc-url').val() != 'Custom URL') {
+        if ($('#fbc-url').val() != 'custom_url') {
             $('#fbc-curl-show').hide();
             $('#fbc-curl').removeAttr('required');
         }
@@ -63,10 +63,10 @@ jQuery(document).ready(function ($) {
     $('#fbc-url').trigger('change');
 
     $('#fb-comments-load').change(function() {
-        if ($('#fb-comments-load').val() == 'On Click') {
+        if ($('#fb-comments-load').val() == 'on_click') {
             $('#fbc-on-click').show();
         }
-        if ($('#fb-comments-load').val() != 'On Click') {
+        if ($('#fb-comments-load').val() != 'on_click') {
             $('#fbc-on-click').hide();
         }
     });

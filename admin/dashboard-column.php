@@ -14,55 +14,26 @@ function ufc_last_modified_info_on_column( $column, $post_id ) {
     switch ( $column ) {
         case 'fb-comments':
             $options = get_option('ufc_plugin_global_options');
+            $count = get_post_meta( get_the_ID(), '_post_fb_comment_count', true );
+            $object_id = get_post_meta( get_the_ID(), '_post_fb_comment_object_id', true );
 
-            global $post;
-            $posturl = get_permalink( $post->ID );
-            
-            // Generate the URL
-            $url = 'https://graph.facebook.com/' . $posturl;
-
-            // Make API request
-            $response = wp_remote_get( esc_url_raw( $url ), array( 'httpversion' => '1.1' ) );
-
-            // Check the response code
-	        $response_code = wp_remote_retrieve_response_code( $response ); // log this for API issues
-    
-            // Bail out early if there are any errors.
-            if( 200 != $response_code || is_wp_error( $response ) ) {
-                return false;
+            if ( $object_id == 'null' ) {
+                $comment_url = 'https://developers.facebook.com/tools/comments/' . $options['ufc_facebook_comments_app_id'] . '/pending/descending/';
+            } else {
+                $comment_url = 'https://developers.facebook.com/tools/comments/url/' . $object_id . '/pending/descending/';
             }
-    
-            // set response body
-            $response_body = wp_remote_retrieve_body( $response );
-
-            // Return the json decoded content.
-            $data = json_decode( $response_body );
-    
-            if( !empty( $data ) ) {
-
-                if ( isset( $data->og_object->id ) ) {
-                    $comment_url = 'https://developers.facebook.com/tools/comments/url/' . $data->og_object->id . '/pending/descending/';
-                } else {
-                    $comment_url = 'https://developers.facebook.com/tools/comments/' . $options['ufc_facebook_comments_app_id'] . '/pending/descending/';
-                }
-
-                if ( isset( $data->share->comment_count ) ) {
-                    $count = $data->share->comment_count;
-                } else {
-                    $count = 0;
-                }
-
-                if ( $count == 1 ) {
-                    $comments = '<a href="' . $comment_url . '" target="_blank" class="post-fb-com-count post-fb-com-count-approved"><span class="fb-comment-count-approved" aria-hidden="true">1</span><span class="screen-reader-text">' . $count . __( ' comment', 'ultimate-facebook-comments' ) . '</span></a>';
-                }
-                elseif ( $count == 0 ) {
-                    $comments = '<span aria-hidden="true">—</span><span class="screen-reader-text">' . __( 'No comments', 'ultimate-facebook-comments' ) . '</span>';
-                }
-                elseif ( $count > 1 ) {
-                    $comments = '<a href="' . $comment_url . '" target="_blank" class="post-fb-com-count post-fb-com-count-approved"><span class="fb-comment-count-approved" aria-hidden="true">' . $count . '</span><span class="screen-reader-text">' . $count . __( ' comments', 'ultimate-facebook-comments' ) . '</span></a>';
-                }
-
-            }   ?>
+            
+            if ( $count == 1 ) {
+                $comments = '<a href="' . $comment_url . '" target="_blank" class="post-fb-com-count post-fb-com-count-approved"><span class="fb-comment-count-approved" aria-hidden="true">1</span><span class="screen-reader-text">' . get_post_meta( get_the_ID(), '_post_fb_comment_count', true ) . __( ' comment', 'ultimate-facebook-comments' ) . '</span></a>';
+            }
+            elseif ( $count == 0 ) {
+                $comments = '<span aria-hidden="true">—</span><span class="screen-reader-text">' . __( 'No comments', 'ultimate-facebook-comments' ) . '</span>';
+            }
+            elseif ( $count > 1 ) {
+                $comments = '<a href="' . $comment_url . '" target="_blank" class="post-fb-com-count post-fb-com-count-approved"><span class="fb-comment-count-approved" aria-hidden="true">' . get_post_meta( get_the_ID(), '_post_fb_comment_count', true ) . '</span><span class="screen-reader-text">' . get_post_meta( get_the_ID(), '_post_fb_comment_count', true ) . __( ' comments', 'ultimate-facebook-comments' ) . '</span></a>';
+            }
+            
+            ?>
             <div class="post-fb-com-count-wrapper"><?php echo $comments; ?></div>
             <?php
             break;
@@ -71,7 +42,7 @@ function ufc_last_modified_info_on_column( $column, $post_id ) {
             $p_meta = get_post_meta( get_the_ID(), '_ufc_disable', true );
 
             global $post;
-            if ( $options['ufc_fb_comment_auto_display'] == 'After Content' && $p_meta != 'yes' ) {
+            if ( $options['ufc_fb_comment_auto_display'] == 'after_content' && $p_meta != 'yes' ) {
                 echo '<span class="ufc-enable dashicons dashicons-yes" style="color:#3cb371" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
             }
             elseif ( has_shortcode( $post->post_content, 'ufc-fb-comments') || comments_open( get_the_ID() ) ) {

@@ -12,14 +12,14 @@
 
 $options = get_option('ufc_plugin_global_options');
 
-if ($options['ufc_fb_comment_loading_method'] == 'On Click') {
+if ($options['ufc_fb_comment_loading_method'] == 'on_click') {
     $get_button = '<button id="ufc-button" class="' . esc_html($options['ufc_loading_button_class']) . '" onclick="showUFC(); return false;">' . esc_html($options['ufc_loading_button_text']) . '</button>';
 } else {
     $get_button = '';
 }
 
 if ( !empty($options['ufc_fbc_area_bgcolor']) ) {
-    $get_bgcolor = 'background-color: ' . sanitize_text_field($options['ufc_fbc_area_bgcolor']);
+    $get_bgcolor = 'background-color:' . sanitize_text_field($options['ufc_fbc_area_bgcolor']);
 } else {
     $get_bgcolor = '';
 }
@@ -33,9 +33,9 @@ if( !empty($options['ufc_facebook_comments_app_id']) && !empty($options['ufc_fb_
         </div>';
     }
 
-    if ($options['ufc_fb_comment_loading_method'] == 'On Click') {
+    if ($options['ufc_fb_comment_loading_method'] == 'on_click') {
         echo '<div id="' . esc_html($options['ufc_comment_area_id']) . '" class="ufc-comments ' . esc_html($options['ufc_comment_area_class']) . '" style="text-align:center;width:100%;' . $get_bgcolor . '">' . $get_button . '</div>';
-    } elseif ($options['ufc_fb_comment_loading_method'] == 'On Scroll') {
+    } elseif ($options['ufc_fb_comment_loading_method'] == 'on_scroll') {
         echo '<div id="' . esc_html($options['ufc_comment_area_id']) . '" class="ufc-comments ' . esc_html($options['ufc_comment_area_class']) . '" style="width:100%;' . $get_bgcolor . '"></div>';
     } else {
         echo '<div id="' . esc_html($options['ufc_comment_area_id']) . '" class="ufc-comments ' . esc_html($options['ufc_comment_area_class']) . '" style="width:100%;' . $get_bgcolor . '">' . ufc_comments_area_content() . '</div>';

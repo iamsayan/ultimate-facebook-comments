@@ -11,7 +11,7 @@
 
 if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_wp_comments_trace_cb'] == 1) ) {
   
-    if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'Replace Native Comment') ) {
+    if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'replace_native_comment') ) {
         
         function ufc_hide_pingback_using_css() { ?>
             <style>
