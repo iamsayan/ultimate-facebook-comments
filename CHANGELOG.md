@@ -1,6 +1,47 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.3.3
+Release Date: December 17, 2018
+
+* NEW: Admin UI.
+* Added: Option to set HTML tags for comment box title.
+* Fixed: Minor bug fixed.
+
+## 1.3.2
+Release Date: December 9, 2018
+
+* Improved: Admin UI.
+* Fixed: Comments and Meta Boxes are not showing on posts edit screen if 'After Content' method is selected.
+* Fixed: Some incorrectly translated strings.
+
+## 1.3.1
+Release Date: December 2, 2018
+
+* Added: Notification Email Template.
+* Added: WordPress Editor to Notification settings.
+* Improved: Template Tag mechanism.
+* Improved: Admin UI.
+* Fixed: Some minor bugs.
+* Fixed: Some incorrectly translated strings.
+* Tested up to WordPress Version 5.0.
+
+## 1.3.0
+Release Date: November 28, 2018
+
+* NEW: Added Email Notifications.
+* Improved: Comment Count Mechanism.
+
+## 1.2.4
+Release Date: October 15, 2018
+
+* Fixed: Multiple output of facebook comments on frontend if the post is not inside loop when after content method is used.
+
+## 1.2.3
+Release Date: October 13, 2018
+
+* Tweak: We have removed 'Facebook SDK Status' option to make plugin settings more easy. We have also introduced a new filter (Read FAQ) to reinit FB SDK, if SDK is already loaded by other plugins.
+
 ## 1.2.2
 Release Date: October 12, 2018
 
