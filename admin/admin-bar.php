@@ -85,17 +85,4 @@ if( isset($options['ufc_add_fmt_admin_bar_cb']) && ($options['ufc_add_fmt_admin_
     add_action('admin_bar_menu', 'ufc_custom_toolbar_link', 999);
 }
 
-function ufc_add_admin_bar_object() { ?>
-    <style type="text/css">
-        #wpadminbar #wp-admin-bar-ufc-modetation-tool .ab-icon:before {
-            content: '\f107';
-            top: 2px;
-        }
-    </style>
-<?php
-}
-
-//add_action( 'wp_head', 'ufc_add_admin_bar_object', 10 );
-//add_action( 'admin_head', 'ufc_add_admin_bar_object', 10 );
-
 ?>

@@ -31,6 +31,8 @@ if ( ! function_exists('ufc_comment_create_ajax_request_handler') ) {
         $post_id         = $data['postID'];
         $title           = $data['postTitle'];
 
+        $object_id = get_post_meta( $post_id, '_post_fb_comment_object_id', true );
+        $count = get_post_meta( $post_id, '_post_fb_comment_count', true );
 		$posturl = get_permalink( $post_id );
         // Generate the URL
         $url = 'https://graph.facebook.com/' . $posturl;
@@ -47,23 +49,43 @@ if ( ! function_exists('ufc_comment_create_ajax_request_handler') ) {
         // Return the json decoded content.
         $data = json_decode( $response_body );
         if( !empty( $data ) ) {
-            if ( isset( $data->og_object->id ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_object_id', $data->og_object->id );
-            } else {
-                update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
+            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_object_id' ) || $object_id == 'null' ) {
+                if ( isset( $data->og_object->id ) ) {
+                    update_post_meta( $post_id, '_post_fb_comment_object_id', $data->og_object->id );
+                } else {
+                    update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
+                }
             }
 
             if ( isset( $data->share->comment_count ) ) {
                 update_post_meta( $post_id, '_post_fb_comment_count', $data->share->comment_count );
+                update_post_meta( $post_id, 'ufc_comment_count', $data->share->comment_count );
             } else {
-                update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+                if ( metadata_exists( 'post', $post_id, '_post_fb_comment_count' ) ) {
+                    update_post_meta( $post_id, '_post_fb_comment_count', $count );
+                    update_post_meta( $post_id, 'ufc_comment_count', $count );
+                } else {
+                    update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+                    update_post_meta( $post_id, 'ufc_comment_count', 0 );
+                }
             }
         } else {
-            update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
-            update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_object_id' ) ) {
+                update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
+            } else {
+                update_post_meta( $post_id, '_post_fb_comment_object_id', $object_id );
+            }
+
+            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_count' ) ) {
+                update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+                update_post_meta( $post_id, 'ufc_comment_count', 0 );
+            } else {
+                update_post_meta( $post_id, '_post_fb_comment_count', $count );
+                update_post_meta( $post_id, 'ufc_comment_count', $count );
+            }
         }
 
-        $options = get_option( 'ufc_plugin_notification_options' );
+        $options = get_option( 'ufc_plugin_global_options' );
         if( isset($options['ufc_enable_fbc_notification_cb']) && ($options['ufc_enable_fbc_notification_cb'] == 1) ) {
             // get current time
             $currenttime = current_time( 'mysql' );
@@ -172,7 +194,9 @@ if ( ! function_exists('ufc_comment_remove_ajax_request_handler') ) {
 		}
 		// read ajax packet
         $post_id = $data['postID'];
-		$posturl = get_permalink( $post_id );
+        $posturl = get_permalink( $post_id );
+        $object_id = get_post_meta( $post_id, '_post_fb_comment_object_id', true );
+        $count = get_post_meta( $post_id, '_post_fb_comment_count', true );
         // Generate the URL
         $url = 'https://graph.facebook.com/' . $posturl;
         // Make API request
@@ -188,20 +212,40 @@ if ( ! function_exists('ufc_comment_remove_ajax_request_handler') ) {
         // Return the json decoded content.
         $data = json_decode( $response_body );
         if( !empty( $data ) ) {
-            if ( isset( $data->og_object->id ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_object_id', $data->og_object->id );
-            } else {
-                update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
+            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_object_id' ) || $object_id == 'null' ) {
+                if ( isset( $data->og_object->id ) ) {
+                    update_post_meta( $post_id, '_post_fb_comment_object_id', $data->og_object->id );
+                } else {
+                    update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
+                }
             }
 
             if ( isset( $data->share->comment_count ) ) {
                 update_post_meta( $post_id, '_post_fb_comment_count', $data->share->comment_count );
+                update_post_meta( $post_id, 'ufc_comment_count', $data->share->comment_count );
             } else {
-                update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+                if ( metadata_exists( 'post', $post_id, '_post_fb_comment_count' ) ) {
+                    update_post_meta( $post_id, '_post_fb_comment_count', $count );
+                    update_post_meta( $post_id, 'ufc_comment_count', $count );
+                } else {
+                    update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+                    update_post_meta( $post_id, 'ufc_comment_count', 0 );
+                }
             }
         } else {
-            update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
-            update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_object_id' ) ) {
+                update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
+            } else {
+                update_post_meta( $post_id, '_post_fb_comment_object_id', $object_id );
+            }
+
+            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_count' ) ) {
+                update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+                update_post_meta( $post_id, 'ufc_comment_count', 0 );
+            } else {
+                update_post_meta( $post_id, '_post_fb_comment_count', $count );
+                update_post_meta( $post_id, 'ufc_comment_count', $count );
+            }
         }
 	}
 }

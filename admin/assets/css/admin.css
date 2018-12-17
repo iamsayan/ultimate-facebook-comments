@@ -1,24 +1,28 @@
 #form_area {
-    background-color: #FFFFFF;
-    border: 1px #cccccc solid;
+    background-color:#FFFFFF;
+    border-top: solid 1px #ffffff;
+    border-bottom: solid 1px #ccc;
+    border-left: solid 1px #ccc;
+    border-right: solid 1px #ccc;
 }
 
-#main-form, .ufc-heading, .ufc-shortcode {
-    margin-left: 6px;
+#main-form {
+    margin-left: 22px;
+    margin-right: 22px;
 }
 
 td {
-    width: 70%;
+    width: 76%;
 }
 
 .tooltip {
-    display: inline;
+   	display: inline;
     position: relative;
 }
-
-.tooltip:hover:after {
+		
+.tooltip:hover:after{
     background: #333;
-    background: rgba(0, 0, 0, .8);
+    background: rgba(0,0,0,.8);
     border-radius: 5px;
     bottom: 26px;
     color: #fff;
@@ -27,12 +31,12 @@ td {
     padding: 5px 15px;
     position: absolute;
     z-index: 98;
-    width: 220px;
+    width: 200px;
     font-size: 12px;
     line-height: 1.6;
 }
-
-.tooltip:hover:before {
+	
+.tooltip:hover:before{
     border: solid;
     border-color: #333 transparent;
     border-width: 6px 6px 0 6px;
@@ -43,27 +47,21 @@ td {
     z-index: 99;
 }
 
-.active, .active:focus, .active:focus:active, active:hover .nav-tab:focus:active {
-    background: #fff;
+.active {
     color: #444;
     margin-bottom: -1px;
     box-shadow: none;
+    background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #fff;
 }
 
-.nav-tab-active {
-    background: #fff !important; 
-    color: #444 !important; 
+.donate {
+    background-color:#ffa000;
+    color:#fff;
 }
 
-.hndle {
-    cursor: default !important; 
-}
-
-#poststuff {
-    padding-top: 0px !important; 
-}
-
-#progress, .successModal {
+.progressModal,
+.successModal {
     display: block;
     position: fixed;
     top: 50%;
@@ -79,14 +77,14 @@ td {
     overflow: auto;
     transform: translate(-50%, -50%);
     border-radius: 15px;
-    -moz-border-radius: 15px;
+    -moz-border-radius: 15px; 
     -webkit-border-radius: 15px;
     box-shadow: 5px 5px 10px #cfcfcf;
     -moz-box-shadow: 5px 5px 10px #cfcfcf;
     -webkit-box-shadow: 5px 5px 10px #cfcfcf;
 }
 
-p.submit {
-    margin-bottom: -10px;
-    margin-top: 15px;
+.selectize-control {
+    display: inline-block;
+    vertical-align: middle;
 }

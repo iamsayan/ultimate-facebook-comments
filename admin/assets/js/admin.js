@@ -1,19 +1,175 @@
 jQuery(document).ready(function ($) {
 
-    $('select').select2({
-        placeholder: 'Select',
-        minimumResultsForSearch: Infinity
+    $("#btn1").click(function () {
+        $("#show-main").fadeIn("slow");
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
     });
 
-    $('select#fb-comments-lang').select2({
-        placeholder: 'Select'
+    $("#btn2").click(function () {
+        $("#show-main").hide();
+        $("#show-settings").fadeIn("slow");
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
     });
 
-    $('select#post-types').select2({
+    $("#btn3").click(function () {
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").fadeIn("slow");
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    });
+
+    $("#btn4").click(function () {
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").fadeIn("slow");
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    });
+
+    $("#btn5").click(function () {
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").fadeIn("slow");
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    });
+
+    $("#btn6").click(function () {
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").fadeIn("slow");
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    });
+
+    $("#btn7").click(function () {
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").fadeIn("slow");
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    });
+
+    $("#btn8").click(function () {
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").fadeIn("slow");
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    });
+
+    $("#btn9").click(function () {
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").fadeIn("slow");
+        $("#show-help").hide();
+
+    });
+
+    $("#btn10").click(function () {
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").fadeIn("slow");
+
+    });
+
+    var $select = $('select#post-types').selectize({
+        plugins: ['remove_button'],
+        delimiter: ',',
         placeholder: 'Select post types',
-        //allowClear: true
+        persist: false,
+        create: false
     });
-    
+
+    $('select').selectize({
+        placeholder: '-- select --',
+        persist: false,
+        create: false
+    });
+
+    $('input[type=text], input[type=email], input[type=url]').not(".bgcolor input[type=text], input#fbcn-email-receive").selectize({
+        plugins: ['restore_on_backspace'],
+        persist: true,
+        create: true,
+        createOnBlur: true,
+        maxItems: '1'
+    });
+
+    $('input#fbcn-email-receive').selectize({
+        plugins: ['remove_button', 'restore_on_backspace', 'drag_drop'],
+        persist: false,
+        create: true,
+        createOnBlur: true,
+        delimiter: ',',
+    });
+
     $('.ufc-color-picker').wpColorPicker();
 
     $('#fbc-notice').change(function () {
@@ -31,13 +187,17 @@ jQuery(document).ready(function ($) {
     $('#fbc-notice').trigger('change');
  
     $('#fb-comments-display').change(function() {
+        var selectize = $select[0].selectize;
+
         if ($('#fb-comments-display').val() == 'after_content') {
             $('#fb-comments-priority-span').show();
             $('#fb-comments-priority').attr('required', 'required');
+            //selectize.refreshItems();
         }
         if ($('#fb-comments-display').val() != 'after_content') {
             $('#fb-comments-priority-span').hide();
             $('#fb-comments-priority').removeAttr('required');
+            selectize.removeItem('product');
         }
         if ($('#fb-comments-display').val() == 'disable') {
             $('.fbc-loading').hide();
@@ -71,5 +231,154 @@ jQuery(document).ready(function ($) {
         }
     });
     $('#fb-comments-load').trigger('change');
+
+    if ( location.href.match(/page\=ultimate-facebook-comments#main/ig) ) {
+
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    } else if ( location.href.match(/page\=ultimate-facebook-comments#settings/ig) ) {
+
+        $("#btn1").removeClass("active");
+        $("#btn2").addClass("active");
+        $("#show-main").hide();
+        $("#show-settings").show();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    } else if( location.href.match(/page\=ultimate-facebook-comments#display/ig) ) {
+
+        $("#btn1").removeClass("active");
+        $("#btn3").addClass("active");
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").show();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    } else if( location.href.match(/page\=ultimate-facebook-comments#title/ig) ) {
+
+        $("#btn1").removeClass("active");
+        $("#btn4").addClass("active");
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").show();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    } else if( location.href.match(/page\=ultimate-facebook-comments#notice/ig) ) {
+
+        $("#btn1").removeClass("active");
+        $("#btn5").addClass("active");
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").show();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+
+    } else if( location.href.match(/page\=ultimate-facebook-comments#notification/ig) ) {
+
+        $("#btn1").removeClass("active");
+        $("#btn6").addClass("active");
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").show();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+        
+    } else if( location.href.match(/page\=ultimate-facebook-comments#others/ig) ) {
+
+        $("#btn1").removeClass("active");
+        $("#btn7").addClass("active");
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").show();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+        
+    } else if( location.href.match(/page\=ultimate-facebook-comments#shortcode/ig) ) {
+
+        $("#btn1").removeClass("active");
+        $("#btn8").addClass("active");
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").show();
+        $("#show-tools").hide();
+        $("#show-help").hide();
+        
+    } else if( location.href.match(/page\=ultimate-facebook-comments#tools/ig) ) {
+
+        $("#btn1").removeClass("active");
+        $("#btn9").addClass("active");
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").show();
+        $("#show-help").hide();
+        
+    } else if( location.href.match(/page\=ultimate-facebook-comments#help/ig) ) {
+
+        $("#btn1").removeClass("active");
+        $("#btn9").addClass("active");
+        $("#show-main").hide();
+        $("#show-settings").hide();
+        $("#show-display").hide();
+        $("#show-title").hide();
+        $("#show-notice").hide();
+        $("#show-notification").hide();
+        $("#show-others").hide();
+        $("#show-shortcode").hide();
+        $("#show-tools").hide();
+        $("#show-help").show();
+        
+    }
 
 });

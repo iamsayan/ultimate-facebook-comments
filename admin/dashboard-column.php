@@ -24,28 +24,26 @@ function ufc_last_modified_info_on_column( $column, $post_id ) {
             }
             
             if ( $count == 1 ) {
-                $comments = '<a href="' . $comment_url . '" target="_blank" class="post-fb-com-count post-fb-com-count-approved"><span class="fb-comment-count-approved" aria-hidden="true">1</span><span class="screen-reader-text">' . get_post_meta( get_the_ID(), '_post_fb_comment_count', true ) . __( ' comment', 'ultimate-facebook-comments' ) . '</span></a>';
+                $comments = '<a href="' . $comment_url . '" target="_blank" class="post-fb-com-count post-fb-com-count-approved"><span class="fb-comment-count-approved" aria-hidden="true">1</span><span class="screen-reader-text">' . $count . __( ' comment', 'ultimate-facebook-comments' ) . '</span></a>';
             }
             elseif ( $count == 0 ) {
                 $comments = '<span aria-hidden="true">—</span><span class="screen-reader-text">' . __( 'No comments', 'ultimate-facebook-comments' ) . '</span>';
             }
             elseif ( $count > 1 ) {
-                $comments = '<a href="' . $comment_url . '" target="_blank" class="post-fb-com-count post-fb-com-count-approved"><span class="fb-comment-count-approved" aria-hidden="true">' . get_post_meta( get_the_ID(), '_post_fb_comment_count', true ) . '</span><span class="screen-reader-text">' . get_post_meta( get_the_ID(), '_post_fb_comment_count', true ) . __( ' comments', 'ultimate-facebook-comments' ) . '</span></a>';
-            }
-            
-            ?>
+                $comments = '<a href="' . $comment_url . '" target="_blank" class="post-fb-com-count post-fb-com-count-approved"><span class="fb-comment-count-approved" aria-hidden="true">' . $count . '</span><span class="screen-reader-text">' . $count . __( ' comments', 'ultimate-facebook-comments' ) . '</span></a>';
+            } ?>
             <div class="post-fb-com-count-wrapper"><?php echo $comments; ?></div>
             <?php
             break;
         case 'fb-comments-status':
-            $options = get_option('ufc_plugin_global_options');
-            $p_meta = get_post_meta( get_the_ID(), '_ufc_disable', true );
-
             global $post;
+            $options = get_option('ufc_plugin_global_options');
+            $p_meta = get_post_meta( $post->ID, '_ufc_disable', true );
+
             if ( $options['ufc_fb_comment_auto_display'] == 'after_content' && $p_meta != 'yes' ) {
                 echo '<span class="ufc-enable dashicons dashicons-yes" style="color:#3cb371" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
             }
-            elseif ( has_shortcode( $post->post_content, 'ufc-fb-comments') || comments_open( get_the_ID() ) ) {
+            elseif ( has_shortcode( $post->post_content, 'ufc-fb-comments') || ( post_type_supports( get_post_type( $post->ID ), 'comments' ) && comments_open( $post->ID ) ) ) {
                  echo '<span class="ufc-disable dashicons dashicons-yes" style="color:#3cb371" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
             }
             else {
@@ -62,7 +60,6 @@ function ufc_post_columns_display( $columns ) {
     if( isset($options['ufc_show_comment_count_cb']) && ($options['ufc_show_comment_count_cb'] == 1) ) {
         $columns['fb-comments'] = '<span class="dashicons dashicons-admin-comments" title="Facebook Comments"><span class="screen-reader-text">' . __( 'Facebook Comments', 'ultimate-facebook-comments' ) . '</span></span>';
     }
-
     $columns['fb-comments-status'] = '<span class="dashicons dashicons-facebook" title="Facebook Comments Status"><span class="screen-reader-text">' . __( 'Facebook Comments Status', 'ultimate-facebook-comments' ) . '</span></span>';
     return $columns;
 }

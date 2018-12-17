@@ -1,64 +1,40 @@
 <?php
 
 /**
- * The public-facing functionality of the plugin.
+ * Plugin tools options
  *
- * @package    Ultimate WordPress Comments
- * @subpackage Public
- * @author     Sayan Datta
- * @license    http://www.gnu.org/licenses/ GNU General Public License
+ * @package   Ultimate WordPress Comments
+ * @author    Sayan Datta
+ * @license   http://www.gnu.org/licenses/gpl.html
  */
 
+# template tags
 function get_fb_comment_count() {
 
     $options = get_option('ufc_plugin_global_options');
 
     global $post;
-    $posturl = get_permalink($post->ID);
-
-    // Generate the URL
-    $url = 'https://graph.facebook.com/' . $posturl;
-
-    // Make API request
-    $response = wp_remote_get( esc_url_raw( $url ), array( 'httpversion' => '1.1' ) );
-
-    // Check the response code
-	$response_code = wp_remote_retrieve_response_code( $response ); // log this for API issues
-    
-    // Bail out early if there are any errors.
-    if( 200 != $response_code || is_wp_error( $response ) ) {
-        return false;
+    $url = get_permalink( $post->ID );
+    $count = get_post_meta( $post->ID, '_post_fb_comment_count', true );
+    if ( ( isset( $options['ufc_fb_comment_auto_display'] ) && $options['ufc_fb_comment_auto_display'] != 'replace_native_comment' ) && comments_open() ) {
+        $wpc_count = get_comments_number( $post->ID );
+        if( apply_filters( 'ufc_comment_count_merge_wpc', true ) ) {
+            $count = $count + $wpc_count;
+        }
     }
-    
-    // set response body
-    $response_body = wp_remote_retrieve_body( $response );
-
-    // Return the json decoded content.
-    $data = json_decode( $response_body );
-
-    if( ! empty( $data ) ) {
-
-        if ( isset( $data->share->comment_count ) ) {
-            $count = $data->share->comment_count;
-        } else {
-            $count = 0;
-        }
-        $comments = $count;
-        if ( $count == 1 ) {
-            $comments .= __( ' Comment', 'ultimate-facebook-comments' );
-        }
-        elseif ( $count == 0 ) {
-            $comments = __( 'Leave a Comment', 'ultimate-facebook-comments' ); // or set it to 0 comments
-        }
-        elseif ( $count > 1 ) {
-            $comments .= __( ' Comments', 'ultimate-facebook-comments' );
-        }
-        return '<a href="' . $posturl . '#' . $options['ufc_comment_area_id'] . '" title="Comments for '. $post->post_title . '">' . $comments . '</a>';
+    $comments = $count;
+    if ( ! $count || $count == 0 ) {
+        $comments = __( 'Leave a Comment', 'ultimate-facebook-comments' );
     }
+    elseif ( $count == 1 ) {
+        $comments .= __( ' Comment', 'ultimate-facebook-comments' );
+    }
+    elseif ( $count > 1 ) {
+        $comments .= __( ' Comments', 'ultimate-facebook-comments' );
+    }
+    return '<a href="' . $url . '#' . $options['ufc_comment_area_id'] . '" title="' . __( 'Comments for ', 'ultimate-facebook-comments' ) . $post->post_title . '" class="' . apply_filters( 'ufc_comment_count_css_class', 'comments-link' ) . '">' . $comments . '</a>';
 }
 
 function fb_comment_count() {
     echo get_fb_comment_count();
 }
-
-?>

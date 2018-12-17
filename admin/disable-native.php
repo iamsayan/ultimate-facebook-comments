@@ -31,14 +31,15 @@ if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_
         function ufc_disable_comments_pings_support() {
             $post_types = get_post_types();
             foreach ( $post_types as $post_type ) {
+                if( post_type_supports( $post_type, 'comments' ) ) {
+                    add_filter ( "manage_edit-{$post_type}_columns", "ufc_hide_comments_admin_columns" );
+                }
                 if( post_type_supports($post_type, 'trackbacks') ) {
                     remove_post_type_support( $post_type, 'trackbacks' );
                 }
             }
         }
 
-        add_filter('manage_edit-post_columns', 'ufc_hide_comments_admin_columns');
-        add_filter('manage_edit-page_columns', 'ufc_hide_comments_admin_columns');
         add_action('admin_menu', 'ufc_remove_meta_boxes');
         add_action('admin_print_styles-post.php', 'ufc_hide_pingback_using_css', 10);
         add_action('admin_print_styles-post-new.php', 'ufc_hide_pingback_using_css', 10);
@@ -66,16 +67,16 @@ if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_
     // Disable support for comments and trackbacks in post types
     function ufc_disable_comments_post_types_support() {
         $post_types = get_post_types();
-        foreach ($post_types as $post_type) {
-            if(post_type_supports($post_type, 'comments')) {
-                remove_post_type_support($post_type, 'comments');
-                remove_post_type_support($post_type, 'trackbacks');
+        foreach ( $post_types as $post_type ) {
+            if( post_type_supports( $post_type, 'comments' ) ) {
+                remove_post_type_support( $post_type, 'comments' );
+                remove_post_type_support( $post_type, 'trackbacks' );
             }
         }
     }
 
     // Hide existing comments
-    function ufc_disable_comments_hide_existing_comments($comments) {
+    function ufc_disable_comments_hide_existing_comments( $comments ) {
         $comments = array();
         return $comments;
     }
@@ -87,14 +88,14 @@ if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_
     
     // Remove comments page in menu
     function ufc_disable_comments_admin_menu() {
-        remove_menu_page('edit-comments.php');
-        remove_submenu_page('options-general.php', 'options-discussion.php');
+        remove_menu_page( 'edit-comments.php' );
+        remove_submenu_page( 'options-general.php', 'options-discussion.php' );
     }
    
     // Redirect any user trying to access comments page
     function ufc_disable_comments_admin_menu_redirect() {
         global $pagenow;
-        if ($pagenow === 'edit-comments.php'|| $pagenow === 'options-discussion.php') {
+        if ( $pagenow === 'edit-comments.php'|| $pagenow === 'options-discussion.php' ) {
             wp_safe_redirect(admin_url()); exit;
         }
     }
@@ -107,7 +108,7 @@ if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_
     // Remove comments links from admin bar
     function ufc_remove_comments_admin_bar_links() {
         global $wp_admin_bar;
-        $wp_admin_bar->remove_menu('comments');
+        $wp_admin_bar->remove_menu( 'comments' );
     }
    
     function ufc_disable_rc_widget() {

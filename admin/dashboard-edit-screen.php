@@ -28,7 +28,7 @@ function ufc_add_meta_boxes( $post ) {
 }
 
 if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) {
-	if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'After Content') ) {
+	if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'after_content') ) {
 		if( isset($options['ufc_enable_on_post_types']) ) {
             $post_types = $options['ufc_enable_on_post_types'];
             foreach($post_types as $item) {
@@ -46,15 +46,14 @@ if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comm
 function ufc_meta_box_callback( $post ) {
     // get plugin options
     $options = get_option('ufc_plugin_global_settings');
-    // retrieve post id
-    $checkboxMeta = get_post_meta( $post->ID ); 
+    // retrive post meta value 
+	$checkboxMeta = get_post_meta( get_the_ID(), '_ufc_disable', true );
     // make sure the form request comes from WordPress
     wp_nonce_field( 'ufc_edit_build_nonce', 'ufc_edit_nonce' ); ?>
         
     <p id="ufc-status" class="meta-options">
         <label for="ufc_status" class="selectit">
-		    <input id="ufc_status" type="checkbox" name="disablefbcomment" value="yes" <?php if ( isset ( $checkboxMeta['_ufc_disable'] ) ) checked( $checkboxMeta['_ufc_disable'][0], 'yes' ); ?> /> 
-			<?php _e( 'Disable Facebook Comments', 'ultimate-facebook-comments' ); ?>
+		    <input id="ufc_status" type="checkbox" name="disablefbcomment" value="yes" <?php if( $checkboxMeta == 'yes' ) { echo 'checked'; } ?> /> <?php _e( 'Disable Facebook Comments', 'ultimate-facebook-comments' ); ?>
 			<input type="hidden" id="ufc-disable-hidden" name="disablefbchidden" value="0">
 		</label>
 		<script type="text/javascript">
@@ -74,7 +73,7 @@ function ufc_meta_box_callback( $post ) {
 	<?php
 }
 
-if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'After Content') ) {
+if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'after_content') ) {
 	add_action( 'quick_edit_custom_box', 'ufc_add_item_to_quick_edit', 10, 2 );
 }
 
@@ -102,7 +101,7 @@ function ufc_add_item_to_quick_edit( $column_name, $post_type ) {
     <div id="inline-edit-col-disable">
 	    <em class="alignleft inline-edit-or"></em>
 	    <label for="ufc_status" class="alignleft">
-	        <input type="checkbox" id="ufc_status" name="disablefbcomment" value="yes" <?php if( $hide_fbc == 'yes' ) { echo 'checked'; } ?> >
+	        <input type="checkbox" id="ufc_status" name="disablefbcomment" value="yes" <?php if( $hide_fbc == 'yes' ) { echo 'checked'; } ?> />
 		    <span class="checkbox-title"><?php _e( 'Disable Facebook Comments', 'ultimate-facebook-comments' ); ?></span>
 		    <input type="hidden" id="ufc-disable-hidden" name="disablefbchidden" value="0">
         </label>
