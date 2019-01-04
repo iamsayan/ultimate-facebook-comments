@@ -114,14 +114,14 @@ Just copy Facebook App ID and paste it on plugin settings page and this plugin w
 
 In this case, you have to edit your theme's template files i.e. single.php, page.php etc. And add/replace default published date function with this:
 
-Returns the last modified info:
+Returns the facebook comments count:
 
 `<?php if ( function_exists( 'get_fb_comment_count' ) ) {
 		get_fb_comment_count();
 	}
 ?>`
 
-Displays/echos the last modified info:
+Displays/echos facebook comments count:
 
 `<?php if ( function_exists( 'fb_comment_count' ) ) {
 		fb_comment_count();
