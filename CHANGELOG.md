@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.3.4
+Release Date: January 4, 2019
+
+* Improved: Facebook API Method to avoid Facebook api: (#4) Application request limit reached problem.
+* Fixed: Some error notice.
+* Fixed: Some incorrectly translated strings.
+
 ## 1.3.3
 Release Date: December 17, 2018
 
