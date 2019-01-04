@@ -81,8 +81,10 @@ function ufc_custom_toolbar_link( $wp_admin_bar ) {
     
 }
 
-if( isset($options['ufc_add_fmt_admin_bar_cb']) && ($options['ufc_add_fmt_admin_bar_cb'] == 1) ) {
-    add_action('admin_bar_menu', 'ufc_custom_toolbar_link', 999);
+if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) {
+    if( isset($options['ufc_add_fmt_admin_bar_cb']) && ($options['ufc_add_fmt_admin_bar_cb'] == 1) ) {
+        add_action('admin_bar_menu', 'ufc_custom_toolbar_link', 999);
+    }
 }
 
 ?>

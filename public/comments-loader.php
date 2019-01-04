@@ -9,7 +9,9 @@
  * @license    http://www.gnu.org/licenses/ GNU General Public License
  */
 
-add_action( 'init', 'ufc_render_comments_components' );
+if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) {
+    add_action( 'init', 'ufc_render_comments_components' );
+}
 
 function ufc_render_comments_components() {
 
@@ -29,7 +31,7 @@ function ufc_render_comments_components() {
         
         if( isset( $options['ufc_fb_comment_auto_display'] ) && $options['ufc_fb_comment_auto_display'] == 'after_content' ) {
             
-            $priority = '10';
+            $priority = 10;
             if ( !empty( $options['ufc_fb_comment_priority'] ) ) {
                 $priority = $options['ufc_fb_comment_priority'];
             }
@@ -120,7 +122,7 @@ function ufc_add_fb_comments_sdk_to_body() {
         if (d.getElementById(id)) return;
         js = d.createElement(s);
         js.id = id;
-        js.src = '//connect.facebook.net/" . esc_html($options['ufc_fb_comment_language']) . "/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.0&appId=" . $options['ufc_facebook_comments_app_id'] . "';
+        js.src = '//connect.facebook.net/" . esc_html($options['ufc_fb_comment_language']) . "/sdk.js#xfbml=1&autoLogAppEvents=1&version=v2.11&appId=" . $options['ufc_facebook_comments_app_id'] . "';
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         ";
@@ -136,7 +138,7 @@ function ufc_facebook_sdk_reinit() {
                     appId : '" . $options['ufc_facebook_comments_app_id'] . "',
                     status : true,
                     xfbml : true,
-                    version : 'v3.0'
+                    version : 'v2.11'
                 });
                 ";
 
@@ -217,15 +219,15 @@ function ufc_comments_area_content() {
     return $html;
 }
 
-function ufc_load_comments_template() {
+function ufc_load_comments_template( $file ) {
 
     $options = get_option('ufc_plugin_global_options');
 
     if ( isset( $options['ufc_enable_on_post_types'] ) && !in_array( get_post_type( get_the_ID() ), $options['ufc_enable_on_post_types'] ) ) {
         return;
     }
-        
-    if ( !comments_open( get_the_ID() ) ) {
+
+    if ( !comments_open( get_the_ID() ) || post_password_required() ) {
         return plugin_dir_path( __FILE__ ) . 'templates/comments-template-empty.php';
     }
     return plugin_dir_path( __FILE__ ) . 'templates/comments-template.php';

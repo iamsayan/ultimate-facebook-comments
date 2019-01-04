@@ -11,12 +11,13 @@
 
 function ufc_last_modified_info_on_column( $column, $post_id ) {
         
+    global $post;
     switch ( $column ) {
         case 'fb-comments':
             $options = get_option('ufc_plugin_global_options');
-            $count = get_post_meta( get_the_ID(), '_post_fb_comment_count', true );
-            $object_id = get_post_meta( get_the_ID(), '_post_fb_comment_object_id', true );
-
+            $count = get_post_meta( $post->ID, '_post_fb_comment_count', true );
+            $object_id = get_post_meta( $post->ID, '_post_fb_comment_object_id', true );
+            
             if ( $object_id == 'null' ) {
                 $comment_url = 'https://developers.facebook.com/tools/comments/' . $options['ufc_facebook_comments_app_id'] . '/pending/descending/';
             } else {
@@ -36,15 +37,15 @@ function ufc_last_modified_info_on_column( $column, $post_id ) {
             <?php
             break;
         case 'fb-comments-status':
-            global $post;
             $options = get_option('ufc_plugin_global_options');
             $p_meta = get_post_meta( $post->ID, '_ufc_disable', true );
-
+            
             if ( $options['ufc_fb_comment_auto_display'] == 'after_content' && $p_meta != 'yes' ) {
                 echo '<span class="ufc-enable dashicons dashicons-yes" style="color:#3cb371" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
             }
             elseif ( has_shortcode( $post->post_content, 'ufc-fb-comments') || ( post_type_supports( get_post_type( $post->ID ), 'comments' ) && comments_open( $post->ID ) ) ) {
-                 echo '<span class="ufc-disable dashicons dashicons-yes" style="color:#3cb371" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
+                echo '<span class="ufc-disable dashicons dashicons-yes" style="color:#3cb371" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
+                //echo $refresh;
             }
             else {
                 echo '<span class="ufc-disable dashicons dashicons-no" style="color:#e14d43;" title="' . esc_attr__( 'Disabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
@@ -77,6 +78,8 @@ function ufc_post_admin_actions() {
     }
 }
 
-add_action( 'admin_init', 'ufc_post_admin_actions' );
+if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) {
+    add_action( 'admin_init', 'ufc_post_admin_actions' );
+}
 
 ?>

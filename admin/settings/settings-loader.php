@@ -15,6 +15,7 @@ function ufc_plugin_register_settings() {
     add_settings_section('ufc_plugin_main_option', __( 'Main', 'wp-last-modified-info' ) . '<p><hr></p>', null, 'ufc_plugin_main_section');
         add_settings_field('ufc_enable_fb_comment_cb', __( 'Enable Facebook Comment?', 'ultimate-facebook-comments' ), 'ufc_enable_fb_comment_cb_display', 'ufc_plugin_main_section', 'ufc_plugin_main_option', array( 'label_for' => 'fbc-enable' ));  
         add_settings_field('ufc_facebook_comments_app_id', __( 'Enter Facebook Application ID:', 'ultimate-facebook-comments' ), 'ufc_facebook_comments_app_id_display', 'ufc_plugin_main_section', 'ufc_plugin_main_option', array( 'label_for' => 'appid' ));  
+        add_settings_field('ufc_facebook_comments_app_secret', __( 'Enter Facebook Application Secret:', 'ultimate-facebook-comments' ), 'ufc_facebook_comments_app_secret_display', 'ufc_plugin_main_section', 'ufc_plugin_main_option', array( 'label_for' => 'appsecret' ));  
         
     add_settings_section('ufc_plugin_settings_option', __( 'Settings', 'wp-last-modified-info' ) . '<p><hr></p>', null, 'ufc_plugin_settings_section');   
         add_settings_field('ufc_no_of_fb_comments', __( 'Number of Comments to Display:', 'ultimate-facebook-comments' ), 'ufc_no_of_fb_comments_display', 'ufc_plugin_settings_section', 'ufc_plugin_settings_option', array( 'label_for' => 'fbc-no' ));  
@@ -52,7 +53,7 @@ function ufc_plugin_register_settings() {
         add_settings_field('ufc_fbcn_email_message', __( 'Notification Email Message:', 'ultimate-facebook-comments' ), 'ufc_fbcn_email_message_display', 'ufc_plugin_notification_section', 'ufc_plugin_notification_option', array( 'label_for' => 'fbcn-emailmsg' ));  
         
     add_settings_section('ufc_plugin_other_option', __( 'Others', 'wp-last-modified-info' ) . '<p><hr></p>', null, 'ufc_plugin_other_section');    
-        add_settings_field('ufc_show_comment_count_cb', __( 'Show Comment Count on Edit Page?', 'ultimate-facebook-comments' ), 'ufc_show_comment_count_cb_display', 'ufc_plugin_other_section', 'ufc_plugin_other_option', array( 'label_for' => 'fbc-count' ));  
+        add_settings_field('ufc_show_comment_count_cb', __( 'Comment Count on Dashboard?', 'ultimate-facebook-comments' ), 'ufc_show_comment_count_cb_display', 'ufc_plugin_other_section', 'ufc_plugin_other_option', array( 'label_for' => 'fbc-count' ));  
         add_settings_field('ufc_add_fmt_admin_bar_cb', __( 'Show Admin Bar Moderation Tool?', 'ultimate-facebook-comments' ), 'ufc_add_fmt_admin_bar_cb_display', 'ufc_plugin_other_section', 'ufc_plugin_other_option', array( 'label_for' => 'fbc-mt' ));  
         add_settings_field('ufc_remove_wp_comments_trace_cb', __( 'Disable Native WP Comment?', 'ultimate-facebook-comments' ), 'ufc_remove_wp_comments_trace_cb_display', 'ufc_plugin_other_section', 'ufc_plugin_other_option', array( 'label_for' => 'fbc-trace' ));  
         add_settings_field('ufc_enable_promo_cb', __( 'Support / Promote this Plugin?', 'ultimate-facebook-comments' ), 'ufc_enable_promo_cb_display', 'ufc_plugin_other_section', 'ufc_plugin_other_option', array( 'label_for' => 'fbc-promo' ));  

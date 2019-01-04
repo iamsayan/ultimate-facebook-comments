@@ -73,8 +73,10 @@ function ufc_meta_box_callback( $post ) {
 	<?php
 }
 
-if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'after_content') ) {
-	add_action( 'quick_edit_custom_box', 'ufc_add_item_to_quick_edit', 10, 2 );
+if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) {
+    if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'after_content') ) {
+	    add_action( 'quick_edit_custom_box', 'ufc_add_item_to_quick_edit', 10, 2 );
+	}
 }
 
 function ufc_add_item_to_quick_edit( $column_name, $post_type ) {
@@ -153,6 +155,8 @@ function ufc_save_post_edit_data( $post_id ) {
 	}
 }
 
-add_action( 'save_post', 'ufc_save_post_edit_data', 10, 2 );
+if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) {
+	add_action( 'save_post', 'ufc_save_post_edit_data', 10, 2 );
+}
 
 ?>

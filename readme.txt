@@ -3,7 +3,7 @@ Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
 Requires at least: 3.5
 Tested up to: 5.0
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 Requires PHP: 5.4
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
@@ -115,14 +115,14 @@ Add these snippets in your functions.php file: `add_filter( 'ufc_facebook_sdk_re
 
 In this case, you have to edit your theme's template files i.e. single.php, page.php etc. And add/replace default published date function with this:
 
-Returns the last modified info:
+Returns the facebook comments count:
 
 `<?php if ( function_exists( 'get_fb_comment_count' ) ) {
 		get_fb_comment_count();
 	}
 ?>`
 
-Displays/echos the last modified info:
+Displays/echos the facebook comments count:
 
 `<?php if ( function_exists( 'fb_comment_count' ) ) {
 		fb_comment_count();
@@ -136,6 +136,13 @@ Displays/echos the last modified info:
 3. Page loading speed with lazy load
 
 == Changelog ==
+
+= 1.3.4 =
+Release Date: January 4, 2019
+
+* Improved: Facebook API Method to avoid Facebook api: (#4) Application request limit reached problem.
+* Fixed: Some error notice.
+* Fixed: Some incorrectly translated strings.
 
 = 1.3.3 =
 Release Date: December 17, 2018

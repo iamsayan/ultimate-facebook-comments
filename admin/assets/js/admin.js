@@ -148,20 +148,6 @@ jQuery(document).ready(function ($) {
         create: false
     });
 
-    $('select').selectize({
-        placeholder: '-- select --',
-        persist: false,
-        create: false
-    });
-
-    $('input[type=text], input[type=email], input[type=url]').not(".bgcolor input[type=text], input#fbcn-email-receive").selectize({
-        plugins: ['restore_on_backspace'],
-        persist: true,
-        create: true,
-        createOnBlur: true,
-        maxItems: '1'
-    });
-
     $('input#fbcn-email-receive').selectize({
         plugins: ['remove_button', 'restore_on_backspace', 'drag_drop'],
         persist: false,
@@ -171,6 +157,12 @@ jQuery(document).ready(function ($) {
     });
 
     $('.ufc-color-picker').wpColorPicker();
+
+    $(".coffee-amt").change(function() {
+        var btn = $('.buy-coffee-btn');
+        btn.attr('href', btn.data('link') + $(this).val());
+    });
+    $(".coffee-amt").trigger('change');
 
     $('#fbc-notice').change(function () {
         if ($('#fbc-notice').is(':checked')) {
@@ -367,7 +359,7 @@ jQuery(document).ready(function ($) {
     } else if( location.href.match(/page\=ultimate-facebook-comments#help/ig) ) {
 
         $("#btn1").removeClass("active");
-        $("#btn9").addClass("active");
+        $("#btn10").addClass("active");
         $("#show-main").hide();
         $("#show-settings").hide();
         $("#show-display").hide();

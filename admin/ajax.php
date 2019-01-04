@@ -20,24 +20,28 @@ if ( ! function_exists('ufc_comment_create_ajax_request_handler') ) {
 
 	function ufc_comment_create_ajax_request_handler()  {
 
-        if ( ! $data ) {
-			$data = $_POST;
-		}
 		// read ajax packet
-		$commentID       = $data['commentID'];
-		$parentCommentID = $data['parentCommentID'];
-		$href            = $data['href'];
-        $commentText     = $data['commentText'];
-        $post_id         = $data['postID'];
-        $title           = $data['postTitle'];
+		$commentID       = $_POST['commentID'];
+		$href            = $_POST['href'];
+        $commentText     = $_POST['commentText'];
+        $post_id         = $_POST['postID'];
+        $title           = $_POST['postTitle'];
+        if( isset( $_POST['parentCommentID'] ) ) {
+            $parentCommentID = $_POST['parentCommentID'];
+        }
 
+        $options = get_option( 'ufc_plugin_global_options' );
         $object_id = get_post_meta( $post_id, '_post_fb_comment_object_id', true );
         $count = get_post_meta( $post_id, '_post_fb_comment_count', true );
-		$posturl = get_permalink( $post_id );
-        // Generate the URL
-        $url = 'https://graph.facebook.com/' . $posturl;
+        $access_token = $options['ufc_facebook_comments_app_id'].'|'.$options['ufc_facebook_comments_app_secret'];
+        
         // Make API request
-        $response = wp_remote_get( esc_url_raw( $url ), array( 'httpversion' => '1.1' ) );
+        $response = wp_remote_get( add_query_arg( array( 
+			'id' => urlencode( get_permalink( $post_id ) ),
+			'access_token' => $access_token,
+			'fields' => 'engagement,og_object'
+        ), 'https://graph.facebook.com/v2.11/' ), array( 'httpversion' => '1.1' ) );
+        
         // Check the response code
 	    $response_code = wp_remote_retrieve_response_code( $response ); // log this for API issues
         // Bail out early if there are any errors.
@@ -48,20 +52,22 @@ if ( ! function_exists('ufc_comment_create_ajax_request_handler') ) {
         $response_body = wp_remote_retrieve_body( $response );
         // Return the json decoded content.
         $data = json_decode( $response_body );
+
+        //error_log( print_r( $data, TRUE ) );
+
         if( !empty( $data ) ) {
-            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_object_id' ) || $object_id == 'null' ) {
+            if ( $object_id == '' || $object_id == 'null' || $object_id == 0 ) {
                 if ( isset( $data->og_object->id ) ) {
                     update_post_meta( $post_id, '_post_fb_comment_object_id', $data->og_object->id );
                 } else {
                     update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
                 }
             }
-
-            if ( isset( $data->share->comment_count ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_count', $data->share->comment_count );
-                update_post_meta( $post_id, 'ufc_comment_count', $data->share->comment_count );
+            if ( isset( $data->engagement->comment_plugin_count ) ) {
+                update_post_meta( $post_id, '_post_fb_comment_count', $data->engagement->comment_plugin_count );
+                update_post_meta( $post_id, 'ufc_comment_count', $data->engagement->comment_plugin_count );
             } else {
-                if ( metadata_exists( 'post', $post_id, '_post_fb_comment_count' ) ) {
+                if ( $count != '' ) {
                     update_post_meta( $post_id, '_post_fb_comment_count', $count );
                     update_post_meta( $post_id, 'ufc_comment_count', $count );
                 } else {
@@ -70,32 +76,30 @@ if ( ! function_exists('ufc_comment_create_ajax_request_handler') ) {
                 }
             }
         } else {
-            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_object_id' ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
-            } else {
+            if ( $object_id != '' ) {
                 update_post_meta( $post_id, '_post_fb_comment_object_id', $object_id );
+            } else {
+                update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
             }
 
-            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_count' ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_count', 0 );
-                update_post_meta( $post_id, 'ufc_comment_count', 0 );
-            } else {
+            if ( $count != '' ) {
                 update_post_meta( $post_id, '_post_fb_comment_count', $count );
                 update_post_meta( $post_id, 'ufc_comment_count', $count );
+            } else {
+                update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+                update_post_meta( $post_id, 'ufc_comment_count', 0 );
             }
         }
 
-        $options = get_option( 'ufc_plugin_global_options' );
         if( isset($options['ufc_enable_fbc_notification_cb']) && ($options['ufc_enable_fbc_notification_cb'] == 1) ) {
             // get current time
-            $currenttime = current_time( 'mysql' );
-		    $ftime = date( 'j F, Y @ g:i a', strtotime( $currenttime ) );
+		    $ftime = date( 'j F, Y @ g:i a', current_time( 'timestamp', 0 ) );
 		    $post = get_post( $post_id );
             $admin_email = get_option( 'admin_email' );
             $post_author = get_user_by( 'id', $post->post_author );
             $post_link = get_permalink( $post_id );
 		    $commentLabel = __( 'comment', 'ultimate-facebook-comments' );
-		    if ( $parentCommentID ) {
+		    if ( isset( $parentCommentID ) ) {
 		    	$commentLabel = __( 'reply', 'ultimate-facebook-comments' );
             }
             if ( empty( $commentText ) ) {
@@ -153,7 +157,7 @@ if ( ! function_exists('ufc_comment_create_ajax_request_handler') ) {
                         <tr>
                              <td valign="top">
                                 <div style="color: #999;font-size: 12px;margin-top: -4px;margin-bottom: 10px;">
-                                    <strong>'. __( 'URL: ', 'ultimate-facebook-comments' ) . '<a target="_blank" href="'. get_permalink( $post_id ) . '">'. $title .'</a> | <span style="color: #999;margin-top: 4px;">'. __( 'Posted on: ', 'ultimate-facebook-comments' ) . $ftime .'</span></strong>
+                                    <strong>'. __( 'URL: ', 'ultimate-facebook-comments' ) . '<a target="_blank" href="'. $post_link . '">'. $title .'</a> | <span style="color: #999;margin-top: 4px;">'. __( 'Posted on: ', 'ultimate-facebook-comments' ) . $ftime .'</span></strong>
                                 </div>
                             </td>
                         </tr>
@@ -165,7 +169,7 @@ if ( ! function_exists('ufc_comment_create_ajax_request_handler') ) {
                         <tr>
                             <td valign="top">
                                 <div style="font-size:12px;margin-bottom: 5px;">
-                                    <a style="padding: 8px 15px;width: 200px;font-weight: bold;color:#FFFFFF;background: #1E73BE;border: 1px solid #1E73BE;text-align: center;text-decoration: none;border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px" href="'. get_permalink( $post_id ) .'">'. __( 'Reply', 'ultimate-facebook-comments' ) .'</a>
+                                    <a style="padding: 8px 15px;width: 200px;font-weight: bold;color:#FFFFFF;background: #1E73BE;border: 1px solid #1E73BE;text-align: center;text-decoration: none;border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px" href="'. $post_link .'">'. __( 'Reply', 'ultimate-facebook-comments' ) .'</a>
                                 </div>
                             </td>
                         </tr>
@@ -189,18 +193,20 @@ if ( ! function_exists('ufc_comment_remove_ajax_request_handler') ) {
 
 	function ufc_comment_remove_ajax_request_handler()  {
 
-        if ( ! $data ) {
-			$data = $_POST;
-		}
 		// read ajax packet
-        $post_id = $data['postID'];
-        $posturl = get_permalink( $post_id );
+        $post_id = $_POST['postID'];
+        $options = get_option( 'ufc_plugin_global_options' );
         $object_id = get_post_meta( $post_id, '_post_fb_comment_object_id', true );
         $count = get_post_meta( $post_id, '_post_fb_comment_count', true );
-        // Generate the URL
-        $url = 'https://graph.facebook.com/' . $posturl;
+        $access_token = $options['ufc_facebook_comments_app_id'].'|'.$options['ufc_facebook_comments_app_secret'];
+        
         // Make API request
-        $response = wp_remote_get( esc_url_raw( $url ), array( 'httpversion' => '1.1' ) );
+        $response = wp_remote_get( add_query_arg( array( 
+			'id' => urlencode( get_permalink( $post_id ) ),
+			'access_token' => $access_token,
+			'fields' => 'engagement,og_object'
+        ), 'https://graph.facebook.com/v2.11/' ), array( 'httpversion' => '1.1' ) );
+        
         // Check the response code
 	    $response_code = wp_remote_retrieve_response_code( $response ); // log this for API issues
         // Bail out early if there are any errors.
@@ -211,20 +217,20 @@ if ( ! function_exists('ufc_comment_remove_ajax_request_handler') ) {
         $response_body = wp_remote_retrieve_body( $response );
         // Return the json decoded content.
         $data = json_decode( $response_body );
+        
         if( !empty( $data ) ) {
-            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_object_id' ) || $object_id == 'null' ) {
+            if ( $object_id == '' || $object_id == 'null' || $object_id == 0 ) {
                 if ( isset( $data->og_object->id ) ) {
                     update_post_meta( $post_id, '_post_fb_comment_object_id', $data->og_object->id );
                 } else {
                     update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
                 }
             }
-
-            if ( isset( $data->share->comment_count ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_count', $data->share->comment_count );
-                update_post_meta( $post_id, 'ufc_comment_count', $data->share->comment_count );
+            if ( isset( $data->engagement->comment_plugin_count ) ) {
+                update_post_meta( $post_id, '_post_fb_comment_count', $data->engagement->comment_plugin_count );
+                update_post_meta( $post_id, 'ufc_comment_count', $data->engagement->comment_plugin_count );
             } else {
-                if ( metadata_exists( 'post', $post_id, '_post_fb_comment_count' ) ) {
+                if ( $count != '' ) {
                     update_post_meta( $post_id, '_post_fb_comment_count', $count );
                     update_post_meta( $post_id, 'ufc_comment_count', $count );
                 } else {
@@ -233,18 +239,18 @@ if ( ! function_exists('ufc_comment_remove_ajax_request_handler') ) {
                 }
             }
         } else {
-            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_object_id' ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
-            } else {
+            if ( $object_id != '' ) {
                 update_post_meta( $post_id, '_post_fb_comment_object_id', $object_id );
+            } else {
+                update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
             }
 
-            if ( ! metadata_exists( 'post', $post_id, '_post_fb_comment_count' ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_count', 0 );
-                update_post_meta( $post_id, 'ufc_comment_count', 0 );
-            } else {
+            if ( $count != '' ) {
                 update_post_meta( $post_id, '_post_fb_comment_count', $count );
                 update_post_meta( $post_id, 'ufc_comment_count', $count );
+            } else {
+                update_post_meta( $post_id, '_post_fb_comment_count', 0 );
+                update_post_meta( $post_id, 'ufc_comment_count', 0 );
             }
         }
 	}

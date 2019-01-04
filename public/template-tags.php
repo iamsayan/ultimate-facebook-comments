@@ -32,9 +32,15 @@ function get_fb_comment_count() {
     elseif ( $count > 1 ) {
         $comments .= __( ' Comments', 'ultimate-facebook-comments' );
     }
-    return '<a href="' . $url . '#' . $options['ufc_comment_area_id'] . '" title="' . __( 'Comments for ', 'ultimate-facebook-comments' ) . $post->post_title . '" class="' . apply_filters( 'ufc_comment_count_css_class', 'comments-link' ) . '">' . $comments . '</a>';
+    return '<a href="' . $url . '#' . $options['ufc_comment_area_id'] . '" itemprop="commentCount" title="' . __( 'Comments for ', 'ultimate-facebook-comments' ) . $post->post_title . '" class="' . apply_filters( 'ufc_comment_count_css_class', 'comments-link' ) . '">' . $comments . '</a>';
 }
 
 function fb_comment_count() {
     echo get_fb_comment_count();
 }
+
+function ufc_load_fb_comments_count_shortcode() {
+    fb_comment_count();
+}
+
+add_shortcode( 'ufc-fbc-count', 'ufc_load_fb_comments_count_shortcode' );
