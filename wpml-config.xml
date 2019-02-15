@@ -1,0 +1,12 @@
+<wpml-config>
+    <admin-texts>
+        <key name="ufc_plugin_global_options">
+            <key name="ufc_loading_button_text" />
+            <key name="ufc_fb_comment_msg" />
+            <key name="ufc_fb_comment_consent_notice_title" />
+            <key name="ufc_fb_comment_consent_notice_msg" />
+            <key name="ufc_fb_comment_user_agreement_btn" />
+            <key name="ufc_fb_comment_user_agreement_decline_btn" />
+        </key>
+    </admin-texts>   
+</wpml-config>

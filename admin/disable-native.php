@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate WordPress Comments
+ * @package    Ultimate Facebook Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -96,7 +96,8 @@ if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_
     function ufc_disable_comments_admin_menu_redirect() {
         global $pagenow;
         if ( $pagenow === 'edit-comments.php'|| $pagenow === 'options-discussion.php' ) {
-            wp_safe_redirect(admin_url()); exit;
+            wp_safe_redirect( admin_url() );
+            exit;
         }
     }
     

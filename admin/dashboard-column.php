@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate WordPress Comments
+ * @package    Ultimate Facebook Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -11,14 +11,15 @@
 
 function ufc_last_modified_info_on_column( $column, $post_id ) {
         
-    global $post;
+    $post = get_post( $post_id );
+
     switch ( $column ) {
         case 'fb-comments':
             $options = get_option('ufc_plugin_global_options');
             $count = get_post_meta( $post->ID, '_post_fb_comment_count', true );
             $object_id = get_post_meta( $post->ID, '_post_fb_comment_object_id', true );
             
-            if ( $object_id == 'null' ) {
+            if ( $object_id == '' || $object_id == 'null' || $object_id == 0 ) {
                 $comment_url = 'https://developers.facebook.com/tools/comments/' . $options['ufc_facebook_comments_app_id'] . '/pending/descending/';
             } else {
                 $comment_url = 'https://developers.facebook.com/tools/comments/url/' . $object_id . '/pending/descending/';
@@ -41,14 +42,13 @@ function ufc_last_modified_info_on_column( $column, $post_id ) {
             $p_meta = get_post_meta( $post->ID, '_ufc_disable', true );
             
             if ( $options['ufc_fb_comment_auto_display'] == 'after_content' && $p_meta != 'yes' ) {
-                echo '<span class="ufc-enable dashicons dashicons-yes" style="color:#3cb371" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
+                echo '<span class="ufc-enable dashicons dashicons-yes" style="color:#3cb371;" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '"></span>';
             }
             elseif ( has_shortcode( $post->post_content, 'ufc-fb-comments') || ( post_type_supports( get_post_type( $post->ID ), 'comments' ) && comments_open( $post->ID ) ) ) {
-                echo '<span class="ufc-disable dashicons dashicons-yes" style="color:#3cb371" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
-                //echo $refresh;
+                echo '<span class="ufc-disable dashicons dashicons-yes" style="color:#3cb371;" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '"></span>';
             }
             else {
-                echo '<span class="ufc-disable dashicons dashicons-no" style="color:#e14d43;" title="' . esc_attr__( 'Disabled', 'ultimate-facebook-comments' ) . '" style="font-size:14px;"></span>';
+                echo '<span class="ufc-disable dashicons dashicons-no" style="color:#e14d43;" title="' . esc_attr__( 'Disabled', 'ultimate-facebook-comments' ) . '"></span>';
             }
             break;
         // end all case breaks
@@ -66,14 +66,13 @@ function ufc_post_columns_display( $columns ) {
 }
 
 function ufc_post_admin_actions() {
-
     $options = get_option('ufc_plugin_global_options');
 
     if( isset($options['ufc_enable_on_post_types']) ) {
         $post_types = $options['ufc_enable_on_post_types'];
         foreach ( $post_types as $ptc ) {
             add_filter( "manage_{$ptc}_posts_columns", "ufc_post_columns_display", 10, 1 );
-            add_action( "manage_{$ptc}_posts_custom_column", "ufc_last_modified_info_on_column", 10, 2);
+            add_action( "manage_{$ptc}_posts_custom_column", "ufc_last_modified_info_on_column", 10, 2 );
         }
     }
 }

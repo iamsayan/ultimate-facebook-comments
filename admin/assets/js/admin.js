@@ -163,20 +163,6 @@ jQuery(document).ready(function ($) {
         btn.attr('href', btn.data('link') + $(this).val());
     });
     $(".coffee-amt").trigger('change');
-
-    $('#fbc-notice').change(function () {
-        if ($('#fbc-notice').is(':checked')) {
-            $('.fbc-notice-title').show();
-            $('.fbc-notice-msg').show();
-            $('.fbc-notice-btn').show();
-        }
-        if (!$('#fbc-notice').is(':checked')) {
-            $('.fbc-notice-title').hide();
-            $('.fbc-notice-msg').hide();
-            $('.fbc-notice-btn').hide();
-        }
-    });
-    $('#fbc-notice').trigger('change');
  
     $('#fb-comments-display').change(function() {
         var selectize = $select[0].selectize;

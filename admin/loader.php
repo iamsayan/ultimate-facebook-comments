@@ -3,8 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @category   HTML
- * @package    Ultimate WordPress Comments
+ * @package    Ultimate Facebook Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -17,8 +16,7 @@ require_once plugin_dir_path( __FILE__ ) . 'settings/tools.php';
 // add settings page
 add_action( 'admin_init', 'ufc_plugin_register_settings' );
 
-function ufc_show_page() { 
-    $options = get_option('ufc_plugin_global_options');
+function ufc_show_page() {
     require_once plugin_dir_path( __FILE__ ) . 'settings/settings-page.php';
 }
 

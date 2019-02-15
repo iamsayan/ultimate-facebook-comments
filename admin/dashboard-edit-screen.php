@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate WordPress Comments
+ * @package    Ultimate Facebook Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -19,8 +19,6 @@ $options = get_option('ufc_plugin_global_options');
 
 function ufc_add_meta_boxes( $post ) {
 
-    // get plugin options
-    $options = get_option('ufc_plugin_global_settings');
     // If user can't publish posts, then get out
 	if ( ! current_user_can( 'publish_posts' ) ) return;
 
@@ -80,8 +78,8 @@ if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comm
 }
 
 function ufc_add_item_to_quick_edit( $column_name, $post_type ) {
-
 	$options = get_option('ufc_plugin_global_settings');
+
 	global $post;
 
 	if( $post->post_status == 'auto-draft' ) {
@@ -145,7 +143,7 @@ function ufc_save_post_edit_data( $post_id ) {
 	if ( ! current_user_can( 'edit_post', $post_id ) ) {
 		return;
 	}
-	// store custom fields values
+
 	// disablecomment string
 	if( isset($_POST['disablefbchidden'] ) && $_POST['disablefbchidden'] == 1 ) {
         update_post_meta( $post_id, '_ufc_disable', 'yes' );

@@ -1,9 +1,9 @@
 === Ultimate Facebook Comments ===
 Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
-Requires at least: 3.5
-Tested up to: 5.0
-Stable tag: 1.3.4
+Requires at least: 4.0
+Tested up to: 5.1
+Stable tag: 1.3.6
 Requires PHP: 5.4
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
@@ -58,7 +58,7 @@ If you’re running a blog of any kind, you’re probably looking to build an on
 
 #### Compatibility
 
-This plugin is fully compatible with WordPress Version 3.5 and beyond and also compatible with any WordPress theme.
+This plugin is fully compatible with WordPress Version 4.0 and beyond and also compatible with any WordPress theme.
 
 #### Support/Contribute
 
@@ -131,11 +131,32 @@ Displays/echos the facebook comments count:
 
 == Screenshots ==
 
-1. Settings
-2. Facebook comment box
-3. Page loading speed with lazy load
+1. Facebook comment box
+2. Page loading speed with lazy load
+3. Main Settings
+4. Plugin Settings
+5. Display Settings
+6. Title Settings
+7. GDPR Notice
+8. Notification
+9. Others Settings
 
 == Changelog ==
+
+= 1.3.6 =
+Release Date: February 15, 2019
+
+* Improved: Added a security check for ajax requests.
+* Improved: Appsecret Proof is being used to fetch info from Facebook Graph API.
+* Tweak: Now Reply button directly redirects to Comments Area.
+* Fixed: The editor height of 'Notification Email Message'.
+* Added: WPML Compatibility.
+
+= 1.3.5 =
+Release Date: February 12, 2019
+
+* Fixed: All minor bugs has been fixed.
+* Fixed: Some incorrectly translated strings.
 
 = 1.3.4 =
 Release Date: January 4, 2019

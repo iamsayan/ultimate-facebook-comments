@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate WordPress Comments
+ * @package    Ultimate Facebook Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -19,7 +19,7 @@ function ufc_plugin_register_settings() {
         
     add_settings_section('ufc_plugin_settings_option', __( 'Settings', 'wp-last-modified-info' ) . '<p><hr></p>', null, 'ufc_plugin_settings_section');   
         add_settings_field('ufc_no_of_fb_comments', __( 'Number of Comments to Display:', 'ultimate-facebook-comments' ), 'ufc_no_of_fb_comments_display', 'ufc_plugin_settings_section', 'ufc_plugin_settings_option', array( 'label_for' => 'fbc-no' ));  
-        add_settings_field('ufc_fb_comment_sorting', __( 'Show Facebook Comments by:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_sorting_display', 'ufc_plugin_settings_section' , 'ufc_plugin_settings_option', array( 'label_for' => 'fb-comments-sort' ));
+        add_settings_field('ufc_fb_comment_sorting', __( 'Sort Facebook Comments by:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_sorting_display', 'ufc_plugin_settings_section' , 'ufc_plugin_settings_option', array( 'label_for' => 'fb-comments-sort' ));
         add_settings_field('ufc_fb_comment_language', __( 'Facebook Comments Language:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_language_display', 'ufc_plugin_settings_section' , 'ufc_plugin_settings_option', array( 'label_for' => 'fb-comments-lang' ));
         add_settings_field('ufc_fb_comments_theme', __( 'Comments Box Color Scheme:', 'ultimate-facebook-comments' ), 'ufc_fb_comments_theme_display', 'ufc_plugin_settings_section' , 'ufc_plugin_settings_option', array( 'label_for' => 'fb-comments-theme' ));
         add_settings_field('ufc_fb_comment_box_width', __( 'Comments Box Width (px):', 'ultimate-facebook-comments' ), 'ufc_fb_comment_box_width_display', 'ufc_plugin_settings_section' , 'ufc_plugin_settings_option', array( 'label_for' => 'fb-comments-width' ));
@@ -38,9 +38,9 @@ function ufc_plugin_register_settings() {
         
     add_settings_section('ufc_plugin_gdpr_option', __( 'GDPR Notice', 'wp-last-modified-info' ) . '<p><hr></p>', null, 'ufc_plugin_gdpr_section');    
         add_settings_field('ufc_fb_comment_consent_notice_cb', __( 'User Agreement Prior to Comment?', 'ultimate-facebook-comments' ), 'ufc_fb_comment_consent_notice_cb_display', 'ufc_plugin_gdpr_section' , 'ufc_plugin_gdpr_option', array( 'label_for' => 'fbc-notice' ));
-        add_settings_field('ufc_fb_comment_consent_notice_title', __( 'User Agreement Title:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_consent_notice_title_display', 'ufc_plugin_gdpr_section', 'ufc_plugin_gdpr_option', array( 'label_for' => 'fbc-notice-title', 'class' => 'fbc-notice-title' ));  
-        add_settings_field('ufc_fb_comment_consent_notice_msg', __( 'User Agreement Description:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_consent_notice_msg_display', 'ufc_plugin_gdpr_section', 'ufc_plugin_gdpr_option', array( 'label_for' => 'fbc-notice-msg', 'class' => 'fbc-notice-msg' ));  
-        add_settings_field('ufc_fb_comment_user_agreement_btn', __( 'User Agreement Button - Accept:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_user_agreement_btn_display', 'ufc_plugin_gdpr_section', 'ufc_plugin_gdpr_option', array( 'label_for' => 'fbc-notice-btn-agree', 'class' => 'fbc-notice-btn' ));  
+        add_settings_field('ufc_fb_comment_consent_notice_title', __( 'User Agreement Title:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_consent_notice_title_display', 'ufc_plugin_gdpr_section', 'ufc_plugin_gdpr_option', array( 'label_for' => 'fbc-notice-title' ));
+        add_settings_field('ufc_fb_comment_consent_notice_msg', __( 'User Agreement Description:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_consent_notice_msg_display', 'ufc_plugin_gdpr_section', 'ufc_plugin_gdpr_option', array( 'label_for' => 'fbc-notice-msg' ));
+        add_settings_field('ufc_fb_comment_user_agreement_btn', __( 'User Agreement Button - Accept:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_user_agreement_btn_display', 'ufc_plugin_gdpr_section', 'ufc_plugin_gdpr_option', array( 'label_for' => 'fbc-notice-btn-agree' ));
         
     add_settings_section('ufc_plugin_notification_option', __( 'Email Notification', 'wp-last-modified-info' ) . '<p><hr></p>', null, 'ufc_plugin_notification_section');
         add_settings_field('ufc_enable_fbc_notification_cb', __( 'Enable Email Notification?', 'ultimate-facebook-comments' ), 'ufc_enable_fbc_notification_cb_display', 'ufc_plugin_notification_section', 'ufc_plugin_notification_option', array( 'label_for' => 'fbc-notienable' ));  

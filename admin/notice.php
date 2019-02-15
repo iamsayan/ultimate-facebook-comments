@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate WordPress Comments
+ * @package    Ultimate Facebook Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -25,7 +25,7 @@ function ufc_rating_admin_notice() {
     $no_thanks = wp_nonce_url( add_query_arg( 'ufc_rating_notice_action', 'no_thanks_rating_true' ), 'no_thanks_rating_true' ); ?>
     
     <div class="notice notice-success">
-        <p><?php _e( 'Hey, I noticed you\'ve been using Ultimate Facebook Comments for more than 1 week – that’s awesome! Could you please do me a BIG favor and give it a <strong>5-star</strong> rating on WordPress? Just to help us spread the word and boost my motivation.', 'ultimate-facebook-comments' ); ?><p>
+        <p><?php _e( 'Hey, I noticed you\'ve been using Ultimate Facebook Comments for more than 1 week – that’s awesome! Could you please do me a BIG favor and give it a <strong>5-star</strong> rating on WordPress? Just to help me spread the word and boost my motivation.', 'ultimate-facebook-comments' ); ?><p>
         <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?filter=5#new-post" target="_blank" class="button button-secondary"><?php _e( 'Ok, you deserve it', 'ultimate-facebook-comments' ); ?></a>&nbsp;
         <a href="<?php echo $dismiss; ?>" class="already-did"><strong><?php _e( 'I already did', 'ultimate-facebook-comments' ); ?></strong></a>&nbsp;<strong>|</strong>
         <a href="<?php echo $no_thanks; ?>" class="later"><strong><?php _e( 'Nope&#44; maybe later', 'ultimate-facebook-comments' ); ?></strong></a>

@@ -1,6 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.3.6
+Release Date: February 15, 2019
+
+* Improved: Added a security check for ajax requests.
+* Improved: Appsecret Proof is being used to fetch info from Facebook Graph API.
+* Tweak: Now Reply button directly redirects to Comments Area.
+* Fixed: The editor height of 'Notification Email Message'.
+* Added: WPML Compatibility.
+
+## 1.3.5
+Release Date: February 12, 2019
+
+* Fixed: All minor bugs has been fixed.
+* Fixed: Some incorrectly translated strings.
+
 ## 1.3.4
 Release Date: January 4, 2019
 

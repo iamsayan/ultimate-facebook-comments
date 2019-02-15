@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate WordPress Comments
+ * @package    Ultimate Facebook Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -13,9 +13,14 @@ function ufc_custom_toolbar_link( $wp_admin_bar ) {
 
     $options = get_option('ufc_plugin_global_options');
 
-    if ( !is_user_logged_in() ) return;
+    // If user not logged in, then get out!
+    if ( ! is_user_logged_in() ) return;
 
-    if ( !current_user_can( 'moderate_comments' ) ) return;
+    // If it's archive pages, then get out!
+    if( is_home() || is_author() || is_category() || is_tag() || is_404() ) return;
+
+    // If user can not manage comments, then get out!
+    if ( ! current_user_can( 'moderate_comments' ) ) return;
 
     if ( empty($options['ufc_facebook_comments_app_id']) ) return;
 

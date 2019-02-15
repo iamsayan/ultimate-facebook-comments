@@ -3,7 +3,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @package    Ultimate WordPress Comments
+ * @package    Ultimate Facebook Comments
  * @subpackage Public
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -12,7 +12,11 @@
 function ufc_load_fb_comments_shortcode( $atts ) {
 
     global $post;
-    
+
+    if( !is_object( $post ) ) {
+        return;
+    }
+
     $options = get_option( 'ufc_plugin_global_options' );
     if( $options['ufc_load_fb_comment_url'] == 'default' ) {
         $url = get_permalink( $post->ID );
@@ -24,10 +28,12 @@ function ufc_load_fb_comments_shortcode( $atts ) {
     } elseif( $options['ufc_load_fb_comment_url'] == 'custom_url' ) {
         $url = !empty($options['ufc_load_fb_comment_custom_url']) ? $options['ufc_load_fb_comment_custom_url'] : get_permalink( $post->ID );
     }
+
+    $url = apply_filters( 'ufc_facebook_comments_load_target_url', $url, $post );
+
     $tag = isset($options['ufc_fb_comment_title_html_tag']) ? $options['ufc_fb_comment_title_html_tag'] : 'div';
     $no = !empty($options['ufc_no_of_fb_comments']) ? $options['ufc_no_of_fb_comments'] : '10';
     $width = !empty($options['ufc_fb_comment_box_width']) ? $options['ufc_fb_comment_box_width'] : '100%';
-    $url = apply_filters( 'ufc_facebook_comments_load_target_url', $url, $post );
 
     $credit = '';
     if( isset( $options['ufc_enable_promo_cb'] ) ) {
@@ -87,7 +93,5 @@ function ufc_load_fb_comments_shortcode( $atts ) {
 }
 
 add_shortcode( 'ufc-fb-comments', 'ufc_load_fb_comments_shortcode' );
-add_filter( 'widget_text', 'do_shortcode' );
-add_filter( 'widget_text', 'shortcode_unautop');
 
 ?>

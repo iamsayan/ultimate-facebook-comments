@@ -3,7 +3,7 @@
 /**
  * Plugin tools options
  *
- * @package   Ultimate WordPress Comments
+ * @package   Ultimate Facebook Comments
  * @author    Sayan Datta
  * @license   http://www.gnu.org/licenses/gpl.html
  */
@@ -31,6 +31,7 @@ function ufc_process_settings_export() {
 	echo json_encode( $settings );
 	exit;
 }
+
 add_action( 'admin_init', 'ufc_process_settings_export' );
 
 /**
@@ -44,7 +45,7 @@ function ufc_process_settings_import() {
 	if( ! current_user_can( 'manage_options' ) )
 		return;
     $extension = explode( '.', $_FILES['import_file']['name'] );
-    $file_extension = end($extension);
+    $file_extension = end( $extension );
 	if( $file_extension != 'json' ) {
 		wp_die( __( '<strong>Settings import failed:</strong> Please upload a valid .json file to import settings in this website.', 'ultimate-facebook-comments' ) );
 	}
@@ -60,9 +61,11 @@ function ufc_process_settings_import() {
         echo '<div class="notice notice-success is-dismissible">
                  <p><strong>' . __( 'Success! Plugin Settings has been imported successfully.', 'ultimate-facebook-comments' ) . '</strong></p>
              </div>';
-    }
+	}
+	
     add_action('admin_notices', 'ufc_import_success_notice'); 
 }
+
 add_action( 'admin_init', 'ufc_process_settings_import' );
 
 /**
@@ -82,10 +85,11 @@ function ufc_remove_plugin_settings() {
         echo '<div class="notice notice-success is-dismissible">
                  <p><strong>' . __( 'Success! Plugin Settings reset successfully.', 'ultimate-facebook-comments' ) . '</strong></p>
              </div>';
-    }
+	}
+	
     add_action('admin_notices', 'ufc_settings_reset_success_notice'); 
 }
-add_action( 'admin_init', 'ufc_remove_plugin_settings' );
 
+add_action( 'admin_init', 'ufc_remove_plugin_settings' );
 
 ?>

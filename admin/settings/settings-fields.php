@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate WordPress Comments
+ * @package    Ultimate Facebook Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -250,7 +250,7 @@ function ufc_fbc_area_bgcolor_display() {
 
 function ufc_fb_comment_msg_display() {
     $options = get_option( 'ufc_plugin_global_options' );
-    ?><input id="fb-comments-msg" name="ufc_plugin_global_options[ufc_fb_comment_msg]" type="text" size="35" style="width:35%" placeholder="<?php _e( 'Leave a Reply (leave it blank for no display)', 'ultimate-facebook-comments' ); ?>" value="<?php if (isset($options['ufc_fb_comment_msg'])) { echo $options['ufc_fb_comment_msg']; } ?>" />
+    ?><input id="fb-comments-msg" name="ufc_plugin_global_options[ufc_fb_comment_msg]" type="text" size="35" style="width:35%" placeholder="<?php _e( 'Leave a Reply (leave it blank for no title)', 'ultimate-facebook-comments' ); ?>" value="<?php if (isset($options['ufc_fb_comment_msg'])) { echo $options['ufc_fb_comment_msg']; } ?>" />
     <span id="fb-comments-msg-align-show">&nbsp;&nbsp;&nbsp;<label for="fb-comments-msg-align"><strong><?php _e( 'Align:', 'ultimate-facebook-comments' ); ?></strong></label>&nbsp;
     
     <?php 
@@ -262,7 +262,7 @@ function ufc_fb_comment_msg_display() {
         'center' => __( 'Center', 'ultimate-facebook-comments' ),
         'right'  => __( 'Right', 'ultimate-facebook-comments' )
     );
-    echo '<select id="fb-comments-msg-align" name="ufc_plugin_global_options[ufc_fb_comment_msg_align]" style="width:12%;">';
+    echo '<select id="fb-comments-msg-align" name="ufc_plugin_global_options[ufc_fb_comment_msg_align]" style="width:12%;margin-top:-2px;">';
         foreach( $items as $item => $label ) {
         $selected = ($options['ufc_fb_comment_msg_align'] == $item) ? ' selected="selected"' : '';
         echo '<option value="' . $item . '"' . $selected . '>' . $label . '</option>';
@@ -286,7 +286,7 @@ function ufc_fb_comment_msg_display() {
         'span' => 'span',
         'div'  => 'div'
     );
-    echo '<select id="fb-comments-title-html-tag" name="ufc_plugin_global_options[ufc_fb_comment_title_html_tag]" style="width:10%;">';
+    echo '<select id="fb-comments-title-html-tag" name="ufc_plugin_global_options[ufc_fb_comment_title_html_tag]" style="width:10%;margin-top:-2px;">';
         foreach( $items as $item => $label ) {
         $selected = ($options['ufc_fb_comment_title_html_tag'] == $item) ? ' selected="selected"' : '';
         echo '<option value="' . $item . '"' . $selected . '>' . $label . '</option>';
@@ -309,7 +309,6 @@ function ufc_custom_css_comment_display() {
 ###############################################################
 #########################    Notice    ########################
 ###############################################################
-
 
 function ufc_fb_comment_consent_notice_cb_display() {
     $options = get_option( 'ufc_plugin_global_options' );
@@ -393,8 +392,8 @@ function ufc_fbcn_template_display() {
         $options['ufc_fbcn_template'] = 'default';
     }
     $items = array(
-        'default'      => __( 'Default', 'ultimate-facebook-comments' ),
-        'template_one' => __( 'Template 1', 'ultimate-facebook-comments' )
+        'default'      => __( 'Plain Text Format', 'ultimate-facebook-comments' ),
+        'template_one' => __( 'HTML Format', 'ultimate-facebook-comments' )
     );
     echo '<select id="fbcn-template" name="ufc_plugin_global_options[ufc_fbcn_template]" style="width:25%;">';
     foreach( $items as $item => $label ) {
@@ -428,13 +427,13 @@ function ufc_enable_fbcn_author_cb_display() {
 function ufc_fbcn_email_subject_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     if( empty($options['ufc_fbcn_email_subject']) ) {
-        $options['ufc_fbcn_email_subject'] = 'New Comment on your Blog: [site_name]';
+        $options['ufc_fbcn_email_subject'] = 'New Comment on your Blog: &#37;&#37;site_name&#37;&#37;';
     }
     $emailSubject = stripslashes( strip_tags($options['ufc_fbcn_email_subject'] ) );  
     ?>  <input id="fbcn-emailsub" name="ufc_plugin_global_options[ufc_fbcn_email_subject]" type="text" size="100" style="width:100%;" required placeholder="New comment on your blog." value="<?php if (isset($options['ufc_fbcn_email_subject'])) { echo $emailSubject; } ?>" />
         <br>
     <?php printf(
-		'<small><i>%s</i><strong>[author_name] [post_title] [post_link] [site_name] [site_url] [comment_text] [comment_type]</strong><small>',
+		'<small><i>%s</i><strong>&#37;&#37;author_name&#37;&#37; &#37;&#37;post_title&#37;&#37; &#37;&#37;post_link&#37;&#37; &#37;&#37;site_name&#37;&#37; &#37;&#37;site_url&#37;&#37; &#37;&#37;comment_text&#37;&#37; &#37;&#37;comment_type&#37;&#37;</strong><small>',
 		__( 'You can use these tags into email subject - ', 'ultimate-facebook-comments' )
 	);
 }
@@ -442,19 +441,18 @@ function ufc_fbcn_email_subject_display() {
 function ufc_fbcn_email_message_display() {
     $options = get_option( 'ufc_plugin_global_options' );
     if( empty($options['ufc_fbcn_email_message']) ) {
-        $options['ufc_fbcn_email_message'] = 'A new [comment_type] is published on your blog: [comment_text]';
+        $options['ufc_fbcn_email_message'] = 'A new &#37;&#37;comment_type&#37;&#37; is published on your blog: &#37;&#37;comment_text&#37;&#37;';
     }
     $emailBody = stripslashes( $options['ufc_fbcn_email_message'] );  
     $emailBody = html_entity_decode( $emailBody );
 
     $args = array(
         'textarea_name'   => 'ufc_plugin_global_options[ufc_fbcn_email_message]',
-        'textarea_rows'   => '10',
-        'editor_height'   => '250',
+        'textarea_rows'   => '12',
     );
     wp_editor( $emailBody, 'fbcn-emailmsg', $args );
     printf(
-		'<small><i>%1$s</i><strong>[admin_email] [author_name] [post_title] [post_link] [site_name] [site_url] [comment_text] [comment_type] [comment_time]</strong><i>. %2$s</i><small>',
+		'<small><i>%1$s</i><strong>&#37;&#37;admin_email&#37;&#37; &#37;&#37;author_name&#37;&#37; &#37;&#37;post_title&#37;&#37; &#37;&#37;post_link&#37;&#37; &#37;&#37;site_name&#37;&#37; &#37;&#37;site_url&#37;&#37; &#37;&#37;comment_text&#37;&#37; &#37;&#37;comment_type&#37;&#37; &#37;&#37;comment_time&#37;&#37;</strong><i>. %2$s</i><small>',
 		__( 'You can use these tags into email body - ', 'ultimate-facebook-comments' ), __( 'Email body supports HTML.', 'ultimate-facebook-comments' )
 	);
 }
