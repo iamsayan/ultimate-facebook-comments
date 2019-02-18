@@ -29,7 +29,7 @@ if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comm
 	if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'after_content') ) {
 		if( isset($options['ufc_enable_on_post_types']) ) {
             $post_types = $options['ufc_enable_on_post_types'];
-            foreach($post_types as $item) {
+            foreach( $post_types as $item ) {
                 add_action( "add_meta_boxes_{$item}", "ufc_add_meta_boxes" );
 			}
 		}
@@ -45,7 +45,7 @@ function ufc_meta_box_callback( $post ) {
     // get plugin options
     $options = get_option('ufc_plugin_global_settings');
     // retrive post meta value 
-	$checkboxMeta = get_post_meta( get_the_ID(), '_ufc_disable', true );
+	$checkboxMeta = get_post_meta( $post->ID, '_ufc_disable', true );
     // make sure the form request comes from WordPress
     wp_nonce_field( 'ufc_edit_build_nonce', 'ufc_edit_nonce' ); ?>
         
@@ -78,23 +78,22 @@ if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comm
 }
 
 function ufc_add_item_to_quick_edit( $column_name, $post_type ) {
-	$options = get_option('ufc_plugin_global_settings');
+	
+	if ( 'fb-comments-status' !== $column_name ) {
+		return;
+	}
 
 	global $post;
+
+    if( ! is_object( $post ) ) {
+		return;
+	}
 
 	if( $post->post_status == 'auto-draft' ) {
 		return;
 	}
 
-	if ( 'fb-comments-status' !== $column_name ) {
-		return;
-	}
-	
-	$hide_fbc = get_post_meta( get_the_ID(), '_ufc_disable', true );
-
-	if ( did_action( 'quick_edit_custom_box' ) > 1 ) {
-		return;
-	}
+	$hide_fbc = get_post_meta( $post->ID, '_ufc_disable', true );
 
 	wp_nonce_field( 'ufc_edit_build_nonce', 'ufc_edit_nonce' ); ?>
 

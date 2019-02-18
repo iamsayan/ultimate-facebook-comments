@@ -3,7 +3,7 @@
  * Plugin Name: Ultimate Facebook Comments
  * Plugin URI: https://iamsayan.github.io/ultimate-facebook-comments/
  * Description: Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
- * Version: 1.3.6
+ * Version: 1.3.7
  * Author: Sayan Datta
  * Author URI: https://www.sayandatta.com
  * License: GPLv3
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'UFC_PLUGIN_VERSION', '1.3.6' );
+define( 'UFC_PLUGIN_VERSION', '1.3.7' );
 
 // debug scripts
 //define ( 'UFC_PLUGIN_ENABLE_DEBUG', 'true' );
@@ -104,6 +104,10 @@ add_action( 'admin_enqueue_scripts', 'ufc_custom_admin_styles_scripts' );
 
 function ufc_frontend_enqueue_scripts() {
     $options = get_option('ufc_plugin_global_options');
+
+    if( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+        return;
+    }
 
     $ver = UFC_PLUGIN_VERSION;
     if( defined( 'UFC_PLUGIN_ENABLE_DEBUG' ) ) {

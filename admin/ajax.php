@@ -156,7 +156,7 @@ if ( ! function_exists('ufc_comment_create_ajax_request_handler') ) {
         $subject = $emailSubject;
         $body = $emailBody;
         if ( isset($options['ufc_fbcn_template']) && ($options['ufc_fbcn_template'] == 'template_one') ) {
-            $body = '<div style="padding: 18px;font-family: \'Open Sans\', \'Helvetica Neue\', Helvetica, sans-serif;background-color: #E4F2FD;border: 1px solid #C6D9E9;line-height: 1.6em;" class="post">
+            $body = '<div style="padding: 18px;font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;background-color: #E4F2FD;border: 1px solid #C6D9E9;line-height: 1.6em;" class="post">
                 <table style="width: 100%;" class="post-details">
                     <tr>
                         <td valign="top">

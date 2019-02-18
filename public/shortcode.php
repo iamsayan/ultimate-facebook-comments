@@ -13,8 +13,12 @@ function ufc_load_fb_comments_shortcode( $atts ) {
 
     global $post;
 
-    if( !is_object( $post ) ) {
+    if( ! is_object( $post ) ) {
         return;
+    }
+
+    if( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+        return $content;
     }
 
     $options = get_option( 'ufc_plugin_global_options' );

@@ -133,6 +133,25 @@ function ufc_load_fb_comment_url_display() {
     <?php
 }
 
+function ufc_comment_load_compatibility_mode_display() {
+    $options = get_option( 'ufc_plugin_global_options' );
+    if( !isset($options['ufc_comment_load_compatibility_mode']) ) {
+        $options['ufc_comment_load_compatibility_mode'] = 'default';
+    }
+    $items = array(
+        'default'  => __( 'Normal Mode (Default)', 'ultimate-facebook-comments' ),
+        'enable'   => __( 'Compatibility Mode', 'ultimate-facebook-comments' )
+    );
+    echo '<select id="fbc-compatible" name="ufc_plugin_global_options[ufc_comment_load_compatibility_mode]" style="width:25%;">';
+        foreach( $items as $item => $label ) {
+        $selected = ($options['ufc_comment_load_compatibility_mode'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $label . '</option>';
+    }
+    echo '</select>';
+    ?>&nbsp;&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Select the Facebook SDK Loader Method from here. Compatiblity Mode option is useful, if you are using Facebook Messenger Chat or using any other facebook related plugin which uses Facebook SDK.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
+<?php
+}
+
 ###############################################################
 ########################    Display    ########################
 ###############################################################
@@ -433,26 +452,29 @@ function ufc_fbcn_email_subject_display() {
     ?>  <input id="fbcn-emailsub" name="ufc_plugin_global_options[ufc_fbcn_email_subject]" type="text" size="100" style="width:100%;" required placeholder="New comment on your blog." value="<?php if (isset($options['ufc_fbcn_email_subject'])) { echo $emailSubject; } ?>" />
         <br>
     <?php printf(
-		'<small><i>%s</i><strong>&#37;&#37;author_name&#37;&#37; &#37;&#37;post_title&#37;&#37; &#37;&#37;post_link&#37;&#37; &#37;&#37;site_name&#37;&#37; &#37;&#37;site_url&#37;&#37; &#37;&#37;comment_text&#37;&#37; &#37;&#37;comment_type&#37;&#37;</strong><small>',
+		'<small><i>%s</i><code>&#37;&#37;author_name&#37;&#37;</code> <code>&#37;&#37;post_title&#37;&#37;</code> <code>&#37;&#37;post_link&#37;&#37;</code> <code>&#37;&#37;site_name&#37;&#37;</code> <code>&#37;&#37;site_url&#37;&#37;</code> <code>&#37;&#37;comment_text&#37;&#37;</code> <code>&#37;&#37;comment_type&#37;&#37;</code></strong><small>',
 		__( 'You can use these tags into email subject - ', 'ultimate-facebook-comments' )
 	);
 }
 
 function ufc_fbcn_email_message_display() {
     $options = get_option( 'ufc_plugin_global_options' );
-    if( empty($options['ufc_fbcn_email_message']) ) {
-        $options['ufc_fbcn_email_message'] = 'A new &#37;&#37;comment_type&#37;&#37; is published on your blog: &#37;&#37;comment_text&#37;&#37;';
+    $emailBody = $options['ufc_fbcn_email_message'];
+    if( empty( $emailBody ) ) {
+        $emailBody = 'A new &#37;&#37;comment_type&#37;&#37; is published on your blog: &#37;&#37;comment_text&#37;&#37;';
     }
-    $emailBody = stripslashes( $options['ufc_fbcn_email_message'] );  
-    $emailBody = html_entity_decode( $emailBody );
+    //$emailBody = stripslashes( $emailBody );
+    $emailBody = html_entity_decode( $emailBody, ENT_COMPAT, "UTF-8" );
 
     $args = array(
         'textarea_name'   => 'ufc_plugin_global_options[ufc_fbcn_email_message]',
-        'textarea_rows'   => '12',
+        'textarea_rows'   => '10',
+        'teeny'           => true,
+        'tinymce'         => false,
     );
     wp_editor( $emailBody, 'fbcn-emailmsg', $args );
     printf(
-		'<small><i>%1$s</i><strong>&#37;&#37;admin_email&#37;&#37; &#37;&#37;author_name&#37;&#37; &#37;&#37;post_title&#37;&#37; &#37;&#37;post_link&#37;&#37; &#37;&#37;site_name&#37;&#37; &#37;&#37;site_url&#37;&#37; &#37;&#37;comment_text&#37;&#37; &#37;&#37;comment_type&#37;&#37; &#37;&#37;comment_time&#37;&#37;</strong><i>. %2$s</i><small>',
+		'<small><i>%1$s</i><code>&#37;&#37;admin_email&#37;&#37;</code> <code>&#37;&#37;author_name&#37;&#37;</code> <code>&#37;&#37;post_title&#37;&#37;</code> <code>&#37;&#37;post_link&#37;&#37;</code> <code>&#37;&#37;site_name&#37;&#37;</code> <code>&#37;&#37;site_url&#37;&#37;</code> <code>&#37;&#37;comment_text&#37;&#37;</code> <code>&#37;&#37;comment_type&#37;&#37;</code> <code>&#37;&#37;comment_time&#37;&#37;</code><i>. %2$s</i><small>',
 		__( 'You can use these tags into email body - ', 'ultimate-facebook-comments' ), __( 'Email body supports HTML.', 'ultimate-facebook-comments' )
 	);
 }

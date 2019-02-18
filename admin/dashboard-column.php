@@ -9,7 +9,7 @@
  * @license    http://www.gnu.org/licenses/ GNU General Public License
  */
 
-function ufc_last_modified_info_on_column( $column, $post_id ) {
+function ufc_checkbox_on_column( $column, $post_id ) {
         
     $post = get_post( $post_id );
 
@@ -37,6 +37,7 @@ function ufc_last_modified_info_on_column( $column, $post_id ) {
             <div class="post-fb-com-count-wrapper"><?php echo $comments; ?></div>
             <?php
             break;
+
         case 'fb-comments-status':
             $options = get_option('ufc_plugin_global_options');
             $p_meta = get_post_meta( $post->ID, '_ufc_disable', true );
@@ -62,6 +63,7 @@ function ufc_post_columns_display( $columns ) {
         $columns['fb-comments'] = '<span class="dashicons dashicons-admin-comments" title="Facebook Comments"><span class="screen-reader-text">' . __( 'Facebook Comments', 'ultimate-facebook-comments' ) . '</span></span>';
     }
     $columns['fb-comments-status'] = '<span class="dashicons dashicons-facebook" title="Facebook Comments Status"><span class="screen-reader-text">' . __( 'Facebook Comments Status', 'ultimate-facebook-comments' ) . '</span></span>';
+    
     return $columns;
 }
 
@@ -72,7 +74,7 @@ function ufc_post_admin_actions() {
         $post_types = $options['ufc_enable_on_post_types'];
         foreach ( $post_types as $ptc ) {
             add_filter( "manage_{$ptc}_posts_columns", "ufc_post_columns_display", 10, 1 );
-            add_action( "manage_{$ptc}_posts_custom_column", "ufc_last_modified_info_on_column", 10, 2 );
+            add_action( "manage_{$ptc}_posts_custom_column", "ufc_checkbox_on_column", 10, 2 );
         }
     }
 }

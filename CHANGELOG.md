@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.3.7
+Release Date: February 18, 2019
+
+* Added: Option to switch Facebook SDK loding method.
+* Tweak: Now this plugin automatically disables the output of Facebook Comments in amp pages.
+* Fixed: The wp editor saving issue with 'Notification Email Message'.
+* Fixed: A issue with `quick_edit_custom_box` action hook.
+* Tested with WordPress 5.1.
+
 ## 1.3.6
 Release Date: February 15, 2019
 

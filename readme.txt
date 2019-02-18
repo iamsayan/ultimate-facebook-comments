@@ -3,7 +3,7 @@ Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
 Requires at least: 4.0
 Tested up to: 5.1
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 Requires PHP: 5.4
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
@@ -142,6 +142,15 @@ Displays/echos the facebook comments count:
 9. Others Settings
 
 == Changelog ==
+
+= 1.3.7 =
+Release Date: February 18, 2019
+
+* Added: Option to switch Facebook SDK loding method.
+* Tweak: Now this plugin automatically disables the output of Facebook Comments in amp pages.
+* Fixed: The wp editor saving issue with 'Notification Email Message'.
+* Fixed: A issue with `quick_edit_custom_box` action hook.
+* Tested with WordPress 5.1.
 
 = 1.3.6 =
 Release Date: February 15, 2019
