@@ -20,8 +20,8 @@
             var $post_row = $( '#post-' + $post_id );
 
             // Get the data
-            var $ufc_disable_fbc = !! $( '.column-fb-comments-status .ufc-disable', $post_row ).size();
-            var $ufc_switch_fbc = $( '.column-fb-comments-status .ufc-disable', $post_row ).size();
+            var $ufc_disable_fbc = !! $( '.column-fb-comments .ufc-disable', $post_row ).size();
+            var $ufc_switch_fbc = $( '.column-fb-comments .ufc-disable', $post_row ).size();
 
             // Populate the data.
             $( ':input[name="disablefbcomment"]', $edit_row ).prop('checked', $ufc_disable_fbc );

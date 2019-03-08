@@ -79,7 +79,7 @@ if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comm
 
 function ufc_add_item_to_quick_edit( $column_name, $post_type ) {
 	
-	if ( 'fb-comments-status' !== $column_name ) {
+	if ( 'fb-comments' !== $column_name ) {
 		return;
 	}
 

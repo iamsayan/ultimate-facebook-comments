@@ -178,11 +178,9 @@ jQuery(document).ready(function ($) {
             selectize.removeItem('product');
         }
         if ($('#fb-comments-display').val() == 'disable') {
-            $('.fbc-loading').hide();
             $('.fbc-post-types').hide();
         }
         if ($('#fb-comments-display').val() != 'disable') {
-            $('.fbc-loading').show();
             $('.fbc-post-types').show();
         }
     });

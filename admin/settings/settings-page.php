@@ -45,35 +45,34 @@
     <div id="form_area">
         <div id="main-form">
             <form id="form-container" method="post" action="options.php">
-                <?php if ( function_exists('wp_nonce_field') ) { wp_nonce_field('ultimate-facebook-comments'); } ?>
                 <?php settings_fields('ufc_show_plugin_section'); ?>
                 <div id="show-main"> 
                     <?php do_settings_sections('ufc_plugin_main_section'); ?>
-                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings' ); ?>
+                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', 'submit-main' ); ?>
                 </div>
                 <div style="display:none" id="show-settings">
                     <?php do_settings_sections('ufc_plugin_settings_section'); ?>
-                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings' ); ?>
+                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', 'submit-settings' ); ?>
                 </div>
                 <div style="display:none" id="show-display">
                     <?php do_settings_sections('ufc_plugin_display_section'); ?>
-                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings' ); ?>
+                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', 'submit-display' ); ?>
                 </div>
                 <div style="display:none" id="show-title">
                     <?php do_settings_sections('ufc_plugin_title_section'); ?>
-                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings' ); ?>
+                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', 'submit-title' ); ?>
                 </div>
                 <div style="display:none" id="show-notice">
                     <?php do_settings_sections('ufc_plugin_gdpr_section'); ?>
-                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings' ); ?>
+                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', 'submit-gdpr' ); ?>
                 </div>    
                 <div style="display:none" id="show-notification">
                     <?php do_settings_sections('ufc_plugin_notification_section'); ?>
-                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings' ); ?>
+                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', 'submit-noti' ); ?>
                 </div>
                 <div style="display:none" id="show-others">
                     <?php do_settings_sections('ufc_plugin_other_section'); ?>
-                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings' ); ?>
+                    <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', 'submit-others' ); ?>
                 </div>
                 <div id="progressMessage" class="progressModal" style="display:none;"><?php _e( 'Please wait...', 'ultimate-facebook-comments' ); ?></div>
                 <div id="saveMessage" class="successModal" style="display:none;"><p><?php _e( 'Settings Saved Successfully!', 'ultimate-facebook-comments' ); ?></p></div>
@@ -89,13 +88,16 @@
                     <li><strong>id</strong> - <?php printf( __( 'comments div id with a CSS class of %1$s and backgound color of %2$s', 'ultimate-facebook-comments' ), '<strong>class</strong>', '<strong>color</strong>' ); ?></li>
                     <li><strong>color_scheme</strong> - <?php _e( 'colour scheme:', 'ultimate-facebook-comments' ); ?> <strong>light/dark</strong></li>
                     <li><strong>tag</strong> - <?php _e( 'html tag:', 'ultimate-facebook-comments' ); ?> <strong>h1/h2/h3/h4/h5/h6/span/div</strong></li>
+                    <li><strong>button_class</strong> - <?php _e( 'button CSS class for On Click method, defaults to:', 'ultimate-facebook-comments' ); ?> <strong>btn button</strong></li>
+                    <li><strong>button_text</strong> - <?php _e( 'button text for On Click method, defaults to:', 'ultimate-facebook-comments' ); ?> <strong>Leave a Reply</strong></li>
+                    <li><strong>loading</strong> - <?php _e( 'comments loading method:', 'ultimate-facebook-comments' ); ?> <strong>default/on_scroll/on_click</strong></li>
                     <li><strong>credit</strong> - <?php printf( __( 'enter %s to link to the plugin page', 'ultimate-facebook-comments' ), '"1"' ); ?></li>
                     <li><strong>consent</strong> - <?php printf( __( 'enter %s to show user agreement notice', 'ultimate-facebook-comments' ), '"1"' ); ?></li>
                 </div>
                 <div style="display:none;" id="show-help">
                     <h3><?php _e( 'Do you need help with this plugin? Here are some FAQ for you:', 'ultimate-facebook-comments' ); ?></h3><p><hr></p>
                     <p><li><strong><?php _e( 'How to create Facebook APP ID?', 'ultimate-facebook-comments' ); ?></strong></li></p>
-                    <p><?php printf( __( 'Create your App ID from %1$s here %2$s. Then to set up, choose your App and click %3$s. Ensure you enter your website URL in both %4$s and %5$s and fill up all required details. Next just turn on %6$s. Now configure plugin settings with APP ID and Secret and other valid informations.', 'ultimate-facebook-comments' ), '<a href="https://developers.facebook.com/apps" target="_blank">', '</a>', '<strong>"Settings > Basic"</strong>', '<strong>"App Domains"</strong>', '<strong>"Add Platforms > Website > Site URL"</strong>', 'App Review' ); ?></p>
+                    <p><?php printf( __( 'Create your App ID from %1$shere%2$s. Then to set up, choose your App and click %3$s. Ensure you enter your website URL in both %4$s and %5$s and fill up all required details. Next just turn on %6$s. Now configure plugin settings with APP ID and Secret and other valid informations.', 'ultimate-facebook-comments' ), '<a href="https://developers.facebook.com/apps" target="_blank">', '</a>', '<strong>"Settings > Basic"</strong>', '<strong>"App Domains"</strong>', '<strong>"Add Platforms > Website > Site URL"</strong>', 'App Review' ); ?></p>
                     <p><li><strong><?php _e( 'How to moderate Facebook Comments?', 'ultimate-facebook-comments' ); ?></strong></li></p>
                     <p><?php printf( __( 'You must be logged into your Facebook account to access Facebook Comments Moderation Tool. You can access Facebook Comments Moderation Tool from admin bar. By default, all admins to the App ID can moderate comments. To add any person as moderators, open %1$s and go to %2$s and add any person as moderator.', 'ultimate-facebook-comments' ), '<strong>Moderation Tool</strong>', '<strong>Settings > Moderators</strong>' ); ?></p>
                     <p><li><strong><?php _e( 'How to show Facebook comment count on frontend posts meta?', 'ultimate-facebook-comments' ); ?></strong></li></p>
@@ -131,7 +133,7 @@
 						<p><input type="hidden" name="ufc_export_action" value="ufc_export_settings" /></p>
 						<p>
 							<?php wp_nonce_field( 'ufc_export_nonce', 'ufc_export_nonce' ); ?>
-							<?php submit_button( __( 'Export Settings', 'ultimate-facebook-comments' ), 'secondary', 'submit', false ); ?>
+							<?php submit_button( __( 'Export Settings', 'ultimate-facebook-comments' ), 'secondary', 'submit-export', false ); ?>
 						</p>
 					</form>
                 <p><hr></p>
@@ -142,7 +144,7 @@
 						<p>
 							<input type="hidden" name="ufc_import_action" value="ufc_import_settings" />
 							<?php wp_nonce_field( 'ufc_import_nonce', 'ufc_import_nonce' ); ?>
-							<?php submit_button( __( 'Import Settings', 'ultimate-facebook-comments' ), 'secondary', 'submit', false ); ?>
+							<?php submit_button( __( 'Import Settings', 'ultimate-facebook-comments' ), 'secondary', 'submit-import', false ); ?>
 						</p>
 					</form>
                 <p><hr></p>
@@ -152,7 +154,7 @@
 						<p><input type="hidden" name="ufc_reset_action" value="ufc_reset_settings" /></p>
 	                    <p>
 							<?php wp_nonce_field( 'ufc_reset_nonce', 'ufc_reset_nonce' ); ?>
-							<?php submit_button( __( 'Reset Settings', 'ultimate-facebook-comments' ), 'secondary', 'submit', false ); ?>
+							<?php submit_button( __( 'Reset Settings', 'ultimate-facebook-comments' ), 'secondary', 'submit-reset', false ); ?>
 					    </p>
 					</form>
                 <br>
@@ -181,7 +183,7 @@
     <div class="coffee-box">
         <div class="coffee-amt-wrap">
             <p><select class="coffee-amt">
-            <option value="5usd">$5</option>
+                <option value="5usd">$5</option>
                 <option value="6usd">$6</option>
                 <option value="7usd">$7</option>
                 <option value="8usd">$8</option>
@@ -198,6 +200,6 @@
         </div>
         <span class="coffee-heading"><?php _e( 'Buy me a coffee!', 'ultimate-facebook-comments' ); ?></span>
         <p style="text-align: justify;"><?php printf( __( 'Thank you for using %s. If you found the plugin useful buy me a coffee! Your donation will motivate and make me happy for all the efforts. You can donate via PayPal.', 'ultimate-facebook-comments' ), '<strong>Ultimate Facebook Comments v' . UFC_PLUGIN_VERSION . '</strong>' ); ?></strong></p>
-        <p style="text-align: justify; font-size: 12px; font-style: italic;">Developed with <span style="color:#e25555;">♥</span> by <a href="https://www.sayandatta.com" target="_blank" style="font-weight: 500;">Sayan Datta</a> | <a href="https://github.com/iamsayan/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">GitHub</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">Support</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post" target="_blank" style="font-weight: 500;">Rate it</a> (<span style="color:#ffa000;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>) on WordPress.org, if you like this plugin.</p>
+        <p style="text-align: justify; font-size: 12px; font-style: italic;">Developed with <span style="color:#e25555;">♥</span> by <a href="https://sayandatta.com" target="_blank" style="font-weight: 500;">Sayan Datta</a> | <a href="https://github.com/iamsayan/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">GitHub</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">Support</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post" target="_blank" style="font-weight: 500;">Rate it</a> (<span style="color:#ffa000;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>) on WordPress.org, if you like this plugin.</p>
     </div>
 </div>

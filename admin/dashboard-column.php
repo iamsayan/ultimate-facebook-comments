@@ -11,13 +11,12 @@
 
 function ufc_checkbox_on_column( $column, $post_id ) {
         
-    $post = get_post( $post_id );
-
     switch ( $column ) {
         case 'fb-comments':
             $options = get_option('ufc_plugin_global_options');
-            $count = get_post_meta( $post->ID, '_post_fb_comment_count', true );
-            $object_id = get_post_meta( $post->ID, '_post_fb_comment_object_id', true );
+            $count = get_post_meta( $post_id, '_post_fb_comment_count', true );
+            $object_id = get_post_meta( $post_id, '_post_fb_comment_object_id', true );
+            $p_meta = get_post_meta( $post_id, '_ufc_disable', true );
             
             if ( $object_id == '' || $object_id == 'null' || $object_id == 0 ) {
                 $comment_url = 'https://developers.facebook.com/tools/comments/' . $options['ufc_facebook_comments_app_id'] . '/pending/descending/';
@@ -33,37 +32,24 @@ function ufc_checkbox_on_column( $column, $post_id ) {
             }
             elseif ( $count > 1 ) {
                 $comments = '<a href="' . $comment_url . '" target="_blank" class="post-fb-com-count post-fb-com-count-approved"><span class="fb-comment-count-approved" aria-hidden="true">' . $count . '</span><span class="screen-reader-text">' . $count . __( ' comments', 'ultimate-facebook-comments' ) . '</span></a>';
-            } ?>
-            <div class="post-fb-com-count-wrapper"><?php echo $comments; ?></div>
-            <?php
-            break;
-
-        case 'fb-comments-status':
-            $options = get_option('ufc_plugin_global_options');
-            $p_meta = get_post_meta( $post->ID, '_ufc_disable', true );
+            } 
             
             if ( $options['ufc_fb_comment_auto_display'] == 'after_content' && $p_meta != 'yes' ) {
-                echo '<span class="ufc-enable dashicons dashicons-yes" style="color:#3cb371;" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '"></span>';
-            }
-            elseif ( has_shortcode( $post->post_content, 'ufc-fb-comments') || ( post_type_supports( get_post_type( $post->ID ), 'comments' ) && comments_open( $post->ID ) ) ) {
-                echo '<span class="ufc-disable dashicons dashicons-yes" style="color:#3cb371;" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '"></span>';
-            }
-            else {
-                echo '<span class="ufc-disable dashicons dashicons-no" style="color:#e14d43;" title="' . esc_attr__( 'Disabled', 'ultimate-facebook-comments' ) . '"></span>';
-            }
-            break;
+                $fb_count = '<span class="ufc-enable dashicons dashicons-yes" style="color: #3cb371;display: none;" title="' . esc_attr__( 'Enabled', 'ultimate-facebook-comments' ) . '"></span>';
+            } else {
+                $fb_count = '<span class="ufc-disable dashicons dashicons-no" style="color: #e14d43;display: none;" title="' . esc_attr__( 'Disabled', 'ultimate-facebook-comments' ) . '"></span>';
+            } ?>
+
+            <div class="post-fb-com-count-wrapper"><?php echo $comments; ?></div><?php echo $fb_count; ?>
+            <?php
+        break;
         // end all case breaks
     }
 }
 
 function ufc_post_columns_display( $columns ) {
-    $options = get_option('ufc_plugin_global_options');
+    $columns['fb-comments'] = '<span class="dashicons dashicons-admin-comments" title="Facebook Comments"><span class="screen-reader-text">' . __( 'Facebook Comments', 'ultimate-facebook-comments' ) . '</span></span>';
 
-    if( isset($options['ufc_show_comment_count_cb']) && ($options['ufc_show_comment_count_cb'] == 1) ) {
-        $columns['fb-comments'] = '<span class="dashicons dashicons-admin-comments" title="Facebook Comments"><span class="screen-reader-text">' . __( 'Facebook Comments', 'ultimate-facebook-comments' ) . '</span></span>';
-    }
-    $columns['fb-comments-status'] = '<span class="dashicons dashicons-facebook" title="Facebook Comments Status"><span class="screen-reader-text">' . __( 'Facebook Comments Status', 'ultimate-facebook-comments' ) . '</span></span>';
-    
     return $columns;
 }
 

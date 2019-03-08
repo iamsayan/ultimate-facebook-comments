@@ -7,6 +7,8 @@
  * @license   http://www.gnu.org/licenses/gpl.html
  */
 
+add_shortcode( 'ufc-fbc-count', 'ufc_load_fb_comments_count_shortcode' );
+
 # template tags
 function get_fb_comment_count() {
     $options = get_option('ufc_plugin_global_options');
@@ -44,5 +46,3 @@ function fb_comment_count() {
 function ufc_load_fb_comments_count_shortcode() {
     fb_comment_count();
 }
-
-add_shortcode( 'ufc-fbc-count', 'ufc_load_fb_comments_count_shortcode' );

@@ -3,7 +3,7 @@ Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
 Requires at least: 4.0
 Tested up to: 5.1
-Stable tag: 1.3.7
+Stable tag: 1.4.0
 Requires PHP: 5.4
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
@@ -143,67 +143,23 @@ Displays/echos the facebook comments count:
 
 == Changelog ==
 
-= 1.3.7 =
-Release Date: February 18, 2019
+= 1.4.0 =
+Release Date: March 8, 2019
 
-* Added: Option to switch Facebook SDK loding method.
-* Tweak: Now this plugin automatically disables the output of Facebook Comments in amp pages.
-* Fixed: The wp editor saving issue with 'Notification Email Message'.
-* Fixed: A issue with `quick_edit_custom_box` action hook.
-* Tested with WordPress 5.1.
-
-= 1.3.6 =
-Release Date: February 15, 2019
-
-* Improved: Added a security check for ajax requests.
-* Improved: Appsecret Proof is being used to fetch info from Facebook Graph API.
-* Tweak: Now Reply button directly redirects to Comments Area.
-* Fixed: The editor height of 'Notification Email Message'.
-* Added: WPML Compatibility.
-
-= 1.3.5 =
-Release Date: February 12, 2019
-
-* Fixed: All minor bugs has been fixed.
-* Fixed: Some incorrectly translated strings.
-
-= 1.3.4 =
-Release Date: January 4, 2019
-
-* Improved: Facebook API Method to avoid Facebook api: (#4) Application request limit reached problem.
-* Fixed: Some error notice.
-* Fixed: Some incorrectly translated strings.
-
-= 1.3.3 =
-Release Date: December 17, 2018
-
-* NEW: Admin UI.
-* Added: Option to set HTML tags for comment box title.
-* Fixed: Minor bug fixed.
-
-= 1.3.2 =
-Release Date: December 9, 2018
-
-* Improved: Admin UI.
-* Fixed: Comments and Meta Boxes are not showing on posts edit screen if 'After Content' method is selected.
-* Fixed: Some incorrectly translated strings.
-
-= 1.3.1 =
-Release Date: December 2, 2018
-
-* Added: Notification Email Template.
-* Added: WordPress Editor to Notification settings.
-* Improved: Template Tag mechanism.
-* Improved: Admin UI.
-* Fixed: Some minor bugs.
-* Fixed: Some incorrectly translated strings.
-* Tested up to WordPress Version 5.0.
-
-= 1.3.0 =
-Release Date: November 28, 2018
-
-* NEW: Added Email Notifications.
-* Improved: Comment Count Mechanism.
+* Added: A method to automatically fetch comment count of a certain post if comment count meta doesn't exist.
+* Added: Some Shortcodes attributes to customize frontend output via shortcode.
+* Improved: The lazy loading mechanism to optimize page speed.
+* Improved: The Javascript codes which is liable for unnecessary SDK loading.
+* Improved: Compatibility with other Facebook Plugin.
+* Tweak: Now Shortcode also supports Lazy loading methods - On Click and On Scroll.
+* Tweak: Now this plugin automatically disables the output of Facebook Comments in AMP pages created by AMP for WP Plugin.
+* Tweak: Facebook Comment Count will always enable from now. You can hide it from Screen Options.
+* Tweak: Facebook Comment Application Secret now uses password type field.
+* Fixed: A issue with Shortcode if shortcode is not in Post Content.
+* Fixed: A Shortcode CSS issue. 
+* Fixed: Duplicate HTML Element warning in browser console on Admin Settings Page.
+* Removed: Some unwanted code from plugin codebase.
+* Removed: Facebook SDK Loading Method option in plugin settings.
 
 = Other Versions =
 
@@ -211,5 +167,5 @@ Release Date: November 28, 2018
 
 == Upgrade Notice ==
 
-= 1.3.3 =
-In this release, redesigned the admin panel. Please reconfigure notification settings after plugin update.
+= 1.4.0 =
+In this release, various improvements and bug fixes has been introduced.

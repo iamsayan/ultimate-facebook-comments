@@ -30,7 +30,7 @@ function ufc_facebook_comments_app_id_display() {
 
 function ufc_facebook_comments_app_secret_display() {
     $options = get_option( 'ufc_plugin_global_options' );
-    ?>  <input id="appsecret" name="ufc_plugin_global_options[ufc_facebook_comments_app_secret]" type="text" size="35" style="width:35%;" required placeholder="Enter facebook app secret" value="<?php if (isset($options['ufc_facebook_comments_app_secret'])) { echo $options['ufc_facebook_comments_app_secret']; } ?>" />
+    ?>  <input id="appsecret" name="ufc_plugin_global_options[ufc_facebook_comments_app_secret]" type="password" size="35" style="width:35%;" required placeholder="Enter facebook app secret" value="<?php if (isset($options['ufc_facebook_comments_app_secret'])) { echo $options['ufc_facebook_comments_app_secret']; } ?>" />
         &nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enter facebook App Secret that you get from Facebook Developers.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
     <?php
 }
@@ -452,7 +452,7 @@ function ufc_fbcn_email_subject_display() {
     ?>  <input id="fbcn-emailsub" name="ufc_plugin_global_options[ufc_fbcn_email_subject]" type="text" size="100" style="width:100%;" required placeholder="New comment on your blog." value="<?php if (isset($options['ufc_fbcn_email_subject'])) { echo $emailSubject; } ?>" />
         <br>
     <?php printf(
-		'<small><i>%s</i><code>&#37;&#37;author_name&#37;&#37;</code> <code>&#37;&#37;post_title&#37;&#37;</code> <code>&#37;&#37;post_link&#37;&#37;</code> <code>&#37;&#37;site_name&#37;&#37;</code> <code>&#37;&#37;site_url&#37;&#37;</code> <code>&#37;&#37;comment_text&#37;&#37;</code> <code>&#37;&#37;comment_type&#37;&#37;</code></strong><small>',
+		'<small style="line-height: 2;"><i>%s</i><code>&#37;&#37;author_name&#37;&#37;</code> <code>&#37;&#37;post_title&#37;&#37;</code> <code>&#37;&#37;post_link&#37;&#37;</code> <code>&#37;&#37;site_name&#37;&#37;</code> <code>&#37;&#37;site_url&#37;&#37;</code> <code>&#37;&#37;comment_text&#37;&#37;</code> <code>&#37;&#37;comment_type&#37;&#37;</code></strong><small>',
 		__( 'You can use these tags into email subject - ', 'ultimate-facebook-comments' )
 	);
 }
@@ -474,7 +474,7 @@ function ufc_fbcn_email_message_display() {
     );
     wp_editor( $emailBody, 'fbcn-emailmsg', $args );
     printf(
-		'<small><i>%1$s</i><code>&#37;&#37;admin_email&#37;&#37;</code> <code>&#37;&#37;author_name&#37;&#37;</code> <code>&#37;&#37;post_title&#37;&#37;</code> <code>&#37;&#37;post_link&#37;&#37;</code> <code>&#37;&#37;site_name&#37;&#37;</code> <code>&#37;&#37;site_url&#37;&#37;</code> <code>&#37;&#37;comment_text&#37;&#37;</code> <code>&#37;&#37;comment_type&#37;&#37;</code> <code>&#37;&#37;comment_time&#37;&#37;</code><i>. %2$s</i><small>',
+		'<small style="line-height: 2;"><i>%1$s</i><code>&#37;&#37;admin_email&#37;&#37;</code> <code>&#37;&#37;author_name&#37;&#37;</code> <code>&#37;&#37;post_title&#37;&#37;</code> <code>&#37;&#37;post_link&#37;&#37;</code> <code>&#37;&#37;site_name&#37;&#37;</code> <code>&#37;&#37;site_url&#37;&#37;</code> <code>&#37;&#37;comment_text&#37;&#37;</code> <code>&#37;&#37;comment_type&#37;&#37;</code> <code>&#37;&#37;comment_time&#37;&#37;</code><i>. %2$s</i><small>',
 		__( 'You can use these tags into email body - ', 'ultimate-facebook-comments' ), __( 'Email body supports HTML.', 'ultimate-facebook-comments' )
 	);
 }
