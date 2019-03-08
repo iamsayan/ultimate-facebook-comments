@@ -163,7 +163,7 @@ Release Date: March 8, 2019
 
 = Other Versions =
 
-* View the <a href="https://plugins.svn.wordpress.org/ultimate-facebook-comments/trunk/changelog.txt" target="_blank">Changelog</a>file.
+* View the <a href="https://plugins.svn.wordpress.org/ultimate-facebook-comments/trunk/changelog.txt" target="_blank">Changelog</a> file.
 
 == Upgrade Notice ==
 
