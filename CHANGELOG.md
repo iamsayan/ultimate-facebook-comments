@@ -1,6 +1,30 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.4.1
+Release Date: March 13, 2019
+
+* Added: Support for WooCommerece Comments.
+
+## 1.4.0
+Release Date: March 9, 2019
+
+* Added: A method to automatically fetch comment count of a certain post if comment count meta doesn't exist.
+* Added: Some Shortcodes attributes to customize frontend output via shortcode.
+* Improved: The lazy loading mechanism to optimize page speed.
+* Improved: The Javascript codes which is liable for unnecessary SDK loading.
+* Improved: Compatibility with other Facebook Plugin.
+* Improved: AJAX Security Mechanism.
+* Tweak: Now Shortcode also supports Lazy loading methods - On Click and On Scroll.
+* Tweak: Now this plugin automatically disables the output of Facebook Comments in AMP pages created by AMP for WP Plugin.
+* Tweak: Facebook Comment Count will always enable from now. You can hide it from Screen Options.
+* Tweak: Facebook Comment Application Secret now uses password type field.
+* Fixed: A issue with Shortcode if shortcode is not in Post Content.
+* Fixed: A Shortcode CSS issue. 
+* Fixed: Duplicate HTML Element warning in browser console on Admin Settings Page.
+* Removed: Some unwanted code from plugin codebase.
+* Removed: Facebook SDK Loading Method option in plugin settings.
+
 ## 1.3.7
 Release Date: February 18, 2019
 
