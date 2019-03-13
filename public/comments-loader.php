@@ -14,7 +14,6 @@ if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comm
 }
 
 function ufc_render_comments_components() {
-
     $options = get_option('ufc_plugin_global_options');
 
     if( !empty( $options['ufc_facebook_comments_app_id'] ) ) {
@@ -32,6 +31,7 @@ function ufc_render_comments_components() {
         }
         elseif( isset( $options['ufc_fb_comment_auto_display'] ) && $options['ufc_fb_comment_auto_display'] == 'replace_native_comment' ) {
             add_filter( 'comments_template', 'ufc_load_comments_template' );
+            add_filter( 'woocommerce_product_tabs', 'ufc_woo_facebook_comments_tab' );
         }
     }
 }
@@ -86,6 +86,10 @@ function ufc_init_fb_comments_components() {
     $p_meta = get_post_meta( $post->ID, '_ufc_disable', true );
 
     if ( isset( $options['ufc_enable_on_post_types'] ) && !in_array( get_post_type( $post->ID ), $options['ufc_enable_on_post_types'] ) ) {
+        return;
+    }
+
+    if( get_post_type( $post->ID ) == 'product' && ( isset( $options['ufc_fb_comment_auto_display'] ) && $options['ufc_fb_comment_auto_display'] == 'replace_native_comment' ) ) {
         return;
     }
 
@@ -278,6 +282,41 @@ function ufc_fb_comments_after( $content ) {
     }
 
     return $content;
+}
+
+function ufc_woo_facebook_comments_tab( $tabs ) {
+    $options = get_option('ufc_plugin_global_options');
+    $p_meta = get_post_meta( get_the_ID(), '_ufc_disable', true );
+
+    $count = get_post_meta( get_the_ID(), '_post_fb_comment_count', true );
+    if( ! $count ) {
+        $count = 0;
+    }
+
+    if ( isset( $options['ufc_enable_on_post_types'] ) && in_array( get_post_type( get_the_ID() ), $options['ufc_enable_on_post_types'] ) ) {
+        if ( is_singular( 'product' ) && $p_meta != 'yes' ) {
+            // Adds the new tab
+            $tabs['fb-comments'] = array(
+                'title'     => sprintf( __( 'Comments (%s)', 'ultimate-facebook-comments' ), $count ),
+                'priority'  => apply_filters( 'ufc_woocommerce_output_priority', 50 ),
+                'callback'  => 'ufc_woo_facebook_comments_tab_content'
+            );
+        }
+    }
+
+    return $tabs;
+}
+
+function ufc_woo_facebook_comments_tab_content() {
+    $sc_content = '[ufc-fb-comments tag="h2"]';
+    $sc_content = apply_filters( 'ufc_woocommerce_custom_shortcode_output', $sc_content );
+
+    $content = '<div id="ufc-woocommerce-content">';
+    $content .= do_shortcode( $sc_content );
+    $content .= '</div>';
+    $content = apply_filters( 'ufc_woocommerce_custom_output', $content );
+
+    echo $content;
 }
 
 function ufc_get_site_http_protocol() {

@@ -1,9 +1,9 @@
-=== Ultimate Facebook Comments ===
+=== Ultimate Facebook Comments - Email Notification & Lazy Load ===
 Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
 Requires at least: 4.0
 Tested up to: 5.1
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 Requires PHP: 5.4
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
@@ -13,7 +13,7 @@ Ultimate Facebook Comments plugin will help you to display Facebook Comments box
 
 == Description ==
 
-### Ultimate Facebook Comments: the Ultimate Facebook Comments plugin for WordPress.
+### The Ultimate Facebook Comments plugin for WordPress.
 
 If you’re running a blog of any kind, you’re probably looking to build an online community. You're targeting like-minded people who share the interests highlighted by the content on your site. In that case, Facebook Comments may help you a lot.
 
@@ -27,19 +27,20 @@ If you’re running a blog of any kind, you’re probably looking to build an on
 * **Live Facebook Comment Count**.
 * **Email Notification**.
 * Adjust number of comments, color scheme, language, width, sorting order, bg color, comments URL, comments box title etc.
-* Facebook comments increases your audience.
 * 3 different Facebook comments loading methods.
 * Customize button label.
 * **Super Lightweight.**
 * Completely free to use with lifetime updates.
 * **Developer friendly.**
-* Mobile Ready.
-* Direct access to Facebook comment moderation tool.
+* Mobile Ready Responsive Comment Box.
+* Direct access to Facebook Comment Moderation Tool.
 * Easily configurable with shortcodes.
-* Shortcode ready widget.
+* Compatible with **Page Builders like Elementor** etc.
 * Ability to disable WordPress native comment system.
 * Compatible with other Facebook sharing plugin.
 * Follows the best WordPress coding standards.
+
+Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
 
 #### Themes Tested with this plugin and works perfect
 
@@ -65,8 +66,6 @@ This plugin is fully compatible with WordPress Version 4.0 and beyond and also c
 * Active development of this plugin is handled [on GitHub](https://github.com/iamsayan/ultimate-facebook-comments).
 * Pull requests for documenting bugs are highly appreciated.
 * If you think you’ve found a bug (e.g. You’re experiencing unexpected behavior), please post on the [support forums](https://wordpress.org/support/plugin/ultimate-facebook-comments) first.
-
-Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
 
 == Installation ==
 
@@ -105,11 +104,7 @@ Yes, this plugin is compatible with any theme.
 
 = I want to migrate from other Facebook comments plugin. What are the steps? =
 
-Just copy Facebook App ID and paste it on plugin settings page and this plugin will do the rest. Also, don't forget to configure plugin setting according to your need.
-
-= As I am using other Facebook plugins, the Facebook SDK is already loaded by that plugin and Comments are not showing. What is the solution? =
-
-Add these snippets in your functions.php file: `add_filter( 'ufc_facebook_sdk_reinit_method', '__return_true' );` and this will definitely work.
+Just copy Facebook App ID form your exisitng plugin and copy App Secret from Facebook Developer Account and paste these two on plugin settings page and this plugin will do the rest. Also, please configure plugin setting according to your need.
 
 = How to show Facebook comment count on front end posts meta? =
 
@@ -131,7 +126,7 @@ Displays/echos the facebook comments count:
 
 == Screenshots ==
 
-1. Facebook comment box
+1. Facebook Comment Box
 2. Page loading speed with lazy load
 3. Main Settings
 4. Plugin Settings
@@ -140,17 +135,24 @@ Displays/echos the facebook comments count:
 7. GDPR Notice
 8. Notification
 9. Others Settings
+10. Facebook Comment Box Live Demo
 
 == Changelog ==
 
+= 1.4.1 =
+Release Date: March 13, 2019
+
+* Added: Support for WooCommerece Comments.
+
 = 1.4.0 =
-Release Date: March 8, 2019
+Release Date: March 9, 2019
 
 * Added: A method to automatically fetch comment count of a certain post if comment count meta doesn't exist.
 * Added: Some Shortcodes attributes to customize frontend output via shortcode.
 * Improved: The lazy loading mechanism to optimize page speed.
 * Improved: The Javascript codes which is liable for unnecessary SDK loading.
 * Improved: Compatibility with other Facebook Plugin.
+* Improved: AJAX Security Mechanism.
 * Tweak: Now Shortcode also supports Lazy loading methods - On Click and On Scroll.
 * Tweak: Now this plugin automatically disables the output of Facebook Comments in AMP pages created by AMP for WP Plugin.
 * Tweak: Facebook Comment Count will always enable from now. You can hide it from Screen Options.

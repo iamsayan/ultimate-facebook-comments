@@ -48,7 +48,7 @@ function ufc_checkbox_on_column( $column, $post_id ) {
 }
 
 function ufc_post_columns_display( $columns ) {
-    $columns['fb-comments'] = '<span class="dashicons dashicons-admin-comments" title="Facebook Comments"><span class="screen-reader-text">' . __( 'Facebook Comments', 'ultimate-facebook-comments' ) . '</span></span>';
+    $columns['fb-comments'] = '<span class="dashicons dashicons-facebook" title="Facebook Comments"><span class="screen-reader-text">' . __( 'Facebook Comments', 'ultimate-facebook-comments' ) . '</span></span>';
 
     return $columns;
 }

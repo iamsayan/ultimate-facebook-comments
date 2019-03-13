@@ -33,7 +33,15 @@ if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comm
                 add_action( "add_meta_boxes_{$item}", "ufc_add_meta_boxes" );
 			}
 		}
-    }
+	}
+	
+	if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'replace_native_comment') ) {
+		if( isset($options['ufc_enable_on_post_types']) ) {
+			if ( in_array( 'product', $options['ufc_enable_on_post_types'] ) ) {
+				add_action( 'add_meta_boxes_product', 'ufc_add_meta_boxes' );
+			}
+		}
+	}
 }
 
 /**

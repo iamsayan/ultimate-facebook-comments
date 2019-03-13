@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Ultimate Facebook Comments\n"
-"POT-Creation-Date: 2019-03-08 23:00+0530\n"
-"PO-Revision-Date: 2019-03-08 23:00+0530\n"
+"POT-Creation-Date: 2019-03-13 16:22+0530\n"
+"PO-Revision-Date: 2019-03-13 16:22+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -45,27 +45,27 @@ msgstr ""
 msgid "Spam Comments"
 msgstr ""
 
-#: admin/ajax.php:105
+#: admin/ajax.php:99
 msgid "comment"
 msgstr ""
 
-#: admin/ajax.php:107
+#: admin/ajax.php:101
 msgid "reply"
 msgstr ""
 
-#: admin/ajax.php:110
+#: admin/ajax.php:104
 msgid "A photo is published as facebook comments."
 msgstr ""
 
-#: admin/ajax.php:171
+#: admin/ajax.php:161
 msgid "URL: "
 msgstr ""
 
-#: admin/ajax.php:171
+#: admin/ajax.php:161
 msgid "Posted on: "
 msgstr ""
 
-#: admin/ajax.php:183
+#: admin/ajax.php:173
 msgid "Reply"
 msgstr ""
 
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Ultimate Facebook Comments"
 msgstr ""
 
-#: admin/dashboard-edit-screen.php:54 admin/dashboard-edit-screen.php:104
+#: admin/dashboard-edit-screen.php:62 admin/dashboard-edit-screen.php:112
 msgid "Disable Facebook Comments"
 msgstr ""
 
@@ -652,7 +652,7 @@ msgstr ""
 #: admin/settings/settings-page.php:51 admin/settings/settings-page.php:55
 #: admin/settings/settings-page.php:59 admin/settings/settings-page.php:63
 #: admin/settings/settings-page.php:67 admin/settings/settings-page.php:71
-#: admin/settings/settings-page.php:75 admin/settings/settings-page.php:174
+#: admin/settings/settings-page.php:75 admin/settings/settings-page.php:172
 msgid "Save Settings"
 msgstr ""
 
@@ -783,112 +783,99 @@ msgstr ""
 msgid "Returns the facebook comments count:"
 msgstr ""
 
-#: admin/settings/settings-page.php:112
-msgid ""
-"As I am using other facebook plugins, the Facebook SDK is already loaded by "
-"that plugin but Facebook Comments are not showing. What is the solution?"
-msgstr ""
-
-#: admin/settings/settings-page.php:113
-#, php-format
-msgid ""
-"Add this snippets in your functions.php file: %s and this will definitely "
-"work."
-msgstr ""
-
-#: admin/settings/settings-page.php:117
+#: admin/settings/settings-page.php:115
 msgid "My Other WordPress Plugins"
 msgstr ""
 
-#: admin/settings/settings-page.php:118
+#: admin/settings/settings-page.php:116
 msgid "Like this plugin? Check out my other WordPress plugins:"
 msgstr ""
 
-#: admin/settings/settings-page.php:119
+#: admin/settings/settings-page.php:117
 msgid ""
 "Display last update date and time on pages and posts very easily with "
 "'dateModified' Schema Markup."
 msgstr ""
 
-#: admin/settings/settings-page.php:120
+#: admin/settings/settings-page.php:118
 msgid "Automatically republish you old evergreen content to grab better SEO."
 msgstr ""
 
-#: admin/settings/settings-page.php:121
+#: admin/settings/settings-page.php:119
 msgid ""
 "Add any page extension like .html, .php, .aspx, .htm, .asp, .shtml only to "
 "wordpress pages very easily (tested on Yoast SEO)."
 msgstr ""
 
-#: admin/settings/settings-page.php:122
+#: admin/settings/settings-page.php:120
 msgid ""
 "Simple Posts Ticker is a small tool that shows your most recent posts in a "
 "marquee style."
 msgstr ""
 
-#: admin/settings/settings-page.php:123
+#: admin/settings/settings-page.php:121
 msgid ""
 "This plugin helps to easily login or register to wordpress by using SMS or "
 "Email Verification without any password."
 msgstr ""
 
-#: admin/settings/settings-page.php:124
+#: admin/settings/settings-page.php:122
 msgid ""
 "Customize WP header, add custom code and enable, disable or remove the "
 "unwanted meta tags, links from the source code and many more."
 msgstr ""
 
-#: admin/settings/settings-page.php:129
+#: admin/settings/settings-page.php:127
 msgid "Plugin Tools"
 msgstr ""
 
-#: admin/settings/settings-page.php:130 admin/settings/settings-page.php:136
+#: admin/settings/settings-page.php:128 admin/settings/settings-page.php:134
 msgid "Export Settings"
 msgstr ""
 
-#: admin/settings/settings-page.php:131
+#: admin/settings/settings-page.php:129
 msgid ""
 "Export the plugin settings for this site as a .json file. This allows you to "
 "easily import the configuration into another site."
 msgstr ""
 
-#: admin/settings/settings-page.php:140 admin/settings/settings-page.php:147
+#: admin/settings/settings-page.php:138 admin/settings/settings-page.php:145
 msgid "Import Settings"
 msgstr ""
 
-#: admin/settings/settings-page.php:141
+#: admin/settings/settings-page.php:139
 msgid ""
 "Import the plugin settings from a .json file. This file can be obtained by "
 "exporting the settings on another site using the form above."
 msgstr ""
 
-#: admin/settings/settings-page.php:151 admin/settings/settings-page.php:157
+#: admin/settings/settings-page.php:149 admin/settings/settings-page.php:155
 msgid "Reset Settings"
 msgstr ""
 
-#: admin/settings/settings-page.php:152
+#: admin/settings/settings-page.php:150
 msgid "WARNING:"
 msgstr ""
 
-#: admin/settings/settings-page.php:152
+#: admin/settings/settings-page.php:150
 msgid ""
 "Resetting will delete all custom options to the default settings of the "
 "plugin in your database."
 msgstr ""
 
-#: admin/settings/settings-page.php:168
+#: admin/settings/settings-page.php:166
 msgid "Saving..."
 msgstr ""
 
-#: admin/settings/settings-page.php:197
+#: admin/settings/settings-page.php:195
 msgid "Custom"
 msgstr ""
 
-#: admin/settings/settings-page.php:199 admin/settings/settings-page.php:201
+#: admin/settings/settings-page.php:197 admin/settings/settings-page.php:199
 msgid "Buy me a coffee!"
 msgstr ""
 
-#: admin/settings/settings-page.php:202
+#: admin/settings/settings-page.php:200
 #, php-format
 msgid ""
 "Thank you for using %s. If you found the plugin useful buy me a coffee! Your "
@@ -913,6 +900,11 @@ msgstr ""
 
 #: admin/settings/tools.php:86
 msgid "Success! Plugin Settings reset successfully."
+msgstr ""
+
+#: public/comments-loader.php:300
+#, php-format
+msgid "Comments (%s)"
 msgstr ""
 
 #: public/template-tags.php:34

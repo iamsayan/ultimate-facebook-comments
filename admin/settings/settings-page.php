@@ -109,8 +109,6 @@
                                 get_fb_comment_count();
             	    } ?&gt;</code></p>
                     </p></p>
-                    <p><li><strong><?php _e( 'As I am using other facebook plugins, the Facebook SDK is already loaded by that plugin but Facebook Comments are not showing. What is the solution?', 'ultimate-facebook-comments' ); ?></strong></li></p>
-                    <p><?php printf( __( 'Add this snippets in your functions.php file: %s and this will definitely work.', 'ultimate-facebook-comments' ), '<code>add_filter( &#39;ufc_facebook_sdk_reinit_method&#39;, &#39;__return_true&#39; );</code>' ); ?></p>
                     
                     <br>
                     
