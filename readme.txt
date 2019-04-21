@@ -1,15 +1,15 @@
 === Ultimate Facebook Comments - Email Notification & Lazy Load ===
 Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
-Requires at least: 4.0
+Requires at least: 4.6
 Tested up to: 5.1
-Stable tag: 1.4.1
-Requires PHP: 5.4
+Stable tag: 1.4.2
+Requires PHP: 5.6
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
+🔥 Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
 
 == Description ==
 
@@ -17,7 +17,7 @@ Ultimate Facebook Comments plugin will help you to display Facebook Comments box
 
 If you’re running a blog of any kind, you’re probably looking to build an online community. You're targeting like-minded people who share the interests highlighted by the content on your site. In that case, Facebook Comments may help you a lot.
 
-> GDPR compliant: does not collect any user data
+> GDPR compliant: does not collect any user data or does not send any data to any 3rd party website
 
 #### Ultimate Facebook Comments - Features
 
@@ -59,7 +59,7 @@ Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](h
 
 #### Compatibility
 
-This plugin is fully compatible with WordPress Version 4.0 and beyond and also compatible with any WordPress theme.
+This plugin is fully compatible with WordPress Version 4.6 and beyond and also compatible with any WordPress theme.
 
 #### Support/Contribute
 
@@ -135,9 +135,20 @@ Displays/echos the facebook comments count:
 7. GDPR Notice
 8. Notification
 9. Others Settings
-10. Facebook Comment Box Live Demo
+10. Facebook Comment Box Demo
 
 == Changelog ==
+
+= 1.4.2 =
+Release Date: April 22, 2019
+
+* Added: Support for post id in commnet count template tags.
+* Added: Some filters to customize comment count text output.
+* Added: span class and data-href in comment count output.
+* Tweak: Reduced plugin size.
+* Fixed: Conflict with Bootstrap CSS Class.
+* Fixed: Missing HTML Tags in Admin Notice.
+* Removed: Some CSS Files.
 
 = 1.4.1 =
 Release Date: March 13, 2019

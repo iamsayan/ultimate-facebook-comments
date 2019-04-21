@@ -9,8 +9,9 @@
  * @license    http://www.gnu.org/licenses/ GNU General Public License
  */
 
-function ufc_custom_toolbar_link( $wp_admin_bar ) {
+add_action( 'admin_bar_menu', 'ufc_custom_toolbar_link', 999 );
 
+function ufc_custom_toolbar_link( $wp_admin_bar ) {
     $options = get_option('ufc_plugin_global_options');
 
     // If user not logged in, then get out!
@@ -22,7 +23,11 @@ function ufc_custom_toolbar_link( $wp_admin_bar ) {
     // If user can not manage comments, then get out!
     if ( ! current_user_can( 'moderate_comments' ) ) return;
 
+    if( ! ( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) ) return;
+        
     if ( empty($options['ufc_facebook_comments_app_id']) ) return;
+
+    if( ! ( isset($options['ufc_add_fmt_admin_bar_cb']) && ($options['ufc_add_fmt_admin_bar_cb'] == 1) ) ) return;
 
     $args = array(
         'id' => 'ufc-modetation-tool',
@@ -84,12 +89,6 @@ function ufc_custom_toolbar_link( $wp_admin_bar ) {
     );
     $wp_admin_bar->add_node($args);
     
-}
-
-if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) {
-    if( isset($options['ufc_add_fmt_admin_bar_cb']) && ($options['ufc_add_fmt_admin_bar_cb'] == 1) ) {
-        add_action('admin_bar_menu', 'ufc_custom_toolbar_link', 999);
-    }
 }
 
 ?>

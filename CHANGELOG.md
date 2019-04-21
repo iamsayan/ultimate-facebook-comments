@@ -1,6 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.4.2
+Release Date: April 22, 2019
+
+* Added: Support for post id in commnet count template tags.
+* Added: Some filters to customize comment count text output.
+* Added: span class and data-href in comment count output.
+* Tweak: Reduced plugin size.
+* Fixed: Conflict with Bootstrap CSS Class.
+* Fixed: Missing HTML Tags in Admin Notice.
+* Removed: Some CSS Files.
+
 ## 1.4.1
 Release Date: March 13, 2019
 

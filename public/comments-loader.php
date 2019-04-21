@@ -9,12 +9,12 @@
  * @license    http://www.gnu.org/licenses/ GNU General Public License
  */
 
-if( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) {
-    add_action( 'init', 'ufc_render_comments_components' );
-}
+add_action( 'init', 'ufc_render_comments_components' );
 
 function ufc_render_comments_components() {
     $options = get_option('ufc_plugin_global_options');
+
+    if( ! ( isset($options['ufc_enable_fb_comment_cb']) && ($options['ufc_enable_fb_comment_cb'] == 1) ) ) return;
 
     if( !empty( $options['ufc_facebook_comments_app_id'] ) ) {
     
@@ -33,6 +33,10 @@ function ufc_render_comments_components() {
             add_filter( 'comments_template', 'ufc_load_comments_template' );
             add_filter( 'woocommerce_product_tabs', 'ufc_woo_facebook_comments_tab' );
         }
+
+        if( isset( $options['ufc_http_to_https_cb'] ) && $options['ufc_http_to_https_cb'] == 1 ) {
+            add_filter( 'ufc_facebook_comments_load_target_url', 'ufc_fix_http_to_https_migration', 10, 2 );
+        }
     }
 }
 
@@ -40,18 +44,11 @@ function ufc_add_fb_comments_meta() {
 
     if( ! is_singular() ) return;
 
-    global $post;
-
-    if( ! is_object( $post ) ) {
-        return;
-    }
-
     if( ufc_check_is_amp_page() ) {
         return;
     }
 
     $options = get_option('ufc_plugin_global_options');
-    $p_meta = get_post_meta( $post->ID, '_ufc_disable', true );
 
     $content = '<!-- This website uses the Ultimate Facebook Comments plugin v' . UFC_PLUGIN_VERSION . ' - https://wordpress.org/plugins/ultimate-facebook-comments/ -->' . "\n";
     $content .= '<meta property="fb:app_id" content="' . $options['ufc_facebook_comments_app_id'] . '"/>' . "\n";
@@ -303,7 +300,7 @@ function ufc_woo_facebook_comments_tab( $tabs ) {
             );
         }
     }
-
+    
     return $tabs;
 }
 
@@ -320,7 +317,6 @@ function ufc_woo_facebook_comments_tab_content() {
 }
 
 function ufc_get_site_http_protocol() {
-
     if ( is_ssl() || ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ) ) {
         return 'https://';
     } else {
@@ -329,11 +325,14 @@ function ufc_get_site_http_protocol() {
 }
 
 function ufc_check_is_amp_page() {
-
     if ( ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) || ( function_exists( 'ampforwp_is_amp_endpoint' ) && ampforwp_is_amp_endpoint() ) ) {
         return true;
     }
     return false;
+}
+
+function ufc_fix_http_to_https_migration( $url, $post ) {
+    return str_replace( 'https://', 'http://', $url );
 }
 
 ?>

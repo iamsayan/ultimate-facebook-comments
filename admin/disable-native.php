@@ -9,6 +9,8 @@
  * @license    http://www.gnu.org/licenses/ GNU General Public License
  */
 
+$options = get_option('ufc_plugin_global_options');
+
 if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_wp_comments_trace_cb'] == 1) ) {
   
     if( isset($options['ufc_fb_comment_auto_display']) && ($options['ufc_fb_comment_auto_display'] == 'replace_native_comment') ) {

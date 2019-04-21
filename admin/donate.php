@@ -21,14 +21,14 @@ function ufc_donate_admin_notice() {
         return;
     }
 
-    $dismiss = wp_nonce_url( add_query_arg( 'ufc_donate_notice_action', 'dismiss_donate_true' ), 'dismiss_donate_true' ); 
-    $no_thanks = wp_nonce_url( add_query_arg( 'ufc_donate_notice_action', 'no_thanks_donate_true' ), 'no_thanks_donate_true' ); ?>
+    $dismiss = wp_nonce_url( add_query_arg( 'ufc_donate_notice_action', 'ufc_dismiss_donate_true' ), 'ufc_dismiss_donate_true' ); 
+    $no_thanks = wp_nonce_url( add_query_arg( 'ufc_donate_notice_action', 'ufc_no_thanks_donate_true' ), 'ufc_no_thanks_donate_true' ); ?>
     
     <div class="notice notice-success">
-        <p><?php _e( 'Hey, I noticed you\'ve been using Ultimate Facebook Comments for more than 2 week – that’s awesome! If you like Ultimate Facebook Comments and you are satisfied with the plugin, isn’t that worth a coffee or two? Please consider donating. Any amount is appreciated. Donations help me to continue support and development of this free plugin! Thank you very much!', 'ultimate-facebook-comments' ); ?><p>
-        <a href="https://www.paypal.me/iamsayan" target="_blank" class="button button-secondary"><?php _e( 'Donate Now', 'ultimate-facebook-comments' ); ?></a>&nbsp;
+        <p><?php _e( 'Hey, I noticed you\'ve been using Ultimate Facebook Comments for more than 2 week – that’s awesome! If you like Ultimate Facebook Comments and you are satisfied with the plugin, isn’t that worth a coffee or two? Please consider donating. Any amount is appreciated. Donations help me to continue support and development of this free plugin! Thank you very much!', 'ultimate-facebook-comments' ); ?></p>
+        <p><a href="https://www.paypal.me/iamsayan" target="_blank" class="button button-secondary"><?php _e( 'Donate Now', 'ultimate-facebook-comments' ); ?></a>&nbsp;
         <a href="<?php echo $dismiss; ?>" class="already-did"><strong><?php _e( 'I already donated', 'ultimate-facebook-comments' ); ?></strong></a>&nbsp;<strong>|</strong>
-        <a href="<?php echo $no_thanks; ?>" class="later"><strong><?php _e( 'Nope&#44; maybe later', 'ultimate-facebook-comments' ); ?></strong></a>
+        <a href="<?php echo $no_thanks; ?>" class="later"><strong><?php _e( 'Nope&#44; maybe later', 'ultimate-facebook-comments' ); ?></strong></a></p>
     </div>
 <?php
 }
@@ -47,13 +47,13 @@ function ufc_dismiss_donate_admin_notice() {
         return;
     }
 
-    if ( 'dismiss_donate_true' === $_GET['ufc_donate_notice_action'] ) {
-        check_admin_referer( 'dismiss_donate_true' );
+    if ( 'ufc_dismiss_donate_true' === $_GET['ufc_donate_notice_action'] ) {
+        check_admin_referer( 'ufc_dismiss_donate_true' );
         update_option( 'ufc_plugin_dismiss_donate_notice', '1' );
     }
 
-    if ( 'no_thanks_donate_true' === $_GET['ufc_donate_notice_action'] ) {
-        check_admin_referer( 'no_thanks_donate_true' );
+    if ( 'ufc_no_thanks_donate_true' === $_GET['ufc_donate_notice_action'] ) {
+        check_admin_referer( 'ufc_no_thanks_donate_true' );
         update_option( 'ufc_plugin_no_thanks_donate_notice', '1' );
         update_option( 'ufc_plugin_dismiss_donate_notice', '1' );
         update_option( 'ufc_plugin_dismissed_time_donate', time() );

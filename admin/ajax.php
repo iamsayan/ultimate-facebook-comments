@@ -18,7 +18,6 @@ add_action('wp_ajax_ufc_handle_fb_comment_removed', 'ufc_comment_remove_ajax_req
 add_action('wp_ajax_nopriv_ufc_handle_fb_comment_removed', 'ufc_comment_remove_ajax_request_handler' );
 
 function ufc_comment_create_ajax_request_handler() {
-
     // Check the referrer for the AJAX call.
     check_ajax_referer( 'ufc_fbcomments', 'security' );
 
@@ -188,7 +187,6 @@ function ufc_comment_create_ajax_request_handler() {
 }
 
 function ufc_comment_remove_ajax_request_handler() {
-
     // Check the referrer for the AJAX call.
     check_ajax_referer( 'ufc_fbcomments', 'security' );
 

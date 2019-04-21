@@ -165,17 +165,19 @@ jQuery(document).ready(function ($) {
     $(".coffee-amt").trigger('change');
  
     $('#fb-comments-display').change(function() {
-        //var selectize = $select[0].selectize;
-
+        if ($('#fb-comments-display').val() == 'replace_native_comment') {
+            $('#replace-comments').show();
+        }
+        if ($('#fb-comments-display').val() != 'replace_native_comment') {
+            $('#replace-comments').hide();
+        }
         if ($('#fb-comments-display').val() == 'after_content') {
             $('#fb-comments-priority-span').show();
             $('#fb-comments-priority').attr('required', 'required');
-            //selectize.refreshItems();
         }
         if ($('#fb-comments-display').val() != 'after_content') {
             $('#fb-comments-priority-span').hide();
             $('#fb-comments-priority').removeAttr('required');
-            //selectize.removeItem('product');
         }
         if ($('#fb-comments-display').val() == 'disable') {
             $('.fbc-post-types').hide();

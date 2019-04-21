@@ -10,9 +10,9 @@
  */
 
 add_shortcode( 'ufc-fb-comments', 'ufc_load_fb_comments_shortcode' );
+add_shortcode( 'ufc-fbc-count', 'ufc_load_fb_comments_count_shortcode' );
 
 function ufc_load_fb_comments_shortcode( $atts ) {
-
     global $post;
 
     if( ! is_object( $post ) ) {
@@ -163,6 +163,15 @@ function ufc_click_script_sc() {
     }";
 
     return $click_script;
+}
+
+function ufc_load_fb_comments_count_shortcode( $atts ) {
+    $atts = shortcode_atts(
+		array(
+			'id' => null,
+        ), $atts, 'ufc-fbc-count' );
+        
+    echo get_fb_comment_count( $atts['id'] );
 }
 
 ?>

@@ -2,7 +2,7 @@
 
 # Ultimate Facebook Comments
 
-Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
+🔥 Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
 
 [![WP compatibility](https://plugintests.com/plugins/ultimate-facebook-comments/wp-badge.svg)](https://plugintests.com/plugins/ultimate-facebook-comments/latest) [![PHP compatibility](https://plugintests.com/plugins/ultimate-facebook-comments/php-badge.svg)](https://plugintests.com/plugins/ultimate-facebook-comments/latest)
 
@@ -55,7 +55,7 @@ Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](h
 
 #### Compatibility
 
-This plugin is fully compatible with WordPress Version 3.5 and beyond and also compatible with any WordPress theme.
+This plugin is fully compatible with WordPress Version 4.6 and beyond and also compatible with any WordPress theme.
 
 #### Support/Contribute
 

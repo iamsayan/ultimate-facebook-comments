@@ -56,6 +56,7 @@
                 </div>
                 <div style="display:none" id="show-display">
                     <?php do_settings_sections('ufc_plugin_display_section'); ?>
+                    <p id="replace-comments" style="display:none;"><strong><?php _e( 'Note:', 'wp-last-modified-info' ); ?></strong> <i><?php _e( '<strong>Replace Native Comment</strong> Method may not work if your custom post template does not support WordPress native Comment System. Check your custom post types before activating Facebook Comments on it. Otherwise you can use <strong>After Content</strong> Method or use <strong>Shortcode</strong> to display Facebook Comments.', 'wp-last-modified-info' ); ?></i></p>
                     <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', 'submit-display' ); ?>
                 </div>
                 <div style="display:none" id="show-title">
@@ -77,7 +78,7 @@
                 <div id="progressMessage" class="progressModal" style="display:none;"><?php _e( 'Please wait...', 'ultimate-facebook-comments' ); ?></div>
                 <div id="saveMessage" class="successModal" style="display:none;"><p><?php _e( 'Settings Saved Successfully!', 'ultimate-facebook-comments' ); ?></p></div>
                 <div id="show-shortcode" style="display: none;margin-bottom: 20px;">
-                    <h3><?php _e( 'Shortcode', 'ultimate-facebook-comments' ); ?></h3><p><hr></p>
+                    <h3><?php _e( 'Shortcode Info', 'ultimate-facebook-comments' ); ?></h3><p><hr></p>
                     <p><?php printf( __( 'You can insert the comment box manually in any page or post or template by simply using the shortcode %1$s. To enter the shortcode directly into templates using PHP, enter %2$s', 'ultimate-facebook-comments' ), '<code>[ufc-fb-comments]</code>', '<code>echo do_shortcode(&#39;[ufc-fb-comments]&#39;);</code>' ); ?></strong></p>
                     <p><?php _e( 'You can also use the options/attributes below to override the the settings above.', 'ultimate-facebook-comments' ); ?></p>
                     <li><strong>url</strong> - <?php _e( 'set custom URL', 'ultimate-facebook-comments' ); ?></li>
@@ -93,6 +94,9 @@
                     <li><strong>loading</strong> - <?php _e( 'comments loading method:', 'ultimate-facebook-comments' ); ?> <strong>default/on_scroll/on_click</strong></li>
                     <li><strong>credit</strong> - <?php printf( __( 'enter %s to link to the plugin page', 'ultimate-facebook-comments' ), '"1"' ); ?></li>
                     <li><strong>consent</strong> - <?php printf( __( 'enter %s to show user agreement notice', 'ultimate-facebook-comments' ), '"1"' ); ?></li>
+                    <br><p><?php printf( __( 'You can show the facebook comment count manually in any page or post or template by simply using the shortcode %1$s. To enter the shortcode directly into templates using PHP, enter %2$s', 'ultimate-facebook-comments' ), '<code>[ufc-fbc-count]</code>', '<code>echo do_shortcode(&#39;[ufc-fbc-count]&#39;);</code>' ); ?></strong></p>
+                    <li><strong>id</strong> - <?php _e( 'enter the post id, defaults to current post id', 'ultimate-facebook-comments' ); ?></li>
+                    
                 </div>
                 <div style="display:none;" id="show-help">
                     <h3><?php _e( 'Do you need help with this plugin? Here are some FAQ for you:', 'ultimate-facebook-comments' ); ?></h3><p><hr></p>
@@ -108,10 +112,7 @@
                     <p><i><?php _e( 'Returns the facebook comments count:', 'ultimate-facebook-comments' ); ?></i> <code>&lt;?php if ( function_exists( 'get_fb_comment_count' ) ) {
                                 get_fb_comment_count();
             	    } ?&gt;</code></p>
-                    </p></p>
-                    
-                    <br>
-                    
+                    </p></p><br>
                     <h3><?php _e( 'My Other WordPress Plugins', 'ultimate-facebook-comments' ); ?></h3><p><hr></p>
                     <p><strong><?php _e( 'Like this plugin? Check out my other WordPress plugins:', 'ultimate-facebook-comments' ); ?></strong></p>
                     <li><strong><a href = "https://wordpress.org/plugins/wp-last-modified-info/" target = "_blank">WP Last Modified Info</a></strong> - <?php _e( 'Display last update date and time on pages and posts very easily with \'dateModified\' Schema Markup.', 'ultimate-facebook-comments' ); ?></li>
@@ -198,6 +199,6 @@
         </div>
         <span class="coffee-heading"><?php _e( 'Buy me a coffee!', 'ultimate-facebook-comments' ); ?></span>
         <p style="text-align: justify;"><?php printf( __( 'Thank you for using %s. If you found the plugin useful buy me a coffee! Your donation will motivate and make me happy for all the efforts. You can donate via PayPal.', 'ultimate-facebook-comments' ), '<strong>Ultimate Facebook Comments v' . UFC_PLUGIN_VERSION . '</strong>' ); ?></strong></p>
-        <p style="text-align: justify; font-size: 12px; font-style: italic;">Developed with <span style="color:#e25555;">♥</span> by <a href="https://sayandatta.com" target="_blank" style="font-weight: 500;">Sayan Datta</a> | <a href="https://github.com/iamsayan/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">GitHub</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">Support</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post" target="_blank" style="font-weight: 500;">Rate it</a> (<span style="color:#ffa000;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>) on WordPress.org, if you like this plugin.</p>
+        <p style="text-align: justify; font-size: 12px; font-style: italic;">Developed with <span style="color:#e25555;">♥</span> by <a href="https://sayandatta.com" target="_blank" style="font-weight: 500;">Sayan Datta</a> | <a href="https://github.com/iamsayan/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">GitHub</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">Support</a> | <a href="https://translate.wordpress.org/projects/wp-plugins/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">Translate</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post" target="_blank" style="font-weight: 500;">Rate it</a> (<span style="color:#ffa000;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>) on WordPress.org, if you like this plugin.</p>
     </div>
 </div>
