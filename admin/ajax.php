@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate Facebook Comments
+ * @package    Ultimate Social Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -22,14 +22,14 @@ function ufc_comment_create_ajax_request_handler() {
     check_ajax_referer( 'ufc_fbcomments', 'security' );
 
 	// read ajax packet
-	$commentID       = $_POST['commentID'];
-	$href            = $_POST['href'];
-    $commentText     = $_POST['commentText'];
-    $post_id         = $_POST['postID'];
-    $title           = $_POST['postTitle'];
+	$commentID       = sanitize_text_field( $_POST['commentID'] );
+	$href            = esc_url_raw( $_POST['href'] );
+    $commentText     = sanitize_text_field( $_POST['commentText'] );
+    $post_id         = sanitize_text_field( $_POST['postID'] );
+    $title           = sanitize_text_field( $_POST['postTitle'] );
     
     if( isset( $_POST['parentCommentID'] ) ) {
-        $parentCommentID = $_POST['parentCommentID'];
+        $parentCommentID = sanitize_text_field( $_POST['parentCommentID'] );
     }
 
     $options = get_option( 'ufc_plugin_global_options' );
@@ -44,7 +44,7 @@ function ufc_comment_create_ajax_request_handler() {
         'access_token' => $access_token,
         'appsecret_proof' => $appsecret_proof,
 		'fields' => 'engagement,og_object'
-    ), 'https://graph.facebook.com/v3.2/' ), array( 'httpversion' => '1.1' ) );
+    ), 'https://graph.facebook.com/' . UFC_FB_SDK_VERSION . '/' ), array( 'httpversion' => '1.1' ) );
     
     // Check the response code
 	$response_code = wp_remote_retrieve_response_code( $response ); // log this for API issues
@@ -62,13 +62,13 @@ function ufc_comment_create_ajax_request_handler() {
     if( !empty( $data ) ) {
         if ( $object_id == '' || $object_id == 'null' || $object_id == 0 ) {
             if ( isset( $data->og_object->id ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_object_id', $data->og_object->id );
+                update_post_meta( $post_id, '_post_fb_comment_object_id', sanitize_text_field( $data->og_object->id ) );
             } else {
                 update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
             }
         }
         if ( isset( $data->engagement->comment_plugin_count ) ) {
-            update_post_meta( $post_id, '_post_fb_comment_count', $data->engagement->comment_plugin_count );
+            update_post_meta( $post_id, '_post_fb_comment_count', sanitize_text_field( $data->engagement->comment_plugin_count ) );
         } else {
             if ( $count != '' ) {
                 update_post_meta( $post_id, '_post_fb_comment_count', $count );
@@ -96,11 +96,11 @@ function ufc_comment_create_ajax_request_handler() {
     $post_link = get_permalink( $post_id );
     
     $commentLabel = __( 'comment', 'ultimate-facebook-comments' );
-	if ( isset( $parentCommentID ) ) {
+	if( isset( $parentCommentID ) ) {
 		$commentLabel = __( 'reply', 'ultimate-facebook-comments' );
     }
-    if ( empty( $commentText ) ) {
-        $commentText = __( 'A photo is published as facebook comments.', 'ultimate-facebook-comments' );
+    if( empty( $commentText ) ) {
+        $commentText = __( 'A photo is published as facebook comment.', 'ultimate-facebook-comments' );
     }
     $blogurl = get_bloginfo( 'url' );
     $blogname = get_bloginfo( 'name' );
@@ -183,7 +183,7 @@ function ufc_comment_create_ajax_request_handler() {
         wp_mail( $recipient, $subject, $body, $headers );
     }
 
-    die();
+    exit;
 }
 
 function ufc_comment_remove_ajax_request_handler() {
@@ -191,7 +191,7 @@ function ufc_comment_remove_ajax_request_handler() {
     check_ajax_referer( 'ufc_fbcomments', 'security' );
 
 	// read ajax packet
-    $post_id = $_POST['postID'];
+    $post_id = sanitize_text_field( $_POST['postID'] );
     
     $options = get_option( 'ufc_plugin_global_options' );
 
@@ -206,7 +206,7 @@ function ufc_comment_remove_ajax_request_handler() {
         'access_token' => $access_token,
         'appsecret_proof' => $appsecret_proof,
 		'fields' => 'engagement,og_object'
-    ), 'https://graph.facebook.com/v3.2/' ), array( 'httpversion' => '1.1' ) );
+    ), 'https://graph.facebook.com/' . UFC_FB_SDK_VERSION . '/' ), array( 'httpversion' => '1.1' ) );
     
     // Check the response code
 	$response_code = wp_remote_retrieve_response_code( $response ); // log this for API issues
@@ -222,13 +222,13 @@ function ufc_comment_remove_ajax_request_handler() {
     if( !empty( $data ) ) {
         if ( $object_id == '' || $object_id == 'null' || $object_id == 0 ) {
             if ( isset( $data->og_object->id ) ) {
-                update_post_meta( $post_id, '_post_fb_comment_object_id', $data->og_object->id );
+                update_post_meta( $post_id, '_post_fb_comment_object_id', sanitize_text_field( $data->og_object->id ) );
             } else {
                 update_post_meta( $post_id, '_post_fb_comment_object_id', 'null' );
             }
         }
         if ( isset( $data->engagement->comment_plugin_count ) ) {
-            update_post_meta( $post_id, '_post_fb_comment_count', $data->engagement->comment_plugin_count );
+            update_post_meta( $post_id, '_post_fb_comment_count', sanitize_text_field( $data->engagement->comment_plugin_count ) );
         } else {
             if ( $count != '' ) {
                 update_post_meta( $post_id, '_post_fb_comment_count', $count );
@@ -249,7 +249,7 @@ function ufc_comment_remove_ajax_request_handler() {
         }
     }
 
-    die();
+    exit;
 }
 
 ?>

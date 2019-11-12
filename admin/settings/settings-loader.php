@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate Facebook Comments
+ * @package    Ultimate Social Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -31,6 +31,7 @@ function ufc_plugin_register_settings() {
         add_settings_field('ufc_enable_on_post_types', __( 'Enable Facebook Comments for:', 'ultimate-facebook-comments' ), 'ufc_enable_on_post_types_display', 'ufc_plugin_display_section', 'ufc_plugin_display_option', array( 'label_for' => 'post-types', 'class' => 'fbc-post-types' ));  
         add_settings_field('ufc_comment_area_class', __( 'Comments Area Div CSS Class:', 'ultimate-facebook-comments' ), 'ufc_comment_area_class_display', 'ufc_plugin_display_section', 'ufc_plugin_display_option', array( 'label_for' => 'fbc-area-class' ));  
         add_settings_field('ufc_fbc_area_bgcolor', __( 'Comments Background Color:', 'ultimate-facebook-comments' ), 'ufc_fbc_area_bgcolor_display', 'ufc_plugin_display_section', 'ufc_plugin_display_option', array( 'label_for' => 'fb-comments-bgcolor', 'class' => 'bgcolor' ));
+        add_settings_field('ufc_fbc_replace_fb_comment_count', __( 'Show Comment Count in Post Meta:', 'ultimate-facebook-comments' ), 'ufc_fbc_replace_fb_comment_count_display', 'ufc_plugin_display_section', 'ufc_plugin_display_option', array( 'label_for' => 'fb-comments-cc', 'class' => 'fbccc' ));
         
     add_settings_section('ufc_plugin_title_option', __( 'Title Options', 'wp-last-modified-info' ) . '<p><hr></p>', null, 'ufc_plugin_title_section');     
         add_settings_field('ufc_fb_comment_msg', __( 'Facebook Comments Box Title:', 'ultimate-facebook-comments' ), 'ufc_fb_comment_msg_display', 'ufc_plugin_title_section', 'ufc_plugin_title_option', array( 'label_for' => 'fb-comments-msg' ));

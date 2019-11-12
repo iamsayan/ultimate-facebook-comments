@@ -39,6 +39,7 @@ function get_fb_comment_count( $post_id = null ) {
     elseif ( $count > 1 ) {
         $comments .= apply_filters( 'ufc_multiple_comments_text', __( ' Comments', 'ultimate-facebook-comments' ) );
     }
+    
     return '<a href="' . $url . '#' . $options['ufc_comment_area_id'] . '" itemprop="commentCount" title="' . __( 'Comments for ', 'ultimate-facebook-comments' ) . get_the_title( $post_id ) . '" class="' . apply_filters( 'ufc_comment_count_css_class', 'comments-link' ) . '">' . $comments . '</a>';
 }
 

@@ -1,8 +1,8 @@
 <?php
 /**
- * Runs on Uninstall of Ultimate WordPress Comments
+ * Runs on Uninstall of Ultimate Social Comments
  *
- * @package   Ultimate WordPress Comments
+ * @package   Ultimate Social Comments
  * @author    Sayan Datta
  * @license   http://www.gnu.org/licenses/gpl.html
  */

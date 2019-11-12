@@ -1,25 +1,25 @@
-=== Ultimate Facebook Comments - Email Notification & Lazy Load ===
+=== Ultimate Social Comments - Email Notification & Lazy Load ===
 Contributors: Infosatech
 Tags: facebook comments, comments, facebook, lazy comments, pagespeed
 Requires at least: 4.6
-Tested up to: 5.1
-Stable tag: 1.4.2
+Tested up to: 5.3
+Stable tag: 1.4.5
 Requires PHP: 5.6
 Donate link: http://bit.ly/2I0Gj60
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
-🔥 Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
+🔥 Ultimate Social Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
 
 == Description ==
 
-### The Ultimate Facebook Comments plugin for WordPress.
+### The Ultimate Social Comments plugin for WordPress.
 
 If you’re running a blog of any kind, you’re probably looking to build an online community. You're targeting like-minded people who share the interests highlighted by the content on your site. In that case, Facebook Comments may help you a lot.
 
 > GDPR compliant: does not collect any user data or does not send any data to any 3rd party website
 
-#### Ultimate Facebook Comments - Features
+#### Ultimate Social Comments - Features
 
 * Add most popular Facebook commenting system in your website.
 * **Lazy Load Facebook scripts and comments only after clicking a button or scrolling down.**
@@ -40,7 +40,7 @@ If you’re running a blog of any kind, you’re probably looking to build an on
 * Compatible with other Facebook sharing plugin.
 * Follows the best WordPress coding standards.
 
-Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
+Like the Ultimate Social Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
 
 #### Themes Tested with this plugin and works perfect
 
@@ -70,9 +70,9 @@ This plugin is fully compatible with WordPress Version 4.6 and beyond and also c
 == Installation ==
 
 1. Visit 'Plugins Add New'.
-1. Search for 'Ultimate Facebook Comments' and install it.
+1. Search for 'Ultimate Social Comments' and install it.
 1. Or you can upload the `ultimate-facebook-comments` folder to the `/wp-content/plugins/` directory manually.
-1. Activate Ultimate Facebook Comments from your Plugins page.
+1. Activate Ultimate Social Comments from your Plugins page.
 1. After activation, go to 'FB Comments' from Settings menu.
 1. Enable options and save changes.
 
@@ -80,15 +80,15 @@ This plugin is fully compatible with WordPress Version 4.6 and beyond and also c
 
 = Is there any admin interface for this plugin? =
 
-Yes. You can access this from 'Settings Menu FB Comments'.
+Yes. You can access this from 'Settings > FB Comments'.
 
 = How to use this plugin? =
 
-Go to 'Settings Menu FB Comments', enable/disable options as per your need and save your changes.
+Go to 'Settings > FB Comments', enable/disable options as per your need and save your changes.
 
 = How to check this plugin is working? =
 
-After enabling options in 'Settings Menu FB Comments', open any page or post and you can see the Facebook comment box.
+After enabling options in 'Settings > FB Comments', open any page or post and you can see the Facebook comment box.
 
 = How this plugin works? =
 
@@ -138,6 +138,32 @@ Displays/echos the facebook comments count:
 10. Facebook Comment Box Demo
 
 == Changelog ==
+
+= 1.4.5 =
+Release Date: November 11, 2019
+
+* Updated: Facebook SDK Version to v5.0.
+* Fixed: Some untranslated strings.
+* Fixed: Some typos.
+* Fixed: Some broken links.
+* Change the plugin name properly to avoid copyright infringement.
+* Tested with WordPress 5.3.
+
+= 1.4.4 =
+Release Date: September 29, 2019
+
+* Updated: Facebook SDK Version to v4.0.
+* Improved: Properly validating the $_POST request.
+* Removed: Some unused codes.
+* Change the plugin name to avoid copyright infringement.
+
+= 1.4.3 =
+Release Date: June 15, 2019
+
+* Added: Support to replace wordpress comment count with facebook comments count on frontend.
+* Updated: Facebook SDK Version to v3.3.
+* Tweak: WP Editor Media button will be hidden from now.
+* Tested with WordPress 5.2.
 
 = 1.4.2 =
 Release Date: April 22, 2019

@@ -1,22 +1,22 @@
 ![alt text](https://github.com/iamsayan/ultimate-facebook-comments/raw/master/banner.png "Plugin Banner")
 
-# Ultimate Facebook Comments
+# Ultimate Social Comments
 
-🔥 Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
+🔥 Ultimate Social Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
 
 [![WP compatibility](https://plugintests.com/plugins/ultimate-facebook-comments/wp-badge.svg)](https://plugintests.com/plugins/ultimate-facebook-comments/latest) [![PHP compatibility](https://plugintests.com/plugins/ultimate-facebook-comments/php-badge.svg)](https://plugintests.com/plugins/ultimate-facebook-comments/latest)
 
 ## Description
 
-### Ultimate Facebook Comments: the Ultimate Facebook Comments plugin for WordPress.
+### Ultimate Social Comments: the Ultimate Social Comments plugin for WordPress.
 
 If you’re running a blog of any kind, you’re probably looking to build an online community. You're targeting like-minded people who share the interests highlighted by the content on your site. It’s a mutually beneficial relationship: Your visitors get information that they consider valuable by visiting your site, and you build an audience.
 
 However, it’s also a great idea to allow your visitors to interact with one another. One of the best ways to do that is with a comments section that allows them to not only leave you feedback on your content but also to interact with each other. Here are some of the benefits you can expect from a comments section.
 
-Like the Ultimate Facebook Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
+Like the Ultimate Social Comments plugin? Consider leaving a [5 star review](https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post).
 
-#### Ultimate Facebook Comments - Features
+#### Ultimate Social Comments - Features
 
 * Add most popular Facebook commenting system in your website.
 * **Lazy Load Facebook scripts and comments only after clicking a button or scrolling down.**
@@ -67,8 +67,8 @@ This plugin is fully compatible with WordPress Version 4.6 and beyond and also c
 
 ### From within WordPress ###
 1. Visit 'Plugins > Add New'.
-1. Search for 'Ultimate Facebook Comments'.
-1. Activate Ultimate Facebook Comments from your Plugins page.
+1. Search for 'Ultimate Social Comments'.
+1. Activate Ultimate Social Comments from your Plugins page.
 1. Go to "after activation" below.
 
 ### Manually ###
@@ -84,15 +84,15 @@ This plugin is fully compatible with WordPress Version 4.6 and beyond and also c
 
 #### Is there any admin interface for this plugin?
 
-Yes. You can access this from 'Settings > Facebook Comments'.
+Yes. You can access this from 'Settings > FB Comments'.
 
 #### How to use this plugin?
 
-Go to 'Settings > Facebook Comments', enable/disable options as per your need and save your changes.
+Go to 'Settings > FB Comments', enable/disable options as per your need and save your changes.
 
 #### How to check this plugin is working?
 
-After enabling options in 'Settings > Facebook Comments', open any page or post and you can see the facebook comment box.
+After enabling options in 'Settings > FB Comments', open any page or post and you can see the facebook comment box.
 
 #### How this plugin works?
 

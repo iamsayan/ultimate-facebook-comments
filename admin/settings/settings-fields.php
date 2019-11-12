@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate Facebook Comments
+ * @package    Ultimate Social Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -244,6 +244,26 @@ function ufc_fbc_area_bgcolor_display() {
     <?php
 }
 
+
+function ufc_fbc_replace_fb_comment_count_display() {
+    $options = get_option( 'ufc_plugin_global_options' );
+    if( !isset($options['ufc_fbc_replace_fb_comment_count']) ) {
+        $options['ufc_fbc_replace_fb_comment_count'] = 'disable';
+    }
+    $items = array(
+        'enable'     => __( 'Enable', 'ultimate-facebook-comments' ),
+        'disable'    => __( 'Disable', 'ultimate-facebook-comments' )
+    );
+    echo '<select id="fb-comments-cc" name="ufc_plugin_global_options[ufc_fbc_replace_fb_comment_count]" style="width:15%;">';
+        foreach( $items as $item => $label ) {
+        $selected = ($options['ufc_fbc_replace_fb_comment_count'] == $item) ? ' selected="selected"' : '';
+        echo '<option value="' . $item . '"' . $selected . '>' . $label . '</option>';
+    }
+    echo '</select>';
+    ?>&nbsp;&nbsp;&nbsp;<span class="tooltip" title="<?php _e( 'Enable this option if you want to show facebook comments comments automatically in post meta instead of wordpress comment count.', 'ultimate-facebook-comments' ); ?>"><span title="" class="dashicons dashicons-editor-help"></span></span>
+    <?php
+}
+
 ###############################################################
 #########################    Title    #########################
 ###############################################################
@@ -444,14 +464,14 @@ function ufc_fbcn_email_message_display() {
     if( empty( $emailBody ) ) {
         $emailBody = 'A new &#37;&#37;comment_type&#37;&#37; is published on your blog: &#37;&#37;comment_text&#37;&#37;';
     }
-    //$emailBody = stripslashes( $emailBody );
     $emailBody = html_entity_decode( $emailBody, ENT_COMPAT, "UTF-8" );
 
     $args = array(
         'textarea_name'   => 'ufc_plugin_global_options[ufc_fbcn_email_message]',
-        'textarea_rows'   => '10',
+        'textarea_rows'   => '8',
         'teeny'           => true,
         'tinymce'         => false,
+        //'media_buttons'   => false,
     );
     wp_editor( $emailBody, 'fbcn-emailmsg', $args );
     printf(

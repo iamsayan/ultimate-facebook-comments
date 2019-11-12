@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate Facebook Comments
+ * @package    Ultimate Social Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -48,7 +48,7 @@ function ufc_checkbox_on_column( $column, $post_id ) {
 }
 
 function ufc_post_columns_display( $columns ) {
-    $columns['fb-comments'] = '<span class="dashicons dashicons-facebook" title="Facebook Comments"><span class="screen-reader-text">' . __( 'Facebook Comments', 'ultimate-facebook-comments' ) . '</span></span>';
+    $columns['fb-comments'] = '<span class="dashicons dashicons-facebook" title="' . __( 'Facebook Comments', 'ultimate-facebook-comments' ) . '"><span class="screen-reader-text">' . __( 'Facebook Comments', 'ultimate-facebook-comments' ) . '</span></span>';
 
     return $columns;
 }

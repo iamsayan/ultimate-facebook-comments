@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate Facebook Comments
+ * @package    Ultimate Social Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -26,8 +26,8 @@ function ufc_fetch_fb_post_comment_count() {
         return;
     }
     
-    $object_id = esc_attr( get_post_meta( get_the_ID(), '_post_fb_comment_object_id', true ) );
-    $count = esc_attr( get_post_meta( get_the_ID(), '_post_fb_comment_count', true ) );
+    $object_id = get_post_meta( get_the_ID(), '_post_fb_comment_object_id', true );
+    $count = get_post_meta( get_the_ID(), '_post_fb_comment_count', true );
     $access_token = $options['ufc_facebook_comments_app_id'].'|'.$options['ufc_facebook_comments_app_secret'];
     $appsecret_proof = hash_hmac( 'sha256', $access_token, $options['ufc_facebook_comments_app_secret'] );
 
@@ -40,7 +40,7 @@ function ufc_fetch_fb_post_comment_count() {
         'access_token' => $access_token,
         'appsecret_proof' => $appsecret_proof,
         'fields' => 'engagement,og_object'
-    ), 'https://graph.facebook.com/v3.2/' ), array( 'httpversion' => '1.1' ) );
+    ), 'https://graph.facebook.com/' . UFC_FB_SDK_VERSION . '/' ), array( 'httpversion' => '1.1' ) );
     
     // Check the response code
     $response_code = wp_remote_retrieve_response_code( $response ); // log this for API issues
@@ -55,10 +55,10 @@ function ufc_fetch_fb_post_comment_count() {
 
     if( ! empty( $data ) ) {
         if ( isset( $data->og_object->id ) ) {
-            update_post_meta( get_the_ID(), '_post_fb_comment_object_id', $data->og_object->id );
+            update_post_meta( get_the_ID(), '_post_fb_comment_object_id', sanitize_text_field( $data->og_object->id ) );
         }
         if ( isset( $data->engagement->comment_plugin_count ) ) {
-            update_post_meta( get_the_ID(), '_post_fb_comment_count', $data->engagement->comment_plugin_count );
+            update_post_meta( get_the_ID(), '_post_fb_comment_count', sanitize_text_field( $data->engagement->comment_plugin_count ) );
         }
     }
 }

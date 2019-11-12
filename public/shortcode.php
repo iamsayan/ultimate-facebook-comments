@@ -3,7 +3,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @package    Ultimate Facebook Comments
+ * @package    Ultimate Social Comments
  * @subpackage Public
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -108,7 +108,7 @@ function ufc_load_fb_comments_shortcode( $atts ) {
         js = d.createElement(s);
         js.id = id;
         js.async = true;
-        js.src = '//connect.facebook.net/" . esc_html($options['ufc_fb_comment_language']) . "/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=" . $options['ufc_facebook_comments_app_id'] . "';
+        js.src = '//connect.facebook.net/" . esc_html($options['ufc_fb_comment_language']) . "/sdk.js#xfbml=1&autoLogAppEvents=1&version=" . UFC_FB_SDK_VERSION . "&appId=" . $options['ufc_facebook_comments_app_id'] . "';
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         ";
@@ -125,7 +125,7 @@ function ufc_load_fb_comments_shortcode( $atts ) {
             this.style.display = 'none'; " . $sdk . " };";
     }
 
-    $script = "\n" . '<!-- Facebook SDK is added by Ultimate Facebook Comments v' . UFC_PLUGIN_VERSION . ' plugin -->' . "\n";
+    $script = "\n" . '<!-- Facebook SDK is added by Ultimate Social Comments v' . UFC_PLUGIN_VERSION . ' plugin -->' . "\n";
     $script .= '<div id="fb-root"></div>';
     $script .= '<script type="text/javascript">';
     $script .= '(function() {';

@@ -3,7 +3,7 @@
 /**
  * Plugin tools options
  *
- * @package   Ultimate Facebook Comments
+ * @package   Ultimate Social Comments
  * @author    Sayan Datta
  * @license   http://www.gnu.org/licenses/gpl.html
  */
@@ -44,12 +44,12 @@ function ufc_process_settings_import() {
 		return;
 	if( ! current_user_can( 'manage_options' ) )
 		return;
-    $extension = explode( '.', $_FILES['import_file']['name'] );
+    $extension = explode( '.', sanitize_text_field( $_FILES['import_file']['name'] ) );
     $file_extension = end( $extension );
 	if( $file_extension != 'json' ) {
 		wp_die( __( '<strong>Settings import failed:</strong> Please upload a valid .json file to import settings in this website.', 'ultimate-facebook-comments' ) );
 	}
-	$import_file = $_FILES['import_file']['tmp_name'];
+	$import_file = sanitize_text_field( $_FILES['import_file']['tmp_name'] );
 	if( empty( $import_file ) ) {
 		wp_die( __( '<strong>Settings import failed:</strong> Please upload a file to import.', 'ultimate-facebook-comments' ) );
 	}

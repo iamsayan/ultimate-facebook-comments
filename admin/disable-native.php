@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate Facebook Comments
+ * @package    Ultimate Social Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -49,12 +49,12 @@ if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_
 
     } else {
 
-        add_filter('comments_open', 'ufc_disable_comments_status', 20, 2);
+        add_filter('comments_open', '__return_false', 20, 2);
         add_action('admin_init', 'ufc_disable_comments_post_types_support');
 
     }
 
-    add_filter('pings_open', 'ufc_disable_comments_status', 20, 2);
+    add_filter('pings_open', '__return_false', 20, 2);
     add_filter('comments_array', 'ufc_disable_comments_hide_existing_comments', 10, 2);
     add_action('admin_menu', 'ufc_disable_comments_admin_menu');
     add_action('admin_init', 'ufc_disable_comments_admin_menu_redirect');
@@ -81,11 +81,6 @@ if( isset($options['ufc_remove_wp_comments_trace_cb']) && ($options['ufc_remove_
     function ufc_disable_comments_hide_existing_comments( $comments ) {
         $comments = array();
         return $comments;
-    }
-
-    // Close comments on the front-end
-    function ufc_disable_comments_status() {
-        return false;
     }
     
     // Remove comments page in menu

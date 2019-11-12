@@ -3,7 +3,7 @@
 /**
  * The admin-facing functionality of the plugin.
  *
- * @package    Ultimate Facebook Comments
+ * @package    Ultimate Social Comments
  * @subpackage Admin
  * @author     Sayan Datta
  * @license    http://www.gnu.org/licenses/ GNU General Public License
@@ -12,11 +12,11 @@
 
 <div class="wrap">
     <div class="head-wrap">
-        <h1 class="title">Ultimate Facebook Comments<span class="title-count"><?php echo UFC_PLUGIN_VERSION; ?></span></h1>
-        <div><?php _e( 'The Ultimate Facebook Comments Plugin for WordPress.', 'ultimate-facebook-comments' ); ?></div><hr>
+        <h1 class="title">Ultimate Social Comments<span class="title-count"><?php echo UFC_PLUGIN_VERSION; ?></span></h1>
+        <div><?php _e( 'The Ultimate & Simple Facebook Comments Plugin for WordPress.', 'ultimate-facebook-comments' ); ?></div><hr>
         <div class="top-sharebar">
-            <a class="share-btn rate-btn" href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?filter=5#new-post" target="_blank" title="<?php _e( 'Please rate 5 stars if you like Ultimate Facebook Comments', 'ultimate-facebook-comments' ); ?>"><span class="dashicons dashicons-star-filled"></span> <?php _e( 'Rate 5 stars', 'ultimate-facebook-comments' ); ?></a>
-            <a class="share-btn twitter" href="https://twitter.com/home?status=Check%20out%20Ultimate%20Facebook%20Comments,%20an%20ultimate%20solution%20with%20email%20notification%20for%20%23WordPress%20that%20easily%20adds%20%23Facebook%20%23Comments%20in%20your%20posts%20and%20pages%20easily%20https%3A//wordpress.org/plugins/ultimate-facebook-comments/%20via%20%40im_sayaan" target="_blank"><span class="dashicons dashicons-twitter"></span> <?php _e( 'Tweet about Ultimate Facebook Comments', 'ultimate-facebook-comments' ); ?></a>
+            <a class="share-btn rate-btn" href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?filter=5#new-post" target="_blank" title="<?php _e( 'Please rate 5 stars if you like Ultimate Social Comments', 'ultimate-facebook-comments' ); ?>"><span class="dashicons dashicons-star-filled"></span> <?php _e( 'Rate 5 stars', 'ultimate-facebook-comments' ); ?></a>
+            <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text=Check%20out%20Ultimate%20Social%20Comments,%20an%20ultimate%20solution%20with%20email%20notification%20for%20%23WordPress%20that%20easily%20adds%20%23Facebook%20%23Comments%20in%20your%20posts%20and%20pages%20easily.&tw_p=tweetbutton&url=https%3A//wordpress.org/plugins/ultimate-facebook-comments/&via=im_sayaan" target="_blank"><span class="dashicons dashicons-twitter"></span> <?php _e( 'Tweet about Ultimate Social Comments', 'ultimate-facebook-comments' ); ?></a>
         </div>
     </div>
     <div id="nav-container" class="nav-tab-wrapper">
@@ -56,7 +56,7 @@
                 </div>
                 <div style="display:none" id="show-display">
                     <?php do_settings_sections('ufc_plugin_display_section'); ?>
-                    <p id="replace-comments" style="display:none;"><strong><?php _e( 'Note:', 'wp-last-modified-info' ); ?></strong> <i><?php _e( '<strong>Replace Native Comment</strong> Method may not work if your custom post template does not support WordPress native Comment System. Check your custom post types before activating Facebook Comments on it. Otherwise you can use <strong>After Content</strong> Method or use <strong>Shortcode</strong> to display Facebook Comments.', 'wp-last-modified-info' ); ?></i></p>
+                    <p id="replace-comments" style="display:none;"><strong><?php _e( 'Note:', 'ultimate-facebook-comments' ); ?></strong> <i><?php _e( '<strong>Replace Native Comment</strong> Method may not work if your custom post template does not support WordPress native Comment System. Check your custom post types before activating Facebook Comments on it. Otherwise you can use <strong>After Content</strong> Method or use <strong>Shortcode</strong> to display Facebook Comments.', 'wp-last-modified-info' ); ?></i></p>
                     <?php submit_button( __( 'Save Settings', 'ultimate-facebook-comments' ), 'primary save-settings', 'submit-display' ); ?>
                 </div>
                 <div style="display:none" id="show-title">
@@ -119,7 +119,6 @@
                     <li><strong><a href = "https://wordpress.org/plugins/wp-auto-republish/" target = "_blank">WP Auto Republish</a></strong> - <?php _e( 'Automatically republish you old evergreen content to grab better SEO.', 'ultimate-facebook-comments' ); ?></li>
                     <li><strong><a href = "https://wordpress.org/plugins/change-wp-page-permalinks/" target = "_blank">WP Page Permalink Extension</a></strong> - <?php _e( 'Add any page extension like .html, .php, .aspx, .htm, .asp, .shtml only to wordpress pages very easily (tested on Yoast SEO).', 'ultimate-facebook-comments' ); ?></li>
                     <li><strong><a href = "https://wordpress.org/plugins/simple-posts-ticker/" target = "_blank">Simple Posts Ticker</a></strong> - <?php _e( 'Simple Posts Ticker is a small tool that shows your most recent posts in a marquee style.', 'ultimate-facebook-comments' ); ?></li>
-                    <li><strong><a href = "https://wordpress.org/plugins/fb-account-kit-login/" target = "_blank">Facebook Account Kit Login</a></strong> - <?php _e( 'This plugin helps to easily login or register to wordpress by using SMS or Email Verification without any password.', 'ultimate-facebook-comments' ); ?></li>
                     <li><strong><a href = "https://wordpress.org/plugins/remove-wp-meta-tags/" target = "_blank">Easy Header Footer</a></strong> - <?php _e( 'Customize WP header, add custom code and enable, disable or remove the unwanted meta tags, links from the source code and many more.', 'ultimate-facebook-comments' ); ?></li>
                     <br>
                 </div>
@@ -198,7 +197,7 @@
             <a class="button button-primary buy-coffee-btn" style="margin-left: 2px;" href="https://www.paypal.me/iamsayan/10usd" data-link="https://www.paypal.me/iamsayan/" target="_blank"><?php _e( 'Buy me a coffee!', 'ultimate-facebook-comments' ); ?></a>
         </div>
         <span class="coffee-heading"><?php _e( 'Buy me a coffee!', 'ultimate-facebook-comments' ); ?></span>
-        <p style="text-align: justify;"><?php printf( __( 'Thank you for using %s. If you found the plugin useful buy me a coffee! Your donation will motivate and make me happy for all the efforts. You can donate via PayPal.', 'ultimate-facebook-comments' ), '<strong>Ultimate Facebook Comments v' . UFC_PLUGIN_VERSION . '</strong>' ); ?></strong></p>
-        <p style="text-align: justify; font-size: 12px; font-style: italic;">Developed with <span style="color:#e25555;">♥</span> by <a href="https://sayandatta.com" target="_blank" style="font-weight: 500;">Sayan Datta</a> | <a href="https://github.com/iamsayan/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">GitHub</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">Support</a> | <a href="https://translate.wordpress.org/projects/wp-plugins/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">Translate</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post" target="_blank" style="font-weight: 500;">Rate it</a> (<span style="color:#ffa000;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>) on WordPress.org, if you like this plugin.</p>
+        <p style="text-align: justify;"><?php printf( __( 'Thank you for using %s. If you found the plugin useful buy me a coffee! Your donation will motivate and make me happy for all the efforts. You can donate via PayPal.', 'ultimate-facebook-comments' ), '<strong>Ultimate Social Comments v' . UFC_PLUGIN_VERSION . '</strong>' ); ?></strong></p>
+        <p style="text-align: justify; font-size: 12px; font-style: italic;">Developed with <span style="color:#e25555;">♥</span> by <strong>Sayan Datta</strong> | <a href="https://github.com/iamsayan/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">GitHub</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">Support</a> | <a href="https://translate.wordpress.org/projects/wp-plugins/ultimate-facebook-comments" target="_blank" style="font-weight: 500;">Translate</a> | <a href="https://wordpress.org/support/plugin/ultimate-facebook-comments/reviews/?rate=5#new-post" target="_blank" style="font-weight: 500;">Rate it</a> (<span style="color:#ffa000;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>) on WordPress.org, if you like this plugin.</p>
     </div>
 </div>

@@ -249,3 +249,11 @@ input:checked+.cb-slider:before {
 .cb-slider.round:before {
   border-radius: 50%;
 }
+
+code {
+    font-size: 11px !important;
+}
+
+#insert-media-button {
+    display: none !important;
+}

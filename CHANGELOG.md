@@ -1,6 +1,32 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.4.5
+Release Date: November 11, 2019
+
+* Updated: Facebook SDK Version to v5.0.
+* Fixed: Some untranslated strings.
+* Fixed: Some typos.
+* Fixed: Some broken links.
+* Change the plugin name properly to avoid copyright infringement.
+* Tested with WordPress 5.3.
+
+## 1.4.4
+Release Date: September 29, 2019
+
+* Updated: Facebook SDK Version to v4.0.
+* Improved: Properly validating the $_POST request.
+* Removed: Some unused codes.
+* Change the plugin name to avoid copyright infringement.
+
+## 1.4.3
+Release Date: June 15, 2019
+
+* Added: Support to replace wordpress comment count with facebook comments count on frontend.
+* Updated: Facebook SDK Version to v3.3.
+* Tweak: WP Editor Media button will be hidden from now.
+* Tested with WordPress 5.2.
+
 ## 1.4.2
 Release Date: April 22, 2019
 

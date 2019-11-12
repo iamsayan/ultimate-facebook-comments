@@ -1,30 +1,30 @@
 <?php
 /**
- * Plugin Name: Ultimate Facebook Comments
+ * Plugin Name: Ultimate Social Comments
  * Plugin URI: https://iamsayan.github.io/ultimate-facebook-comments/
- * Description: 🔥 Ultimate Facebook Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
- * Version: 1.4.2
+ * Description: 🔥 Ultimate Social Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
+ * Version: 1.4.5
  * Author: Sayan Datta
  * Author URI: https://sayandatta.com
  * License: GPLv3
  * Text Domain: ultimate-facebook-comments
  * Domain Path: /languages
  * 
- * Ultimate Facebook Comments is free software: you can redistribute it and/or modify
+ * Ultimate Social Comments is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * Ultimate Facebook Comments is distributed in the hope that it will be useful,
+ * Ultimate Social Comments is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Ultimate Facebook Comments. If not, see <http://www.gnu.org/licenses/>.
+ * along with Ultimate Social Comments. If not, see <http://www.gnu.org/licenses/>.
  *
  * @category Public
- * @package  Ultimate Facebook Comments
+ * @package  Ultimate Social Comments
  * @author   Sayan Datta
  * @license  http://www.gnu.org/licenses/ GNU General Public License
  * @link     https://iamsayan.github.io/ultimate-facebook-comments/
@@ -35,10 +35,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'UFC_PLUGIN_VERSION', '1.4.2' );
+$consts = array(
+    'UFC_PLUGIN_VERSION'       => '1.4.5', // plugin version
+    'UFC_FB_SDK_VERSION'       => 'v5.0', // fb sdk version
+    //'UFC_PLUGIN_ENABLE_DEBUG'  => true  // debug scripts
+);
 
-// debug scripts
-//define ( 'UFC_PLUGIN_ENABLE_DEBUG', 'true' );
+foreach( $consts as $const => $value ) {
+    define( $const, $value );
+}
 
 // Internationalization
 add_action( 'plugins_loaded', 'ufc_plugin_load_textdomain' );
