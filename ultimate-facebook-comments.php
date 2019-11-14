@@ -5,7 +5,7 @@
  * Description: 🔥 Ultimate Social Comments plugin will help you to display Facebook Comments box on your website easily. You can use Facebook Comments on your posts or pages.
  * Version: 1.4.5
  * Author: Sayan Datta
- * Author URI: https://sayandatta.com
+ * Author URI: https://about.me/iamsayan
  * License: GPLv3
  * Text Domain: ultimate-facebook-comments
  * Domain Path: /languages
